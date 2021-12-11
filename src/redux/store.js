@@ -1,47 +1,43 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
-} from "redux-persist";
+  REHYDRATE
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './auth/auth-slice';
+// import contactsReducer from './reducers'; // (boilerplate)
 
-import logger from "redux-logger";
-import storage from "redux-persist/lib/storage";
-
-const persistConfig = {
-  key: "root",
+const authPersistConfig = {
+  key: 'auth',
   storage,
+  whitelist: ['token'],
 };
-// это остатки из нашей работы по телефонной книге
-// надо правильные переменные сюда вставить и оно по идее должно работать, если все херня - УДАЛЯЙТЕ
-// const authPersistConfig = {
-//   key: "auth",
-//   storage,
-//   whitelist: ["token"],
-// };
 
-// это остатки из нашей работы по телефонной книге
-// надо правильные переменные сюда вставить и оно по идее должно работать, если все херня - УДАЛЯЙТЕ
-const persistedReducer = combineReducers({
-  //   auth: persistReducer(authPersistConfig, authReducer),
-  //   contacts: contactReducers,
-});
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
-const bothPersistReducer = persistReducer(persistConfig, persistedReducer);
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
+
 const store = configureStore({
-  reducer: bothPersistReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }).concat(logger),
-  devTools: process.env.NODE_ENV === "development",
+  reducer: {
+    auth: persistedAuthReducer,
+    // contacts: contactsReducer, // (boilerplate)
+  },
+  middleware: middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
+
 const persistor = persistStore(store);
+
 export { store, persistor };
