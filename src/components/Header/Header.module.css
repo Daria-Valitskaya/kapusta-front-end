@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 56px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+@media screen and (min-device-width: 768px) {
+  .header {
+    padding-left: 26px;
+    padding-right: 23px;
+  }
+}
+
+@media screen and (min-device-width: 1280px) {
+  .header {
+    padding-right: 70px;
+  }
+}
