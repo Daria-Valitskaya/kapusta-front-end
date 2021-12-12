@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { authOperations } from '.';
+import { createSlice } from "@reduxjs/toolkit";
+import { authOperations } from ".";
 
 const initialState = {
   user: { name: null, email: null },
@@ -9,11 +9,11 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   extraReducers:
     // this is working:
-    builder => {
+    (builder) => {
       builder.addCase(authOperations.register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
@@ -32,28 +32,28 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       });
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.pending,
-        (state, action) => {
-          state.isFetchingCurrent = true;
-        },
-      );
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.pending,
+      //   (state, action) => {
+      //     state.isFetchingCurrent = true;
+      //   },
+      // );
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.fulfilled,
-        (state, action) => {
-          state.user = action.payload;
-          state.isLoggedIn = true;
-          state.isFetchingCurrent = false;
-        },
-      );
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.fulfilled,
+      //   (state, action) => {
+      //     state.user = action.payload;
+      //     state.isLoggedIn = true;
+      //     state.isFetchingCurrent = false;
+      //   },
+      // );
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.rejected,
-        (state, action) => {
-          state.isFetchingCurrent = false;
-        },
-      );
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.rejected,
+      //   (state, action) => {
+      //     state.isFetchingCurrent = false;
+      //   },
+      // );
     },
 
   // this does not work:
