@@ -1,0 +1,159 @@
+.loginWindow {
+    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  max-width: 436px;
+  background: #FFFFFF;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  margin: 20px auto;
+  padding: 50px 85px;
+}
+
+.description {
+    max-width: 265px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+
+    color: #52555F;
+}
+
+.googleButton {
+    display: flex;
+    justify-content: space-between;
+    outline: none;
+    border: none;
+    min-width: 125px;
+    min-height: 44px;
+    border-radius: 16px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    background-color: #F6F7FB;
+    color: #000000;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+    cursor: pointer;
+}
+
+.googleButton:hover,
+.googleButton:focus,
+.googleButton:active {
+    background-color: #e2e5f8;
+}
+
+.form {
+  display: block;
+  width: 100%;
+  max-width: 265px;
+}
+
+.label {
+    color: #000000 !important;
+}
+
+.emailField {
+    margin-bottom: 30px;
+}
+
+.input {
+    margin-left: auto;
+    margin-right: auto;
+    outline: #F6F7FB;
+}
+
+.input > div {
+    outline: #F6F7FB;
+    background: #F6F7FB;
+    border-radius: 30px;
+}
+.input > div::after,
+.input > div::before {
+    content: none;
+}
+
+.input input {
+    outline: #F6F7FB;
+    background: #F6F7FB;
+    border-radius: 30px;
+    padding: 17px 20px;
+}
+
+.input p {
+    background: #FFFFFF;
+}
+
+.passwordField {
+  position: relative;
+}
+
+.passwordIconButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(40%);
+}
+
+.confirmButton {
+  max-width: 265px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirmButton button {
+    min-width: 125px;
+    min-height: 44px;
+    border-radius: 16px;
+    padding: 12px 15px;
+    color: #FFFFFF;
+    background-color: #FF751D;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+.confirmButton a {
+    text-decoration: none;
+}
+
+.confirmButton button:last-child {
+    background-color: #F5F6FB;
+    color: #52555F;
+}
+
+.confirmButton button:last-child:hover,
+.confirmButton button:last-child:focus,
+.confirmButton button:last-child:active{
+    background-color: #e2e5f8;
+}
+
+.confirmButton button:disabled {
+    background-color: #f5b994;
+}
+
+.confirmButton button:hover,
+.confirmButton button:focus, 
+.confirmButton button:active {
+    cursor: pointer;
+    background-color: #FF751D;
+}
