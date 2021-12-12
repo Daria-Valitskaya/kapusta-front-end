@@ -1,5 +1,4 @@
 .btn{
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -23,7 +22,7 @@
 }
 
 @media only screen
-  and (min-device-width: 772px) {
+  and (min-device-width: 768px) {
     .btn{
         border-radius: 16px;
         padding: 12px, 6px;
