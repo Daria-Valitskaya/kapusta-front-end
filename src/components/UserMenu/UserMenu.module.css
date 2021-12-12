@@ -1,0 +1,78 @@
+.userWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.userImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f5f6fa;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.userName {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  color: #52555f;
+  margin-right: 20px;
+}
+
+.verticalLine {
+  height: 36px;
+  width: 1px;
+  background-color: #e0e5eb;
+  margin-right: 20px;
+}
+
+.logOutBtn {
+  color: #52555f;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+/* .logOutBtn:hover,
+.logOutBtn:focus {
+  background-color: #ff751d;
+  color: #ffffff;
+  transition: all 250ms ease;
+} */
+
+.logOutText {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  color: #52555f;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .logOutImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .userName {
+    display: none;
+  }
+  .userImg {
+    margin-right: 15px;
+  }
+
+  .verticalLine {
+    display: none;
+  }
+
+  .logOutText {
+    display: none;
+  }
+}
