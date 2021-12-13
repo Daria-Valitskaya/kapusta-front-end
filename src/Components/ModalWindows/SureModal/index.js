@@ -1,2 +1,1 @@
-import SureModal from "./SureModal";
-export { SureModal };
+export { default } from './SureModal'
