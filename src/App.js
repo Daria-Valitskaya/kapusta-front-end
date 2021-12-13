@@ -1,6 +1,6 @@
 import "./App.module.css";
 
-import Header from "./Components/Header";
+import Header from "./components/Header";
 
 function App() {
   return (
