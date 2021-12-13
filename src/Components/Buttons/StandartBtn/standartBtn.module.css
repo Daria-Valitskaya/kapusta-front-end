@@ -15,6 +15,7 @@ height: 44px;
 box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
 border: 2px solid rgba(245, 246, 251, 1);
 border-radius: 16px;
+cursor: pointer;
 }
 .btn:hover,
 .btn:focus{
