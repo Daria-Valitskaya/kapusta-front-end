@@ -6,6 +6,7 @@ import { authSelectors } from '../../redux/auth';
 
 const Header = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+    console.log(isLoggedIn);
     return (
         <header className={s.header}>
             <Navigation />
