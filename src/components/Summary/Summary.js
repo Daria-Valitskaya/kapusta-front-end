@@ -53,15 +53,17 @@ const arrayData = [
 
 const Summary = () => {
     return (
-        <ul className={s.list}>
-            <li className={s.caption}>Сводка</li>
-            {arrayData.map(item => (
-                <li key={item.month} className={s.listItem}>
-                    <span>{item.month}</span>
-                    <span>{item.sum}</span>
-                </li>
-            ))}
-        </ul>
+        <div className={s.wrapper}>
+            <h4 className={s.caption}>Сводка</h4>
+            <ul className={s.list}>
+                {arrayData.map(item => (
+                    <li key={item.month} className={s.listItem}>
+                        <span>{item.month}</span>
+                        <span>{item.sum}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 };
 

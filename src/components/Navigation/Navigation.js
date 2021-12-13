@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <NavLink 
             to='/'
-            exact
+            // exact
             // className={s.navLink}
             // activeClassName={s.navActiveLink}
         >
