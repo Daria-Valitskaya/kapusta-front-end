@@ -32,43 +32,29 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       });
 
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.pending,
-      //   (state, action) => {
-      //     state.isFetchingCurrent = true;
-      //   },
-      // );
+      builder.addCase(
+        authOperations.fetchCurrentUser.pending,
+        (state, action) => {
+          state.isFetchingCurrent = true;
+        }
+      );
 
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.fulfilled,
-      //   (state, action) => {
-      //     state.user = action.payload;
-      //     state.isLoggedIn = true;
-      //     state.isFetchingCurrent = false;
-      //   },
-      // );
+      builder.addCase(
+        authOperations.fetchCurrentUser.fulfilled,
+        (state, action) => {
+          state.user = action.payload;
+          state.isLoggedIn = true;
+          state.isFetchingCurrent = false;
+        }
+      );
 
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.rejected,
-      //   (state, action) => {
-      //     state.isFetchingCurrent = false;
-      //   },
-      // );
+      builder.addCase(
+        authOperations.fetchCurrentUser.rejected,
+        (state, action) => {
+          state.isFetchingCurrent = false;
+        }
+      );
     },
-
-  // this does not work:
-  // {
-  // [authOperations.register.fullfilled](state, action) {
-  //   state.user = action.payload.user;
-  //   state.token = action.payload.token;
-  //   state.isLoggedIn = true;
-  // },
-  // [authOperations.logIn.fullfilled](state, action) {
-  //   state.user = action.payload.user;
-  //   state.token = action.payload.token;
-  //   state.isLoggedIn = true;
-  // },
-  // },
 });
 
 export default authSlice.reducer;
