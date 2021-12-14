@@ -3,6 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 
 import s from './ContainerTabs.module.css';
 import Summary from '../Summary/Summary';
+import CalendarComponent from '../CalendarBar/CalendarBar';
 
 const ContainerTabs = () => {
 return (
@@ -14,6 +15,7 @@ return (
 
     <TabPanel>
       <div className={s.tabPanel}>
+        <CalendarComponent />
         <Summary />
       </div>
     </TabPanel>
