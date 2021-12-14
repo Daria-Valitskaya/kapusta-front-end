@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import defaultImg from '../../images/other/avatar.svg';
 import logOutImg from '../../images/other/logout.svg';
-import SureModal from '../../Components/ModalWindows/SureModal';
+import SureModal from '../../Сomponents/ModalWindows/SureModal';
 import s from './UserMenu.module.css';
 
 const UserMenu = () => {
