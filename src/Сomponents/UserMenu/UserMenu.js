@@ -39,7 +39,7 @@ const UserMenu = () => {
                 <span className={s.logOutText}>Выйти</span>
             </button>
             {showModal && 
-                <Modal onClose={closeModal} showModal={showModal}>
+                <Modal onClose={closeModal}>
                     <SureModal closeModal={closeModal} />
                 </Modal>
             }

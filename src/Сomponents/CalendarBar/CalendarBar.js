@@ -12,12 +12,16 @@ const CalendarBar = () => {
 //   console.log(value.getMonth());
 
   const date = value.getDate();
-  const month = value.getMonth();
+  const month = value.getMonth() + 1;
   const year = value.getFullYear();
 
   const toggleCalendar = () => {
       setShowCalendar(prevState => !prevState)
   }
+
+  const pad = (value) => {
+    return String(value).padStart(2, '0');
+  };
 
   return (
     <div className={s.wrapper}>
@@ -31,7 +35,7 @@ const CalendarBar = () => {
           className={s.calendarImg}
         />
         <span className={s.calendarText}>
-          {date}.{month}.{year}
+          {pad(date)}.{pad(month)}.{year}
         </span>
       </button> 
             
