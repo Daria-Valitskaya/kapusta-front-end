@@ -36,15 +36,7 @@
   background-color: transparent;
   padding: 0;
   cursor: pointer;
-  transition: all 250ms ease;
 }
-
-/* .logOutBtn:hover,
-.logOutBtn:focus {
-  background-color: #ff751d;
-  color: #ffffff;
-  transition: all 250ms ease;
-} */
 
 .logOutText {
   font-weight: 400;
@@ -52,6 +44,14 @@
   line-height: 1.167;
   color: #52555f;
   text-decoration: underline;
+
+  transition: all ease-in 200ms;
+}
+
+.logOutText:hover,
+.logOutText:focus {
+  color: #ff751d;
+  transition: all ease-in 200ms;
 }
 
 @media screen and (min-width: 768px) {

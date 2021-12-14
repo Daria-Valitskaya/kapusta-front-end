@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import defaultImg from '../../images/other/avatar.svg';
 import logOutImg from '../../images/other/logout.svg';
-import SureModal from '../../Components/ModalWindows/SureModal';
+import SureModal from '../../Сomponents/ModalWindows/SureModal';
 import s from './UserMenu.module.css';
+
+import Modal from '../ModalWindows/Modal';
 
 const UserMenu = () => {
     const [showModal, setShowModal] = useState(false);
@@ -36,7 +38,11 @@ const UserMenu = () => {
                 />
                 <span className={s.logOutText}>Выйти</span>
             </button>
-            {showModal && <SureModal closeModal={closeModal} />}
+            {showModal && 
+                <Modal onClose={closeModal}>
+                    <SureModal closeModal={closeModal} />
+                </Modal>
+            }
         </div>
     )
 };

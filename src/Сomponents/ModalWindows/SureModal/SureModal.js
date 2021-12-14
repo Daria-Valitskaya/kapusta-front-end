@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
+import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from '../../../redux/auth';
-
-import CloseIcon from "@mui/icons-material/Close";
 import { StandartBtn } from "../../Buttons";
 import s from "./sureModal.module.css";
 
@@ -15,13 +15,15 @@ const ZoomInDiv = styled.div`
 
 export default function SureModal({ closeModal }) {
   const dispatch = useDispatch();
-  // const onClick = () => {
-  //   console.log('click');
-  // }
+  
   return (
     <ZoomInDiv>
       <div className={s.field}>
-        <button className={s.sureCloseBtn} id="sureCloseBtn">
+        <button 
+          onClick={closeModal}
+          className={s.sureCloseBtn} 
+          id="sureCloseBtn"
+        >
           {/* можно анимацию сделать для каждого элемента */}
           {/* <ZoomInDiv>
           <CloseIcon fontSize="small" />
@@ -29,7 +31,7 @@ export default function SureModal({ closeModal }) {
           <CloseIcon fontSize="small" />
         </button>
         <div>
-          <p className={s.text}>Вы уверенны?</p>
+          <p className={s.text}>Вы действительно хотите выйти?</p>
           <StandartBtn 
             className={s.btn}
             onClick={() => {
@@ -43,3 +45,7 @@ export default function SureModal({ closeModal }) {
     </ZoomInDiv>
   );
 }
+
+SureModal.propTypes = {
+  closeModal: PropTypes.func,
+};
