@@ -11,7 +11,6 @@ import authOperations from "./redux/auth/auth-operations";
 
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
-// import ContainerTabs from "./Components/ContainerTabs/ContainerTabs";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
 import HomeViews from "./views/HomeViews/HomeViews";
 
