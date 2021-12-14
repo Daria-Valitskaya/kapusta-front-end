@@ -59,9 +59,9 @@ const Summary = () => {
                 {arrayData.map(item => (
                     <li key={item.month} className={s.listItem}>
                         <span>{item.month}</span>
-                        <span>{item.sum}</span>
-                    </li>
-                ))}
+                        <span>{item.sum.toFixed(2)}</span>
+                    </li>)
+                )}
             </ul>
         </div>
     )
