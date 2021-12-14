@@ -1,14 +1,19 @@
 import "./App.module.css";
 
+import Container from "./Components/Container";
 import Header from "./Components/Header";
 import ContainerTabs from "./Components/ContainerTabs/ContainerTabs";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+
+    <Container>
+      <div className="App">
+        <Header />
       <ContainerTabs />
     </div>
+    </Container>
+
   );
 }
 
