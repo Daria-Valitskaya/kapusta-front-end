@@ -1,8 +1,8 @@
 import "./App.module.css";
 
-import Container from "./Components/Container";
-import Header from "./Components/Header";
-import ContainerTabs from "./Components/ContainerTabs/ContainerTabs";
+import Container from "./Сomponents/Container";
+import Header from "./Сomponents/Header";
+import ContainerTabs from "./Сomponents/ContainerTabs";
 
 function App() {
   return (
