@@ -6,6 +6,8 @@ import logOutImg from '../../images/other/logout.svg';
 import SureModal from '../../Сomponents/ModalWindows/SureModal';
 import s from './UserMenu.module.css';
 
+import Modal from '../ModalWindows/Modal';
+
 const UserMenu = () => {
     const [showModal, setShowModal] = useState(false);
     // const dispatch = useDispatch();
@@ -36,7 +38,11 @@ const UserMenu = () => {
                 />
                 <span className={s.logOutText}>Выйти</span>
             </button>
-            {showModal && <SureModal closeModal={closeModal} />}
+            {showModal && 
+                <Modal onClose={closeModal} showModal={showModal}>
+                    <SureModal closeModal={closeModal} />
+                </Modal>
+            }
         </div>
     )
 };
