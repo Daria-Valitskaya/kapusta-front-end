@@ -18,7 +18,7 @@ export default function DeleteModal() {
           <CloseIcon fontSize="small" />
         </button>
         <div>
-          <p className={s.text}>Вы действительно хотите выйти?</p>
+          <p className={s.text}>Вы уверенны?</p>
           <StandartBtn className={s.btn}>да</StandartBtn>
           <StandartBtn>нет</StandartBtn>
         </div>

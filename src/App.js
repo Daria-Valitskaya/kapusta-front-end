@@ -6,14 +6,14 @@ import ContainerTabs from "./Сomponents/ContainerTabs";
 
 function App() {
   return (
+    <div className="App">
+      <Container>
 
-    <Container>
-      <div className="App">
         <Header />
-      <ContainerTabs />
-    </div>
-    </Container>
+        {/* <ContainerTabs /> */}
 
+      </Container>
+    </div>
   );
 }
 
