@@ -10,8 +10,7 @@ const Header = () => {
     return (
         <header className={s.header}>
             <Navigation />
-            {/* {isLoggedIn && <UserMenu /> } */}
-            <UserMenu />
+            {isLoggedIn && <UserMenu /> }
         </header>
     );
 };

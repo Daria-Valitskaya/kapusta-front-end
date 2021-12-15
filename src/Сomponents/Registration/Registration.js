@@ -8,9 +8,11 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
 import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../../redux/auth/auth-operations";
+import { authSelectors } from '../../redux/auth';
+import Notification from '../../Сomponents/Notification'
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -24,6 +26,8 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
+  const errorMessage = useSelector(authSelectors.getErrorMessage);
+  console.log(errorMessage);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -232,6 +236,7 @@ const Registration = () => {
             </form>
           )}
         </Formik>
+        {errorMessage && <Notification message={errorMessage}/>}
       </div>
     </>
   );

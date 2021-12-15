@@ -11,13 +11,13 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk("auth/signup", async (credentials) => {
+export const register = createAsyncThunk("auth/signup", async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post("/auth/signup", credentials);
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error.message);
+    return thunkAPI.rejectWithValue('Sorry but user with such email already exists, please try another combination');
   }
 });
 
@@ -33,10 +33,10 @@ export const logIn = createAsyncThunk("auth/login", async (credentials) => {
 
 export const logOut = createAsyncThunk("auth/logout", async () => {
   try {
-    await axios.post("/auth/logout");
+    await axios.get("/auth/logout");
     token.unset();
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 });
 

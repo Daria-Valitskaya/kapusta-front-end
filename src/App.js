@@ -10,6 +10,7 @@ import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
 import Registration from "./Сomponents/Registration/Registration.js";
 
 function App() {
+  
   return (
     <div>
       <Container>
