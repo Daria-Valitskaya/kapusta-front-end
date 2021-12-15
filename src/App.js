@@ -8,10 +8,8 @@ function App() {
   return (
     <div className="App">
       <Container>
-
         <Header />
         <ContainerTabs />
-
       </Container>
     </div>
   );
