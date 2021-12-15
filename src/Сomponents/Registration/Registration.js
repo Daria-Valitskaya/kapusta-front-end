@@ -211,7 +211,18 @@ const Registration = () => {
                 </div>
               </div>
               <div className={s.confirmButton}>
-                <Button variant="contained" type="submit">
+                <Button
+                  variant="contained"
+                  type="submit"
+                  disabled={
+                    isSubmitting ||
+                    !(
+                      Object.keys(touched).length ===
+                        Object.keys(INITIAL_VALUES).length &&
+                      Object.keys(errors).length === 0
+                    )
+                  }
+                >
                   Регистрация
                 </Button>
                 <Link to={"/"}>
