@@ -9,7 +9,13 @@ background: #FFFFFF;
 box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 border-radius: 30px;
 margin: 20px auto;
-padding: 50px 85px;
+padding: 40px 17px;
+}
+
+@media screen and (min-width: 768px) {
+  .registrationWindow {
+      padding: 50px 85px;
+  }
 }
 
 .description {
