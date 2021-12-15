@@ -8,11 +8,12 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
 import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../../redux/auth/auth-operations";
 import { authSelectors } from '../../redux/auth';
-import Notification from '../../Сomponents/Notification'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -27,7 +28,6 @@ const Registration = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const errorMessage = useSelector(authSelectors.getErrorMessage);
-  console.log(errorMessage);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -66,6 +66,18 @@ const Registration = () => {
     return errors;
   }, []);
 
+  const notify = (message) => {
+    toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
+
   const handleSubmit = useCallback(
     (values, { setSubmitting }) => {
       dispatch(
@@ -76,8 +88,20 @@ const Registration = () => {
         })
       );
       setSubmitting(false);
+      if(errorMessage) {
+        toast.error(errorMessage, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+      }
     },
-    [dispatch]
+    [dispatch, errorMessage]
   );
 
   const togglePassword = useCallback(() => {
@@ -225,7 +249,6 @@ const Registration = () => {
             </form>
           )}
         </Formik>
-        {errorMessage && <Notification message={errorMessage}/>}
       </div>
     </>
   );
