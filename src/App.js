@@ -1,18 +1,13 @@
+import { Suspense } from "react";
+import { Switch } from "react-router-dom";
 import "./App.module.css";
-
-import { lazy, Suspense, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import Registration from "./Сomponents/Registration/Registration.js";
-import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
-import Login from "./Сomponents/Login/Login";
-// import { useDispatch, useSelector } from "react-redux";
-import authSelectors from "./redux/auth/auth-selectors";
-import authOperations from "./redux/auth/auth-operations";
-
+import HomeViews from "./views/HomeViews/HomeViews";
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
+import Login from "./Сomponents/Login/Login";
+import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
-import HomeViews from "./views/HomeViews/HomeViews";
+import Registration from "./Сomponents/Registration/Registration.js";
 
 function App() {
   return (
@@ -25,7 +20,7 @@ function App() {
             <PublicRoute
               component={Login}
               exact
-              path="/login"
+              path="/"
               restricted
               redirectTo="/homeview"
             />
@@ -40,7 +35,7 @@ function App() {
               component={HomeViews}
               exact
               path="/homeview"
-              redirectTo="/login"
+              redirectTo="/"
             />
 
             {/* <Route>

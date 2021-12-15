@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3001"; // boilerplate (здесь будет актуальный URL)
+axios.defaults.baseURL = "http://localhost:3001/api";
 
 const token = {
   set(token) {
