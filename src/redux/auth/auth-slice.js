@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isFetchingCurrent: false,
+  errorMessage: null,
 };
 
 const authSlice = createSlice({
@@ -18,6 +19,11 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.errorMessage = null;
+      });
+
+      builder.addCase(authOperations.register.rejected, (state, action) => {
+        state.errorMessage = action.payload;
       });
 
       builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
