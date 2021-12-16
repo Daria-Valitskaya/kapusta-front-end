@@ -11,9 +11,9 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../../redux/auth/auth-operations";
-import { authSelectors } from '../../redux/auth';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { authSelectors } from "../../redux/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -28,6 +28,9 @@ const Registration = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const errorMessage = useSelector(authSelectors.getErrorMessage);
+  const verificationEmailSent = useSelector(
+    authSelectors.getIsVerificationEmailSent
+  );
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -66,17 +69,17 @@ const Registration = () => {
     return errors;
   }, []);
 
-  const notify = (message) => {
-    toast.error(message, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
-  }
+  // const notify = (message) => {
+  //   toast.error(message, {
+  //     position: "top-center",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     });
+  // }
 
   const handleSubmit = useCallback(
     (values, { setSubmitting }) => {
@@ -88,7 +91,7 @@ const Registration = () => {
         })
       );
       setSubmitting(false);
-      if(errorMessage) {
+      if (errorMessage) {
         toast.error(errorMessage, {
           position: "top-center",
           autoClose: 5000,
@@ -98,10 +101,22 @@ const Registration = () => {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });
+        });
+      }
+      if (verificationEmailSent) {
+        toast.info("Verification email sent", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     },
-    [dispatch, errorMessage]
+    [dispatch, errorMessage, verificationEmailSent]
   );
 
   const togglePassword = useCallback(() => {
