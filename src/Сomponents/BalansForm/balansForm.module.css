@@ -1,0 +1,86 @@
+.field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 83px;
+    margin-top: 20px;
+    padding-right: 170px;
+    padding-left: 410px;
+    border: 2px solid red;
+}
+
+.labelText{
+    color: #52555F;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    margin-right: 21px;
+}
+
+.inputField{
+    background-color: transparent;
+    outline-color: transparent;
+    color: rgba(0, 0, 0, 1);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.02em;
+
+    width: 125px;
+    height: 44px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-radius: 16px;
+    cursor: pointer;
+    padding-right: 41px;
+    margin-right: 20px;
+}
+.inputField:focus,
+.inputField:hover{
+    border-color: rgba(255, 117, 29, 1);
+}
+.form{
+    position: relative;
+}
+.uan{
+    position: absolute;
+    top: 3px;
+    right: 160px;
+
+    background-color: transparent;
+    color: rgba(0, 0, 0, 1);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.02em;
+}
+
+
+.link{
+    position: relative;
+    text-decoration: none;
+    color: #52555F;
+    fill: #52555F;
+
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+}
+.charts{
+    position: absolute;
+    top: -7px;;
+    right: -25px;
+    align-self:stretch;
+    margin-left: 15px;
+}
+.link:focus,
+.link:hover,
+.charts:focus,
+.charts:hover{
+    color: rgba(255, 117, 29, 1);
+    fill: rgba(255, 117, 29, 1);
+}
+
