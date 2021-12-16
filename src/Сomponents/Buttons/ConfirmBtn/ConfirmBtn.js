@@ -6,7 +6,7 @@ export default function ConfirmBtn() {
   //либо пришел ответ с червера о наличии баланса - тогда disabled={true}
   // в другом случае disabled={false}, или вообще убираем пропс(по дефолту и так false)
   return (
-    <CommunButton type="submit" className={s.btn} disabled={true}>
+    <CommunButton type="submit" className={s.btn} disabled={false}>
       Подтвердить
     </CommunButton>
   );
