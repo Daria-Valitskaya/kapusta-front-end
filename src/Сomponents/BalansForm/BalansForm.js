@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ConfirmBtn from "../Buttons/ConfirmBtn/ConfirmBtn.js";
-import imageChart from "../../images/other/bar_chart.svg";
 import s from "./balansForm.module.css";
 
 export default function BalansForm() {
