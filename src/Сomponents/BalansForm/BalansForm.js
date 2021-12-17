@@ -25,21 +25,30 @@ export default function BalansForm() {
     // this.props.onSubmit(balans);
   }
 
+  // function currentBalans() {
+  //   if (balans > 0) {
+  //     return;
+  //   } else {
+  //     setBalans("00.00");
+  //     return;
+  //   }
+  // }
+
   return (
     <div className={s.field}>
       <form className={s.form} onSubmit={handleSubmit}>
+        <span className={s.labelText}> Баланс:</span>
         <label>
-          <span className={s.labelText}>Баланс:</span>
           <input
             type="text"
             className={s.inputField}
-            placeholder="баланс"
+            placeholder="00.00"
             value={balans}
             onChange={handleChange}
           />
         </label>
         <p className={s.uan}>{uan}</p>
-        <ConfirmBtn />
+        <ConfirmBtn className={s.btn} />
       </form>
       <Link
         className={s.link}
