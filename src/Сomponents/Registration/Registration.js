@@ -6,13 +6,14 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../../redux/auth/auth-operations";
-import { authSelectors } from '../../redux/auth';
-import Notification from '../../Сomponents/Notification'
+import { authSelectors } from "../../redux/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -28,6 +29,35 @@ const Registration = () => {
   const dispatch = useDispatch();
   const errorMessage = useSelector(authSelectors.getErrorMessage);
   console.log(errorMessage);
+  const isVerified = useSelector(authSelectors.getIsVerified);
+  console.log(isVerified);
+  const verificationEmailSent = useSelector(
+    authSelectors.getIsVerificationEmailSent
+  );
+
+  const notify = (message, type) => {
+    type(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  useEffect(() => {
+    if(errorMessage) {
+      notify(errorMessage, toast.error)
+    };
+    if(verificationEmailSent) {
+      notify('Verification email sent', toast.info)
+    }
+    
+  }, [errorMessage, verificationEmailSent])
+
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -76,8 +106,32 @@ const Registration = () => {
         })
       );
       setSubmitting(false);
+      if (errorMessage) {
+        toast.error(errorMessage, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+      if (!isVerified && errorMessage) {
+        toast.warn("Verification email sent please confirm", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
     },
-    [dispatch]
+    [dispatch, errorMessage]
   );
 
   const togglePassword = useCallback(() => {
@@ -225,7 +279,6 @@ const Registration = () => {
             </form>
           )}
         </Formik>
-        {errorMessage && <Notification message={errorMessage}/>}
       </div>
     </>
   );
