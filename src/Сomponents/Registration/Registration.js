@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -28,9 +28,36 @@ const Registration = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const errorMessage = useSelector(authSelectors.getErrorMessage);
+  console.log(errorMessage);
+  const isVerified = useSelector(authSelectors.getIsVerified);
+  console.log(isVerified);
   const verificationEmailSent = useSelector(
     authSelectors.getIsVerificationEmailSent
   );
+
+  const notify = (message, type) => {
+    type(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  useEffect(() => {
+    if(errorMessage) {
+      notify(errorMessage, toast.error)
+    };
+    if(verificationEmailSent) {
+      notify('Verification email sent', toast.info)
+    }
+    
+  }, [errorMessage, verificationEmailSent])
+
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -69,18 +96,6 @@ const Registration = () => {
     return errors;
   }, []);
 
-  // const notify = (message) => {
-  //   toast.error(message, {
-  //     position: "top-center",
-  //     autoClose: 5000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     });
-  // }
-
   const handleSubmit = useCallback(
     (values, { setSubmitting }) => {
       dispatch(
@@ -103,8 +118,8 @@ const Registration = () => {
           theme: "dark",
         });
       }
-      if (verificationEmailSent) {
-        toast.info("Verification email sent", {
+      if (!isVerified && errorMessage) {
+        toast.warn("Verification email sent please confirm", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -116,7 +131,7 @@ const Registration = () => {
         });
       }
     },
-    [dispatch, errorMessage, verificationEmailSent]
+    [dispatch, errorMessage]
   );
 
   const togglePassword = useCallback(() => {

@@ -4,6 +4,7 @@ const getIsFetchingCurrent = (state) => state.auth.isFetchingCurrent;
 const getErrorMessage = (state) => state.auth.errorMessage;
 const getIsVerificationEmailSent = (state) =>
   state.auth.isVerificationEmailSent;
+const getIsVerified = (state) => state.auth.isVerified;
 
 const authSelectors = {
   getIsLoggedIn,
@@ -11,6 +12,7 @@ const authSelectors = {
   getIsFetchingCurrent,
   getErrorMessage,
   getIsVerificationEmailSent,
+  getIsVerified,
 };
 
 export default authSelectors;
