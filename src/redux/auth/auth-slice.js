@@ -8,6 +8,7 @@ const initialState = {
   isFetchingCurrent: false,
   isVerificationEmailSent: false,
   errorMessage: null,
+  isVerified: false,
 };
 
 const authSlice = createSlice({
@@ -20,10 +21,11 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.errorMessage = null;
         state.isVerificationEmailSent = true;
+        state.isVerified = action.payload.verify
       });
 
       builder.addCase(authOperations.register.rejected, (state, action) => {
-        state.errorMessage = action.payload.data.message;
+        state.errorMessage = action.payload;
         state.isVerificationEmailSent = false;
       });
 
