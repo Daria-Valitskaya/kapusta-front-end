@@ -136,6 +136,23 @@
     }
     
   }
+  .modalPosition{
+      position: absolute;
+      top: 140px;
+      left: 468px
+  }
+  .modalPositionNone{
+      display: none;
+  }
+  
+  
+  /* @media screen and (min-device-width: 768px) {
+    .modalContent {
+        position: absolute;
+        top:140px;
+        left: 330px;
+      }
+  } */
 
 
 

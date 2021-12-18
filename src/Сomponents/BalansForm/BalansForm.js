@@ -2,12 +2,19 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import ConfirmBtn from "../Buttons/ConfirmBtn/ConfirmBtn.js";
 import s from "./balansForm.module.css";
+import Modal from "../ModalWindows/Modal/Modal.js";
+import BlackModal from "../ModalWindows/BlackModal/BlackModal.js";
 
 export default function BalansForm() {
   const [balans, setBalans] = useState("");
+  const [showModal, setShowModal] = useState(true);
   const [stateMachine, setStateMachine] = useState("pending");
   const uan = "UAH";
   let disabled = false;
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   /*
    * Отвечает за обновление состояния
    */
@@ -34,6 +41,7 @@ export default function BalansForm() {
     console.log(`Отправляем баланс: ${inputValue}`);
     setBalans(inputValue);
     setStateMachine("disabled");
+    closeModal();
   }
   if (stateMachine === "disabled") disabled = true;
 
@@ -77,6 +85,13 @@ export default function BalansForm() {
           </svg>
         </div>
       </Link>
+      <div
+        className={
+          stateMachine === "pending" ? s.modalPosition : s.modalPositionNone
+        }
+      >
+        <BlackModal />
+      </div>
     </div>
   );
 }
