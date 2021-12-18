@@ -1,5 +1,11 @@
+import BalansForm from "../../Сomponents/BalansForm/BalansForm";
 import ContainerTabs from "../../Сomponents/ContainerTabs/ContainerTabs";
 
 export default function HomeViews() {
-  return <ContainerTabs />;
+  return (
+    <>
+      <BalansForm />
+      <ContainerTabs />
+    </>
+  );
 }
