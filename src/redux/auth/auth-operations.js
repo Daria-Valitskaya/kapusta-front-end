@@ -17,13 +17,14 @@ export const register = createAsyncThunk("auth/signup", async (credentials, thun
     token.set(data.token);
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('Sorry but user with such email already exists, please try another combination');
+    return thunkAPI.rejectWithValue('User with such email already exists');
   }
 });
 
 export const logIn = createAsyncThunk("auth/login", async (credentials) => {
   try {
     const { data } = await axios.post("/auth/login", credentials);
+    console.log(data);
     token.set(data.token);
     return data;
   } catch (error) {
