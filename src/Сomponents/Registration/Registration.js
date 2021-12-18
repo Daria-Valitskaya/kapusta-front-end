@@ -9,7 +9,7 @@ import { Formik } from "formik";
 import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { authSelectors } from "../../redux/auth";
 import { register } from "../../redux/auth/auth-operations";
@@ -126,149 +126,150 @@ const Registration = () => {
     setShowConfirmPassword((prev) => !prev);
   }, []);
 
-  // if ()
-  // {/* {verificationEmailSent || errorMessage ? (
-  //   <Redirect to="/" />
-  // ) : ( */}
-
   return (
     <>
-      <div className={s.registrationWindow}>
-        <div className="with-google">
-          <p className={s.description}>
-            Вы можете зарегистрироваться с помощью Google Account:
-          </p>
-          <button className={s.googleButton} type="button">
-            <FcGoogle size="20px" />
-            Google
-          </button>
-          <p className={s.description}>
-            Или зарегистрироваться с помощью e-mail и пароля:
-          </p>
+      {isVerified ? (
+        <Redirect to="/" />
+      ) : (
+        <div className={s.registrationWindow}>
+          <div className="with-google">
+            <p className={s.description}>
+              Вы можете зарегистрироваться с помощью Google Account:
+            </p>
+            <button className={s.googleButton} type="button">
+              <FcGoogle size="20px" />
+              Google
+            </button>
+            <p className={s.description}>
+              Или зарегистрироваться с помощью e-mail и пароля:
+            </p>
+          </div>
+          <Formik
+            initialValues={INITIAL_VALUES}
+            validate={validate}
+            onSubmit={handleSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleSubmit,
+              handleBlur,
+              isSubmitting,
+            }) => (
+              <form className={s.form} onSubmit={handleSubmit}>
+                <div className={s.nameField}>
+                  <InputLabel className={s.label} htmlFor="name">
+                    Имя:
+                  </InputLabel>
+                  <TextField
+                    className={s.input}
+                    variant="filled"
+                    fullWidth
+                    id="name"
+                    name="name"
+                    margin="normal"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.name && Boolean(errors.name)}
+                    helperText={touched.name && errors.name}
+                  />
+                </div>
+                <div className={s.emailField}>
+                  <InputLabel className={s.label} htmlFor="email">
+                    Электронная почта:
+                  </InputLabel>
+                  <TextField
+                    fullWidth
+                    className={s.input}
+                    variant="filled"
+                    id="email"
+                    name="email"
+                    margin="normal"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
+                  />
+                </div>
+                <InputLabel className={s.label} htmlFor="password">
+                  Пароль:
+                </InputLabel>
+                <div className={s.passwordField}>
+                  <TextField
+                    fullWidth
+                    className={s.input}
+                    variant="filled"
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.password && Boolean(errors.password)}
+                    margin="normal"
+                    helperText={touched.password && errors.password}
+                  />
+                  <div className={s.passwordIconButton}>
+                    {values.password && (
+                      <IconButton
+                        aria-label="visibility"
+                        onClick={togglePassword}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    )}
+                  </div>
+                </div>
+                <InputLabel className={s.label} htmlFor="password">
+                  Подтвердите пароль:
+                </InputLabel>
+                <div className={s.passwordField}>
+                  <TextField
+                    fullWidth
+                    className={s.input}
+                    variant="filled"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={
+                      touched.confirmPassword && Boolean(errors.confirmPassword)
+                    }
+                    margin="normal"
+                    helperText={
+                      touched.confirmPassword && errors.confirmPassword
+                    }
+                  />
+                  <div className={s.passwordIconButton}>
+                    {values.confirmPassword && (
+                      <IconButton
+                        aria-label="visibility"
+                        onClick={toggleConfirmPassword}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    )}
+                  </div>
+                </div>
+                <div className={s.confirmButton}>
+                  <Button variant="contained" type="submit">
+                    Регистрация
+                  </Button>
+                  <Link to={"/"}>
+                    <Button type="button">Войти</Button>
+                  </Link>
+                </div>
+              </form>
+            )}
+          </Formik>
         </div>
-        <Formik
-          initialValues={INITIAL_VALUES}
-          validate={validate}
-          onSubmit={handleSubmit}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleSubmit,
-            handleBlur,
-            isSubmitting,
-          }) => (
-            <form className={s.form} onSubmit={handleSubmit}>
-              <div className={s.nameField}>
-                <InputLabel className={s.label} htmlFor="name">
-                  Имя:
-                </InputLabel>
-                <TextField
-                  className={s.input}
-                  variant="filled"
-                  fullWidth
-                  id="name"
-                  name="name"
-                  margin="normal"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={touched.name && Boolean(errors.name)}
-                  helperText={touched.name && errors.name}
-                />
-              </div>
-              <div className={s.emailField}>
-                <InputLabel className={s.label} htmlFor="email">
-                  Электронная почта:
-                </InputLabel>
-                <TextField
-                  fullWidth
-                  className={s.input}
-                  variant="filled"
-                  id="email"
-                  name="email"
-                  margin="normal"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={touched.email && Boolean(errors.email)}
-                  helperText={touched.email && errors.email}
-                />
-              </div>
-              <InputLabel className={s.label} htmlFor="password">
-                Пароль:
-              </InputLabel>
-              <div className={s.passwordField}>
-                <TextField
-                  fullWidth
-                  className={s.input}
-                  variant="filled"
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={touched.password && Boolean(errors.password)}
-                  margin="normal"
-                  helperText={touched.password && errors.password}
-                />
-                <div className={s.passwordIconButton}>
-                  {values.password && (
-                    <IconButton
-                      aria-label="visibility"
-                      onClick={togglePassword}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  )}
-                </div>
-              </div>
-              <InputLabel className={s.label} htmlFor="password">
-                Подтвердите пароль:
-              </InputLabel>
-              <div className={s.passwordField}>
-                <TextField
-                  fullWidth
-                  className={s.input}
-                  variant="filled"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
-                  value={values.confirmPassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={
-                    touched.confirmPassword && Boolean(errors.confirmPassword)
-                  }
-                  margin="normal"
-                  helperText={touched.confirmPassword && errors.confirmPassword}
-                />
-                <div className={s.passwordIconButton}>
-                  {values.confirmPassword && (
-                    <IconButton
-                      aria-label="visibility"
-                      onClick={toggleConfirmPassword}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  )}
-                </div>
-              </div>
-              <div className={s.confirmButton}>
-                <Button variant="contained" type="submit">
-                  Регистрация
-                </Button>
-                <Link to={"/"}>
-                  <Button type="button">Войти</Button>
-                </Link>
-              </div>
-            </form>
-          )}
-        </Formik>
-      </div>
+      )}
     </>
   );
 };
