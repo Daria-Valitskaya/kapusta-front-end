@@ -1,0 +1,261 @@
+.field{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: auto;
+    height: 134px;
+    margin-top: 30px;
+    padding-right: 37px;
+    padding-left: 35px;
+}
+@media screen and (min-device-width: 768px) {
+    .field{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: auto;
+        height: 83px;
+        margin-top: 20px;
+        padding-right: 92px;
+        padding-left: 116px;
+    }
+  }
+  @media screen and (min-device-width: 1280px) {
+    .field{
+        padding-right: 200px;
+        padding-left: 400px;
+    }
+}
+
+.link{
+    position: relative;
+    text-decoration: none;
+    color: #52555F;
+    fill: #52555F;
+
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+}
+.charts{
+    position: absolute;
+    top: -7px;;
+    right: -35px;
+    align-self:stretch;
+}
+
+.link:focus,
+.link:hover,
+.charts:focus,
+.charts:hover{
+    color: rgba(255, 117, 29, 1);
+    fill: rgba(255, 117, 29, 1);
+}
+.form{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+@media screen and (min-device-width: 768px) {
+    .form{
+        position: relative;
+        display:inline-block;
+        margin-top: 0px;
+    }
+  }
+
+.labelText{
+    position: absolute;
+    top:-20px;
+    color: #52555F;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+@media screen and (min-device-width: 768px) {
+    .labelText{
+        position: static;
+        margin-right: 21px;
+    }
+  }
+.inputField{
+    background-color: transparent;
+    outline-color: transparent;
+    color: rgba(0, 0, 0, 1);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.02em;
+
+    width: 125px;
+    height: 44px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    cursor: pointer;
+    padding-right: 41px;
+}
+@media screen and (min-device-width: 768px) {
+    .inputField{
+        border-radius: 16px;
+        box-sizing: border-box;
+        padding-right: 41px;
+    }
+    .btn{
+        margin-left: 15px;
+    }
+  }
+.inputField:focus,
+.inputField:hover{
+    border-color: rgba(255, 117, 29, 1);
+}
+
+.uan{
+    position: absolute;
+    top: 4px;
+    right: 140px;
+
+    background-color: transparent;
+    color: rgba(0, 0, 0, 1);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.02em;
+}
+@media screen and (min-device-width: 768px) {
+    .uan{
+    top: 4px;
+    right: 150px;
+    }
+    
+  }
+  .modalPosition{
+    position: absolute;
+    top: 220px;
+    left: 17px
+}
+  @media screen and (min-device-width: 768px) {
+    .modalPosition{
+        position: absolute;
+        top: 140px;
+        left: 183px
+    }
+    
+  }
+  @media screen and (min-device-width: 1280px) {
+    .modalPosition{
+        position: absolute;
+        top: 140px;
+        left: 468px
+    }
+}
+  .modalPositionNone{
+      display: none;
+  }
+  
+  
+  /* @media screen and (min-device-width: 768px) {
+    .modalContent {
+        position: absolute;
+        top:140px;
+        left: 330px;
+      }
+  } */
+
+
+
+
+  /* @media screen and (min-device-width: 1280px) {
+    .field{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: auto;
+        height: 83px;
+        margin-top: 20px;
+        padding-right: 170px;
+        padding-left: 410px;
+        border: 2px solid red;
+    }
+    
+    .labelText{
+        color: #52555F;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
+        margin-right: 21px;
+    }
+    
+    .inputField{
+        background-color: transparent;
+        outline-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 14px;
+        text-align: right;
+        letter-spacing: 0.02em;
+    
+        width: 125px;
+        height: 44px;
+        border: 2px solid rgba(255, 255, 255, 1);
+        box-sizing: border-box;
+        border-radius: 16px;
+        cursor: pointer;
+        padding-right: 41px;
+        margin-right: 20px;
+    }
+    .inputField:focus,
+    .inputField:hover{
+        border-color: rgba(255, 117, 29, 1);
+    }
+    .form{
+        position: relative;
+    }
+    .uan{
+        position: absolute;
+        top: 3px;
+        right: 160px;
+    
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 14px;
+        text-align: right;
+        letter-spacing: 0.02em;
+    }
+    
+    
+    .link{
+        position: relative;
+        text-decoration: none;
+        color: #52555F;
+        fill: #52555F;
+    
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
+    }
+    .charts{
+        position: absolute;
+        top: -7px;;
+        right: -25px;
+        align-self:stretch;
+        margin-left: 15px;
+    }
+    .link:focus,
+    .link:hover,
+    .charts:focus,
+    .charts:hover{
+        color: rgba(255, 117, 29, 1);
+        fill: rgba(255, 117, 29, 1);
+    }
+  } */

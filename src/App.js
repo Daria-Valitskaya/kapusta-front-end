@@ -3,6 +3,7 @@ import { Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.module.css";
 import HomeViews from "./views/HomeViews/HomeViews";
+import ReportView from "./views/ReportView/ReportView";
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
 import Login from "./Сomponents/Login/Login";
@@ -37,6 +38,12 @@ function App() {
               component={HomeViews}
               exact
               path="/homeview"
+              redirectTo="/"
+            />
+            <PrivateRoute
+              component={ReportView}
+              exact
+              path="/reportview"
               redirectTo="/"
             />
 
