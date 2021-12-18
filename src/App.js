@@ -5,7 +5,7 @@ import "./App.module.css";
 import HomeViews from "./views/HomeViews/HomeViews";
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
-import Login from "./Сomponents/Login/Login";
+import LoginView from "./views/LoginView";
 import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
 import Registration from "./Сomponents/Registration/Registration.js";
@@ -20,7 +20,7 @@ function App() {
           <Switch>
             {/* <PublicRoute component={WellcomePage} exact path="/" /> */}
             <PublicRoute
-              component={Login}
+              component={LoginView}
               exact
               path="/"
               restricted

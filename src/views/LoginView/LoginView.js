@@ -11,7 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/auth/auth-operations";
-import s from "./Login.module.css";
+import s from "./LoginView.module.css";
 
 const INITIAL_VALUES = {
   email: "",
