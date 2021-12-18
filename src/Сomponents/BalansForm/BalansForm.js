@@ -4,34 +4,38 @@ import ConfirmBtn from "../Buttons/ConfirmBtn/ConfirmBtn.js";
 import s from "./balansForm.module.css";
 
 export default function BalansForm() {
+  const [balans, setBalans] = useState("");
+  const [stateMachine, setStateMachine] = useState("pending");
   const uan = "UAH";
-  const [balans, setBalans] = useState("00.00");
+  let disabled = false;
   /*
    * Отвечает за обновление состояния
    */
   const handleChange = (e) => {
+    function isNumeric(value) {
+      return /[a-zA-Z]+/g.test(value);
+    }
+    if (isNumeric(e.target.value)) {
+      return;
+    }
     setBalans(e.target.value);
   };
 
   /*
    * Вызывается при отправке формы
    */
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(`Отправляем баланс: ${balans}`);
-
-    // Проп который передается форме для вызова при сабмите
-    // this.props.onSubmit(balans);
+    const inputValue = parseFloat(balans).toFixed(2);
+    if (isNaN(inputValue)) {
+      return;
+    }
+    console.log(`Отправляем баланс: ${inputValue}`);
+    setBalans(inputValue);
+    setStateMachine("disabled");
   }
-
-  // function currentBalans() {
-  //   if (balans > 0) {
-  //     return;
-  //   } else {
-  //     setBalans("00.00");
-  //     return;
-  //   }
-  // }
+  if (stateMachine === "disabled") disabled = true;
 
   return (
     <div className={s.field}>
@@ -40,14 +44,16 @@ export default function BalansForm() {
         <label>
           <input
             type="text"
+            disabled={disabled}
             className={s.inputField}
-            placeholder="00.00"
+            minLength={1}
+            placeholder="00:00"
             value={balans}
             onChange={handleChange}
           />
         </label>
         <p className={s.uan}>{uan}</p>
-        <ConfirmBtn className={s.btn} />
+        <ConfirmBtn className={s.btn} btnOff={disabled} />
       </form>
       <Link
         className={s.link}
