@@ -1,0 +1,74 @@
+
+.field{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+    width: 282px;
+    height: 85px;
+    /* padding-top: 20px;
+    padding-left: 19px;
+    padding-right: 19px; */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+.expenses_field:after {
+    content: '';
+  width: 1px;
+  height: 70.5px;
+  background: #E0E5EB;
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  margin-left: -2px;
+  }
+
+.expenses_field{
+    /* height: 70px; */
+    
+    text-align: center;
+    padding: 0px 8px;
+    /* border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-right: 1px solid #E0E5EB; */
+}
+
+.income_field{
+    text-align: center;
+    padding: 0px 8px;
+    /* border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-right: 1px solid #E0E5EB; */
+}
+.title{
+    color: rgba(82, 85, 95, 1);
+font-weight: bold;
+font-size:14px;
+line-height: 16px;
+margin: 0;
+}
+
+
+
+
+.expenses{
+    color: rgba(229, 57, 53, 1);
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    margin: 0;
+    
+}
+.income{
+    color: rgba(64, 121, 70, 1);
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    margin: 0;
+
+}
