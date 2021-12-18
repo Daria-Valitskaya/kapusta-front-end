@@ -14,6 +14,13 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    resetAuth(state) {
+      state.isRegistered = false;
+      state.isVerified = false;
+      state.errorMessage = null;
+    },
+  },
   extraReducers:
     // this is working:
     (builder) => {
@@ -23,7 +30,6 @@ const authSlice = createSlice({
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = null;
-        // state.isVerified = action.payload.verify;
       });
 
       builder.addCase(authOperations.register.rejected, (state, action) => {
@@ -93,5 +99,5 @@ const authSlice = createSlice({
       // );
     },
 });
-
+export const { resetAuth } = authSlice.actions;
 export default authSlice.reducer;

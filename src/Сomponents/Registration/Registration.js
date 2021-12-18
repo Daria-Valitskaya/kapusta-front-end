@@ -13,6 +13,7 @@ import { Link, Redirect } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { authSelectors } from "../../redux/auth";
 import { register } from "../../redux/auth/auth-operations";
+import { resetAuth } from "../../redux/auth/auth-slice";
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -29,6 +30,7 @@ const Registration = () => {
   const isVerified = useSelector(authSelectors.getIsVerified);
   const errorMessage = useSelector(authSelectors.getErrorMessage);
   const isRegistered = useSelector(authSelectors.getIsRegistered);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const notify = (message, type) => {
     type(message, {
@@ -107,7 +109,6 @@ const Registration = () => {
           password: values.password,
         })
       );
-      // checkErrors();
       // resetForm();
       setSubmitting(false);
       // showNotify();
@@ -115,8 +116,9 @@ const Registration = () => {
     [dispatch]
   );
 
-  // console.log("errorMessage:", errorMessage);
-  // console.log("verificationEmailSent:", verificationEmailSent);
+  const handleLoginButton = useCallback(() => {
+    dispatch(resetAuth());
+  }, [dispatch]);
 
   const togglePassword = useCallback(() => {
     setShowPassword((prev) => !prev);
@@ -128,7 +130,7 @@ const Registration = () => {
 
   return (
     <>
-      {isVerified ? (
+      {(isVerified && !isLoggedIn) || isRegistered ? (
         <Redirect to="/" />
       ) : (
         <div className={s.registrationWindow}>
@@ -262,7 +264,9 @@ const Registration = () => {
                     Регистрация
                   </Button>
                   <Link to={"/"}>
-                    <Button type="button">Войти</Button>
+                    <Button type="button" onClick={handleLoginButton}>
+                      Войти
+                    </Button>
                   </Link>
                 </div>
               </form>

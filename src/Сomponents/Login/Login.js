@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/auth/auth-operations";
+import { resetAuth } from "../../redux/auth/auth-slice";
 import s from "./Login.module.css";
 
 const INITIAL_VALUES = {
@@ -39,12 +40,17 @@ const Login = () => {
   }, []);
 
   const handleSubmit = useCallback(
-    (values, { setSubmitting }) => {
+    (values, { setSubmitting, resetForm }) => {
       dispatch(logIn(values));
       setSubmitting(false);
+      resetForm();
     },
     [dispatch]
   );
+
+  const handleSignupButton = useCallback(() => {
+    dispatch(resetAuth());
+  }, [dispatch]);
 
   const togglePassword = useCallback(() => {
     setShowPassword((prev) => !prev);
@@ -141,7 +147,9 @@ const Login = () => {
                 Войти
               </Button>
               <Link to={"/registration"}>
-                <Button type="button">Регистрация</Button>
+                <Button type="button" onClick={handleSignupButton}>
+                  Регистрация
+                </Button>
               </Link>
             </div>
           </form>
