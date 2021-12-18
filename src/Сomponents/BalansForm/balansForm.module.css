@@ -137,10 +137,25 @@
     
   }
   .modalPosition{
-      position: absolute;
-      top: 140px;
-      left: 468px
+    position: absolute;
+    top: 220px;
+    left: 17px
+}
+  @media screen and (min-device-width: 768px) {
+    .modalPosition{
+        position: absolute;
+        top: 140px;
+        left: 183px
+    }
+    
   }
+  @media screen and (min-device-width: 1280px) {
+    .modalPosition{
+        position: absolute;
+        top: 140px;
+        left: 468px
+    }
+}
   .modalPositionNone{
       display: none;
   }
