@@ -64,8 +64,6 @@ margin: 0;
         height: 50px;
         padding-left: 123px;
         padding-right: 123px;
-        margin-left: auto;
-        margin-right: auto;
         border-radius: 60px;
     }
     .expenses_field:after {
@@ -80,6 +78,14 @@ margin: 0;
     }
     .title{
     margin-right: 15px;    
+    }
+}
+@media screen and (min-device-width: 1280px) {
+    .field{
+        width: 1060px;
+        padding-left: 319px;
+        padding-right: 319px;
+        border-radius: 30px;
     }
 }
 
