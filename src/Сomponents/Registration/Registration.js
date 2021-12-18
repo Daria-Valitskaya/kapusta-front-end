@@ -6,14 +6,13 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { register } from "../../redux/auth/auth-operations";
-import { authSelectors } from "../../redux/auth";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { authSelectors } from "../../redux/auth";
+import { register } from "../../redux/auth/auth-operations";
 import s from "./Registration.module.css";
 
 const INITIAL_VALUES = {
@@ -27,13 +26,9 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
-  const errorMessage = useSelector(authSelectors.getErrorMessage);
-  console.log(errorMessage);
   const isVerified = useSelector(authSelectors.getIsVerified);
-  console.log(isVerified);
-  const verificationEmailSent = useSelector(
-    authSelectors.getIsVerificationEmailSent
-  );
+  const errorMessage = useSelector(authSelectors.getErrorMessage);
+  const isRegistered = useSelector(authSelectors.getIsRegistered);
 
   const notify = (message, type) => {
     type(message, {
@@ -44,20 +39,18 @@ const Registration = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: "light",
     });
   };
 
-  useEffect(() => {
-    if(errorMessage) {
-      notify(errorMessage, toast.error)
-    };
-    if(verificationEmailSent) {
-      notify('Verification email sent', toast.info)
-    }
-    
-  }, [errorMessage, verificationEmailSent])
-
+  // useEffect(() => {
+  //   if (errorMessage) {
+  //     notify(errorMessage, toast.error);
+  //   }
+  //   if (isRegistered) {
+  //     notify("Verification email sent", toast.info);
+  //   }
+  // }, [errorMessage, verificationEmailSent]);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -96,8 +89,17 @@ const Registration = () => {
     return errors;
   }, []);
 
+  // const showNotify = useCallback(() => {
+  //   if (errorMessage) {
+  //     notify(`errorMessage:${errorMessage}`, toast.error);
+  //   }
+  //   if (!isVerified && errorMessage) {
+  //     notify(`verificationEmailSent: ${verificationEmailSent}`, toast.info);
+  //   }
+  // }, [errorMessage, isVerified, verificationEmailSent]);
+
   const handleSubmit = useCallback(
-    (values, { setSubmitting }) => {
+    (values, { setSubmitting, resetForm }) => {
       dispatch(
         register({
           name: values.name,
@@ -105,34 +107,16 @@ const Registration = () => {
           password: values.password,
         })
       );
+      // checkErrors();
+      // resetForm();
       setSubmitting(false);
-      if (errorMessage) {
-        toast.error(errorMessage, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      }
-      if (!isVerified && errorMessage) {
-        toast.warn("Verification email sent please confirm", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      }
+      // showNotify();
     },
-    [dispatch, errorMessage]
+    [dispatch]
   );
+
+  // console.log("errorMessage:", errorMessage);
+  // console.log("verificationEmailSent:", verificationEmailSent);
 
   const togglePassword = useCallback(() => {
     setShowPassword((prev) => !prev);
@@ -141,6 +125,11 @@ const Registration = () => {
   const toggleConfirmPassword = useCallback(() => {
     setShowConfirmPassword((prev) => !prev);
   }, []);
+
+  // if ()
+  // {/* {verificationEmailSent || errorMessage ? (
+  //   <Redirect to="/" />
+  // ) : ( */}
 
   return (
     <>
@@ -283,5 +272,4 @@ const Registration = () => {
     </>
   );
 };
-
 export default Registration;

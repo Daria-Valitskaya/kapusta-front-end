@@ -4,11 +4,11 @@ import { authOperations } from ".";
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  isRegistered: false, // email sent
+  isVerified: false, // for email re-sending
   isLoggedIn: false,
-  isFetchingCurrent: false,
-  isVerificationEmailSent: false,
   errorMessage: null,
-  isVerified: false,
+  isFetchingCurrent: false,
 };
 
 const authSlice = createSlice({
@@ -18,60 +18,79 @@ const authSlice = createSlice({
     // this is working:
     (builder) => {
       builder.addCase(authOperations.register.fulfilled, (state, action) => {
+        console.log("register success");
+        state.isRegistered = true;
+        state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = null;
-        state.isVerificationEmailSent = true;
-        state.isVerified = action.payload.verify
+        // state.isVerified = action.payload.verify;
       });
 
       builder.addCase(authOperations.register.rejected, (state, action) => {
-        state.errorMessage = action.payload;
-        state.isVerificationEmailSent = false;
+        console.log("register rejeted");
+        state.isRegistered = false;
+        state.isVerified = action.payload.verify;
+        state.isLoggedIn = false;
+        state.errorMessage = action.payload.message;
       });
 
       builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user.name = action.payload.data.name;
         state.user.email = action.payload.data.email;
         state.token = action.payload.data.token;
+        state.isRegistered = true;
+        state.isVerified = true;
         state.isLoggedIn = true;
-        state.isVerificationEmailSent = false;
         state.errorMessage = null;
+      });
+
+      builder.addCase(authOperations.logIn.rejected, (state, action) => {
+        console.log("login rejeted");
+        state.isRegistered = false;
+        state.isVerified = false;
+        state.isLoggedIn = false;
+        state.errorMessage = action.payload.message;
       });
 
       builder.addCase(authOperations.logOut.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
         state.token = null;
+        state.isRegistered = false;
+        state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = null;
       });
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.pending,
-        (state, action) => {
-          state.isFetchingCurrent = true;
-          state.errorMessage = null;
-        }
-      );
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.pending,
+      //   (state, action) => {
+      //     state.isFetchingCurrent = true;
+      //     state.errorMessage = null;
+      //   }
+      // );
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.fulfilled,
-        (state, action) => {
-          state.user.name = action.payload.data.name;
-          state.user.email = action.payload.data.email;
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.fulfilled,
+      //   (state, action) => {
+      //     state.user.name = action.payload.data.name;
+      //     state.user.email = action.payload.data.email;
 
-          state.isLoggedIn = true;
-          state.isFetchingCurrent = false;
-          state.errorMessage = null;
-        }
-      );
+      //     state.isRegistered = false;
+      //     state.isVerified = false;
+      //     state.isLoggedIn = false;
+      //     state.errorMessage = null;
+      //   }
+      // );
 
-      builder.addCase(
-        authOperations.fetchCurrentUser.rejected,
-        (state, action) => {
-          state.isFetchingCurrent = false;
-          state.errorMessage = action.payload.data.message;
-        }
-      );
+      // builder.addCase(
+      //   authOperations.fetchCurrentUser.rejected,
+      //   (state, action) => {
+      //     state.isRegistered = false;
+      //     state.isVerified = false;
+      //     state.isLoggedIn = false;
+      //     state.errorMessage = null;
+      //   }
+      // );
     },
 });
 
