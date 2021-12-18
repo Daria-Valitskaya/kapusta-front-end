@@ -47,7 +47,7 @@ const authSlice = createSlice({
       builder.addCase(authOperations.logIn.rejected, (state, action) => {
         console.log("login rejeted");
         state.isRegistered = false;
-        state.isVerified = action.payload.verified; // manually generated from operations
+        state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = action.payload.message;
       });

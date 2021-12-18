@@ -10,7 +10,6 @@ import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { authSelectors } from "../../redux/auth";
 import { register } from "../../redux/auth/auth-operations";
@@ -26,17 +25,10 @@ const INITIAL_VALUES = {
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  // const [emailSent, setEmailSent] = useState(false);
-  // const [signUpError, setSignUpError] = useState(false);
-
   const dispatch = useDispatch();
   const isVerified = useSelector(authSelectors.getIsVerified);
   const errorMessage = useSelector(authSelectors.getErrorMessage);
-  const verificationEmailSent = useSelector(
-    authSelectors.getIsVerificationEmailSent
-  );
-  // const history = useHistory();
+  const isRegistered = useSelector(authSelectors.getIsRegistered);
 
   const notify = (message, type) => {
     type(message, {
@@ -47,7 +39,7 @@ const Registration = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: "light",
     });
   };
 
@@ -55,7 +47,7 @@ const Registration = () => {
   //   if (errorMessage) {
   //     notify(errorMessage, toast.error);
   //   }
-  //   if (verificationEmailSent) {
+  //   if (isRegistered) {
   //     notify("Verification email sent", toast.info);
   //   }
   // }, [errorMessage, verificationEmailSent]);
@@ -97,14 +89,14 @@ const Registration = () => {
     return errors;
   }, []);
 
-  const showNotify = useCallback(() => {
-    if (errorMessage) {
-      notify(`errorMessage:${errorMessage}`, toast.error);
-    }
-    if (!isVerified && errorMessage) {
-      notify(`verificationEmailSent: ${verificationEmailSent}`, toast.info);
-    }
-  }, [errorMessage, isVerified, verificationEmailSent]);
+  // const showNotify = useCallback(() => {
+  //   if (errorMessage) {
+  //     notify(`errorMessage:${errorMessage}`, toast.error);
+  //   }
+  //   if (!isVerified && errorMessage) {
+  //     notify(`verificationEmailSent: ${verificationEmailSent}`, toast.info);
+  //   }
+  // }, [errorMessage, isVerified, verificationEmailSent]);
 
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {
@@ -120,7 +112,7 @@ const Registration = () => {
       setSubmitting(false);
       // showNotify();
     },
-    [dispatch, showNotify]
+    [dispatch]
   );
 
   // console.log("errorMessage:", errorMessage);
