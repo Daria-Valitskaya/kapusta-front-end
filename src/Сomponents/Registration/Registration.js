@@ -6,10 +6,11 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { authSelectors } from "../../redux/auth";
 import { register } from "../../redux/auth/auth-operations";
@@ -45,14 +46,14 @@ const Registration = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (errorMessage) {
-  //     notify(errorMessage, toast.error);
-  //   }
-  //   if (isRegistered) {
-  //     notify("Verification email sent", toast.info);
-  //   }
-  // }, [errorMessage, verificationEmailSent]);
+  useEffect(() => {
+    if (errorMessage) {
+      notify(errorMessage, toast.error);
+    }
+    if (isRegistered) {
+      notify("Verification email sent", toast.info);
+    }
+  }, [errorMessage, isRegistered]);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -91,15 +92,6 @@ const Registration = () => {
     return errors;
   }, []);
 
-  // const showNotify = useCallback(() => {
-  //   if (errorMessage) {
-  //     notify(`errorMessage:${errorMessage}`, toast.error);
-  //   }
-  //   if (!isVerified && errorMessage) {
-  //     notify(`verificationEmailSent: ${verificationEmailSent}`, toast.info);
-  //   }
-  // }, [errorMessage, isVerified, verificationEmailSent]);
-
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {
       dispatch(
@@ -109,14 +101,13 @@ const Registration = () => {
           password: values.password,
         })
       );
-      // resetForm();
+      resetForm();
       setSubmitting(false);
-      // showNotify();
     },
     [dispatch]
   );
 
-  const handleLoginButton = useCallback(() => {
+  const resetAuthState = useCallback(() => {
     dispatch(resetAuth());
   }, [dispatch]);
 
@@ -264,7 +255,7 @@ const Registration = () => {
                     Регистрация
                   </Button>
                   <Link to={"/"}>
-                    <Button type="button" onClick={handleLoginButton}>
+                    <Button type="button" onClick={resetAuthState}>
                       Войти
                     </Button>
                   </Link>

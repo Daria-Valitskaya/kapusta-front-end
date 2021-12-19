@@ -6,10 +6,12 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Formik } from "formik";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { authSelectors } from "../../redux/auth";
 import { logIn } from "../../redux/auth/auth-operations";
 import { resetAuth } from "../../redux/auth/auth-slice";
 import s from "./Login.module.css";
@@ -22,6 +24,10 @@ const INITIAL_VALUES = {
 const Login = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const isVerified = useSelector(authSelectors.getIsVerified);
+  const errorMessage = useSelector(authSelectors.getErrorMessage);
+  const isRegistered = useSelector(authSelectors.getIsRegistered);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -39,18 +45,38 @@ const Login = () => {
     return errors;
   }, []);
 
+  const notify = (message, type) => {
+    type(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const resetAuthState = useCallback(() => {
+    dispatch(resetAuth());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (errorMessage) {
+      notify(errorMessage, toast.error);
+    }
+  }, [errorMessage]);
+
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {
+      resetAuthState();
       dispatch(logIn(values));
       setSubmitting(false);
       resetForm();
     },
-    [dispatch]
+    [dispatch, resetAuthState]
   );
-
-  const handleSignupButton = useCallback(() => {
-    dispatch(resetAuth());
-  }, [dispatch]);
 
   const togglePassword = useCallback(() => {
     setShowPassword((prev) => !prev);
@@ -147,7 +173,7 @@ const Login = () => {
                 Войти
               </Button>
               <Link to={"/registration"}>
-                <Button type="button" onClick={handleSignupButton}>
+                <Button type="button" onClick={resetAuthState}>
                   Регистрация
                 </Button>
               </Link>
