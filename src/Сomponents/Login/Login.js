@@ -24,10 +24,10 @@ const INITIAL_VALUES = {
 const Login = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const isVerified = useSelector(authSelectors.getIsVerified);
+  // const isVerified = useSelector(authSelectors.getIsVerified);
   const errorMessage = useSelector(authSelectors.getErrorMessage);
-  const isRegistered = useSelector(authSelectors.getIsRegistered);
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const isRegistered = useSelector(authSelectors.getIsRegistered);
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const validate = useCallback((values) => {
     const errors = {};
