@@ -30,6 +30,7 @@ const authSlice = createSlice({
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = null;
+        state.isFetchingCurrent = false;
       });
 
       builder.addCase(authOperations.register.rejected, (state, action) => {
@@ -38,6 +39,7 @@ const authSlice = createSlice({
         state.isVerified = action.payload.verify;
         state.isLoggedIn = false;
         state.errorMessage = action.payload.message;
+        state.isFetchingCurrent = false;
       });
 
       builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
@@ -48,6 +50,7 @@ const authSlice = createSlice({
         state.isVerified = true;
         state.isLoggedIn = true;
         state.errorMessage = null;
+        state.isFetchingCurrent = false;
       });
 
       builder.addCase(authOperations.logIn.rejected, (state, action) => {
@@ -56,6 +59,7 @@ const authSlice = createSlice({
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = action.payload.message;
+        state.isFetchingCurrent = false;
       });
 
       builder.addCase(authOperations.logOut.fulfilled, (state, action) => {
@@ -65,38 +69,39 @@ const authSlice = createSlice({
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = null;
+        state.isFetchingCurrent = false;
       });
 
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.pending,
-      //   (state, action) => {
-      //     state.isFetchingCurrent = true;
-      //     state.errorMessage = null;
-      //   }
-      // );
+      builder.addCase(
+        authOperations.fetchCurrentUser.pending,
+        (state, action) => {
+          state.isFetchingCurrent = true;
+        }
+      );
 
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.fulfilled,
-      //   (state, action) => {
-      //     state.user.name = action.payload.data.name;
-      //     state.user.email = action.payload.data.email;
+      builder.addCase(
+        authOperations.fetchCurrentUser.fulfilled,
+        (state, action) => {
+          state.isRegistered = true;
+          state.isVerified = true;
+          state.isLoggedIn = true;
+          state.errorMessage = null;
+          state.isFetchingCurrent = false;
+        }
+      );
 
-      //     state.isRegistered = false;
-      //     state.isVerified = false;
-      //     state.isLoggedIn = false;
-      //     state.errorMessage = null;
-      //   }
-      // );
-
-      // builder.addCase(
-      //   authOperations.fetchCurrentUser.rejected,
-      //   (state, action) => {
-      //     state.isRegistered = false;
-      //     state.isVerified = false;
-      //     state.isLoggedIn = false;
-      //     state.errorMessage = null;
-      //   }
-      // );
+      builder.addCase(
+        authOperations.fetchCurrentUser.rejected,
+        (state, action) => {
+          state.user = { name: null, email: null };
+          state.token = null;
+          state.isRegistered = false;
+          state.isVerified = false;
+          state.isLoggedIn = false;
+          state.errorMessage = "isFetchingCurrent error";
+          state.isFetchingCurrent = false;
+        }
+      );
     },
 });
 export const { resetAuth } = authSlice.actions;
