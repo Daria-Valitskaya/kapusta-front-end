@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
+import transactionsReducer from './transactions/transactions-slice';
 // import contactsReducer from './reducers'; // (boilerplate)
 
 const authPersistConfig = {
@@ -32,6 +33,7 @@ const middleware = [
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    transactions: transactionsReducer
     // contacts: contactsReducer, // (boilerplate)
   },
   middleware: middleware,
