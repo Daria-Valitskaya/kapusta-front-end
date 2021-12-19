@@ -1,4 +1,47 @@
+h1,p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 80px;
+}
+
+.title {
+  margin-top: 86px;
+  margin-bottom: 50px;
+  padding-left: 40px;
+}
+
+.mainTitle {
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 0.85;
+  letter-spacing: 0.045em;
+  color: #000000;
+}
+
+.subTitle {
+  margin: 6px 20px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #52555F;
+}
+
+.dollarSymbol {
+  font-weight: 900;
+  font-size: 36px;
+}
+
 .registrationWindow {
+  position: relative;
   box-sizing: border-box;
 display: flex;
 flex-direction: column;
@@ -10,12 +53,7 @@ box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 border-radius: 30px;
 margin: 20px auto;
 padding: 40px 17px;
-}
-
-@media screen and (min-width: 768px) {
-  .registrationWindow {
-      padding: 50px 85px;
-  }
+z-index: 2;
 }
 
 .description {
@@ -37,7 +75,7 @@ padding: 40px 17px;
   min-width: 125px;
   min-height: 44px;
   border-radius: 16px;
-  margin: 0 auto;
+  margin: 6px auto;
   padding: 12px 24px;
   background-color: #F6F7FB;
   color: #000000;
@@ -158,4 +196,94 @@ justify-content: space-between;
 .confirmButton button:active {
   cursor: pointer;
   background-color: #FF751D;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+    padding: 0 15px;
+    margin: 0 auto;
+    padding-bottom: 180px;
+  }
+
+  .title {
+      padding-left: 90px;
+  }
+
+  .mainTitle {
+      font-size: 60px;
+  }
+
+  .subTitle {
+      margin: 8px 30px;
+      font-size: 14px;
+      line-height: 15px;
+      letter-spacing: 0.16em;
+  }
+
+  .dollarSymbol {
+      font-size: 45px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 140px;
+  }
+
+  .title {
+      margin-top: 90px;
+      padding-left: 170px;
+  }
+
+  .mainTitle {
+      font-size: 75px;
+  }
+
+  .subTitle {
+      margin: 8px 40px;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.18em;
+  }
+
+  .dollarSymbol {
+      font-size: 57px;
+  }
+
+  .registrationWindow {
+    padding: 50px 85px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+      width: 1280px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 117px;
+      padding-bottom: 140px;
+      padding-left: 230px;
+      padding-right: 110px;
+  }
+
+  .title {
+      padding-left: 0;
+      margin: 0;
+  }
+
+  .mainTitle {
+      font-size: 102px;
+  }
+
+  .subTitle {
+      margin: 12px 80px;
+  }
+
+  .dollarSymbol {
+      font-size: 76px;
+  }
 }
