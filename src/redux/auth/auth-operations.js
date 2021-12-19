@@ -11,26 +11,46 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk("auth/signup", async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post("/auth/signup", credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue('User with such email already exists');
-  }
-});
+export const register = createAsyncThunk(
+  "auth/signup",
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post("/auth/signup", credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      const { status } = error.response;
+      let message;
+      if (status === 409) {
+        message = "User with such email already exists";
+      }
 
-export const logIn = createAsyncThunk("auth/login", async (credentials) => {
-  try {
-    const { data } = await axios.post("/auth/login", credentials);
-    console.log(data);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error.message);
+      return thunkAPI.rejectWithValue({ ...error.response.data, message });
+    }
   }
-});
+);
+
+export const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post("/auth/login", credentials);
+      console.log(data);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      const { status } = error.response;
+      let message;
+      if (status === 400) {
+        message = "Please check email";
+      }
+      if (status === 401) {
+        message = "Incorrect email or password";
+      }
+      return thunkAPI.rejectWithValue({ ...error.response.data, message });
+    }
+  }
+);
 
 export const logOut = createAsyncThunk("auth/logout", async () => {
   try {
@@ -41,24 +61,24 @@ export const logOut = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-export const fetchCurrentUser = createAsyncThunk(
-  "auth/refresh",
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+// export const fetchCurrentUser = createAsyncThunk(
+//   "auth/refresh",
+//   async (_, thunkAPI) => {
+//     const state = thunkAPI.getState();
+//     const persistedToken = state.auth.token;
 
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue(``);
-    }
+//     if (persistedToken === null) {
+//       return thunkAPI.rejectWithValue(``);
+//     }
 
-    token.set(persistedToken);
-    try {
-      const { data } = await axios.get("/auth/current");
-      return data;
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-);
+//     token.set(persistedToken);
+//     try {
+//       const { data } = await axios.get("/auth/current");
+//       return data;
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   }
+// );
 
 // TODO: need to move all requests to APIservice file
