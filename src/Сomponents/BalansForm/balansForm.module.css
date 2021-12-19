@@ -8,7 +8,7 @@
     padding-right: 37px;
     padding-left: 35px;
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .field{
         display: flex;
         flex-direction: row;
@@ -20,7 +20,7 @@
         padding-left: 116px;
     }
   }
-  @media screen and (min-device-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     .field{
         padding-right: 200px;
         padding-left: 400px;
@@ -57,7 +57,7 @@
     align-items: center;
     margin-top: 60px;
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .form{
         position: relative;
         display:inline-block;
@@ -76,7 +76,7 @@
     right: 0;
     text-align: center;
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .labelText{
         position: static;
         margin-right: 21px;
@@ -101,7 +101,7 @@
     cursor: pointer;
     padding-right: 41px;
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .inputField{
         border-radius: 16px;
         box-sizing: border-box;
@@ -129,7 +129,7 @@
     text-align: right;
     letter-spacing: 0.02em;
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .uan{
     top: 4px;
     right: 150px;
@@ -139,9 +139,9 @@
   .modalPosition{
     position: absolute;
     top: 220px;
-    left: 17px
+    left: 114px
 }
-  @media screen and (min-device-width: 768px) {
+  @media screen and (min-width: 768px) {
     .modalPosition{
         position: absolute;
         top: 140px;
@@ -149,7 +149,7 @@
     }
     
   }
-  @media screen and (min-device-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     .modalPosition{
         position: absolute;
         top: 140px;
@@ -176,7 +176,7 @@
     }
   
   
-  /* @media screen and (min-device-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     .modalContent {
         position: absolute;
         top:140px;
@@ -187,7 +187,7 @@
 
 
 
-  /* @media screen and (min-device-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     .field{
         display: flex;
         justify-content: space-between;

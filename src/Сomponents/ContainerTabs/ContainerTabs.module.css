@@ -38,13 +38,13 @@
   border-radius: 0 30px 30px 30px;
 }
 
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
   .tabPanel {
     padding: 33px 20px 61px;
   }
 }
 
-@media screen and (min-device-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .tabPanel {
     width: 1060px;
   }
