@@ -14,7 +14,7 @@ import { register } from "../../redux/auth/auth-operations";
 import { authSelectors } from "../../redux/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import s from "./Registration.module.css";
+import s from "./RegistrationView.module.css";
 
 const INITIAL_VALUES = {
   name: "",

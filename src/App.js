@@ -8,7 +8,7 @@ import Header from "./Сomponents/Header/Header";
 import LoginView from "./views/LoginView";
 import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
-import Registration from "./Сomponents/Registration/Registration.js";
+import RegistrationView from "./views/RegistrationView";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
               redirectTo="/homeview"
             />
             <PublicRoute
-              component={Registration}
+              component={RegistrationView}
               exact
               path="/registration"
               restricted
