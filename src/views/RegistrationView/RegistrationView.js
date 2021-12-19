@@ -11,9 +11,10 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import s from "./RegistrationView.module.css";
 import { authSelectors } from "../../redux/auth";
 import { register } from "../../redux/auth/auth-operations";
-import s from "./Registration.module.css";
+
 
 const INITIAL_VALUES = {
   name: "",
@@ -133,6 +134,11 @@ const Registration = () => {
 
   return (
     <>
+      <div className={s.container}>
+      <div className={s.title}>
+        <h1 className={s.mainTitle}>Kapu<span className={s.dollarSymbol}>$</span>ta</h1>
+        <p className={s.subTitle}>Smart Finance</p>
+      </div>
       <div className={s.registrationWindow}>
         <div className="with-google">
           <p className={s.description}>
@@ -159,6 +165,8 @@ const Registration = () => {
             handleSubmit,
             handleBlur,
             isSubmitting,
+            isValid,
+            dirty
           }) => (
             <form className={s.form} onSubmit={handleSubmit}>
               <div className={s.nameField}>
@@ -258,7 +266,11 @@ const Registration = () => {
                 </div>
               </div>
               <div className={s.confirmButton}>
-                <Button variant="contained" type="submit">
+                <Button
+                  variant="contained"
+                  type="submit"
+                  disabled={!isValid || !dirty}
+                >
                   Регистрация
                 </Button>
                 <Link to={"/"}>
@@ -268,7 +280,8 @@ const Registration = () => {
             </form>
           )}
         </Formik>
-      </div>
+        </div>
+        </div>
     </>
   );
 };

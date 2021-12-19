@@ -11,7 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/auth/auth-operations";
-import s from "./Login.module.css";
+import s from "./LoginView.module.css";
 
 const INITIAL_VALUES = {
   email: "",
@@ -51,6 +51,11 @@ const Login = () => {
   }, []);
 
   return (
+    <div className={s.container}>
+      <div className={s.title}>
+        <h1 className={s.mainTitle}>Kapu<span className={s.dollarSymbol}>$</span>ta</h1>
+        <p className={s.subTitle}>Smart Finance</p>
+      </div>
     <div className={s.loginWindow}>
       <div className="with-google">
         <p className={s.description}>
@@ -78,6 +83,9 @@ const Login = () => {
           handleSubmit,
           handleBlur,
           isSubmitting,
+          isValidating,
+          isValid,
+          dirty
         }) => (
           <form className={s.form} onSubmit={handleSubmit}>
             <div className={s.emailField}>
@@ -129,14 +137,7 @@ const Login = () => {
               <Button
                 variant="contained"
                 type="submit"
-                disabled={
-                  isSubmitting ||
-                  !(
-                    Object.keys(touched).length ===
-                      Object.keys(INITIAL_VALUES).length &&
-                    Object.keys(errors).length === 0
-                  )
-                }
+                disabled={!isValid || !dirty}
               >
                 Войти
               </Button>
@@ -147,7 +148,8 @@ const Login = () => {
           </form>
         )}
       </Formik>
-    </div>
+      </div>
+      </div>
   );
 };
 
