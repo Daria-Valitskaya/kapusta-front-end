@@ -84,6 +84,8 @@ const Login = () => {
           handleBlur,
           isSubmitting,
           isValidating,
+          isValid,
+          dirty
         }) => (
           <form className={s.form} onSubmit={handleSubmit}>
             <div className={s.emailField}>
@@ -135,14 +137,7 @@ const Login = () => {
               <Button
                 variant="contained"
                 type="submit"
-                disabled={
-                  isValidating || isSubmitting ||
-                  !(
-                    Object.keys(touched).length ===
-                      Object.keys(INITIAL_VALUES).length &&
-                    Object.keys(errors).length === 0
-                  )
-                }
+                disabled={!isValid || !dirty}
               >
                 Войти
               </Button>
