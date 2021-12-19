@@ -3,7 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 
 import s from './ContainerTabs.module.css';
 import Summary from '../Summary/Summary';
-import CalendarComponent from '../CalendarBar/CalendarBar';
+import CalendarComponent from '../CalendarBar';
 import Table from '../Table';
 
 const ContainerTabs = () => {

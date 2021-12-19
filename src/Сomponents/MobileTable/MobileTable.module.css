@@ -1,0 +1,79 @@
+.table {
+  border-collapse: collapse;
+  width: 290px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.tbody tr {
+  border-bottom: 1px solid #f5f6fb;
+}
+
+.tbody td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.itemWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.description {
+  color: #52555f;
+  font-weight: 700;
+  font-style: 12px;
+  line-height: 1.167;
+  text-transform: capitalize;
+  margin-bottom: 3px;
+}
+
+.emptyDescription {
+  color: #52555f;
+  height: 15px;
+  margin-bottom: 3px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.date,
+.category {
+  color: #52555f;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.173;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+.deleteBtn {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  text-align: right;
+  margin-left: 20px;
+}
+
+.incomeTrsn {
+  color: #407946;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.167;
+  text-align: right;
+}
+
+.expenseTrsn {
+  color: #e7192e;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.167;
+  text-align: right;
+}
+
+@media screen and (min-width: 480px) {
+  .table {
+    width: 450px;
+  }
+}
