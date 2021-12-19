@@ -1,15 +1,18 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.module.css";
-import HomeViews from "./views/HomeViews/HomeViews";
-import ReportView from "./views/ReportView/ReportView";
+
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
-import Login from "./Сomponents/Login/Login";
 import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
-import Registration from "./Сomponents/Registration/Registration.js";
+
+//lazy
+const LoginView = lazy(() => import("./views/LoginView"));
+const RegistrationView = lazy(() => import("./views/RegistrationView"));
+const HomeViews = lazy(() => import("./views/HomeViews/HomeViews"));
+const ReportView = lazy(() => import("./views/ReportView/ReportView"));
 
 function App() {
   return (
@@ -21,14 +24,14 @@ function App() {
           <Switch>
             {/* <PublicRoute component={WellcomePage} exact path="/" /> */}
             <PublicRoute
-              component={Login}
+              component={LoginView}
               exact
               path="/"
               restricted
               redirectTo="/homeview"
             />
             <PublicRoute
-              component={Registration}
+              component={RegistrationView}
               exact
               path="/registration"
               restricted
