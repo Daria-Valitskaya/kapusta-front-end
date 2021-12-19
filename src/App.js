@@ -1,14 +1,16 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.module.css";
-import HomeViews from "./views/HomeViews/HomeViews";
 import Container from "./Сomponents/Container/Container";
 import Header from "./Сomponents/Header/Header";
-import LoginView from "./views/LoginView";
 import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
-import RegistrationView from "./views/RegistrationView";
+
+//lazy
+const LoginView = lazy(() => import("./views/LoginView"));
+const RegistrationView = lazy(() => import("./views/RegistrationView"));
+const HomeViews = lazy(() => import("./views/HomeViews/HomeViews"));
 
 function App() {
   return (
