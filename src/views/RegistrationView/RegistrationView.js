@@ -94,6 +94,7 @@ const Registration = () => {
 
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {
+      dispatch(resetAuth());
       dispatch(
         register({
           name: values.name,
@@ -165,65 +166,99 @@ const Registration = () => {
                     <InputLabel className={s.label} htmlFor="name">
                       Имя:
                     </InputLabel>
-                    <div className={s.passwordField}>
-                      <TextField
-                        fullWidth
-                        className={s.input}
-                        variant="filled"
-                        id="password"
-                        name="password"
-                        type={showPassword ? "text" : "password"}
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.password && Boolean(errors.password)}
-                        margin="normal"
-                        helperText={touched.password && errors.password}
-                      />
-                      <div className={s.passwordIconButton}>
-                        {values.password && (
-                          <IconButton
-                            aria-label="visibility"
-                            onClick={togglePassword}
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        )}
-                      </div>
-                    </div>
-                    <InputLabel className={s.label} htmlFor="password">
-                      Подтвердите пароль:
+                    <TextField
+                      className={s.input}
+                      variant="filled"
+                      fullWidth
+                      id="name"
+                      name="name"
+                      margin="normal"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.name && Boolean(errors.name)}
+                      helperText={touched.name && errors.name}
+                    />
+                  </div>
+                  <div className={s.emailField}>
+                    <InputLabel className={s.label} htmlFor="email">
+                      Электронная почта:
                     </InputLabel>
-                    <div className={s.passwordField}>
-                      <TextField
-                        fullWidth
-                        className={s.input}
-                        variant="filled"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        value={values.confirmPassword}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.confirmPassword &&
-                          Boolean(errors.confirmPassword)
-                        }
-                        margin="normal"
-                        helperText={
-                          touched.confirmPassword && errors.confirmPassword
-                        }
-                      />
-                      <div className={s.passwordIconButton}>
-                        {values.confirmPassword && (
-                          <IconButton
-                            aria-label="visibility"
-                            onClick={toggleConfirmPassword}
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        )}
-                      </div>
+                    <TextField
+                      fullWidth
+                      className={s.input}
+                      variant="filled"
+                      id="email"
+                      name="email"
+                      margin="normal"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
+                    />
+                  </div>
+                  <InputLabel className={s.label} htmlFor="password">
+                    Пароль:
+                  </InputLabel>
+                  <div className={s.passwordField}>
+                    <TextField
+                      fullWidth
+                      className={s.input}
+                      variant="filled"
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.password && Boolean(errors.password)}
+                      margin="normal"
+                      helperText={touched.password && errors.password}
+                    />
+                    <div className={s.passwordIconButton}>
+                      {values.password && (
+                        <IconButton
+                          aria-label="visibility"
+                          onClick={togglePassword}
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      )}
+                    </div>
+                  </div>
+                  <InputLabel className={s.label} htmlFor="password">
+                    Подтвердите пароль:
+                  </InputLabel>
+                  <div className={s.passwordField}>
+                    <TextField
+                      fullWidth
+                      className={s.input}
+                      variant="filled"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type={showConfirmPassword ? "text" : "password"}
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={
+                        touched.confirmPassword &&
+                        Boolean(errors.confirmPassword)
+                      }
+                      margin="normal"
+                      helperText={
+                        touched.confirmPassword && errors.confirmPassword
+                      }
+                    />
+                    <div className={s.passwordIconButton}>
+                      {values.confirmPassword && (
+                        <IconButton
+                          aria-label="visibility"
+                          onClick={toggleConfirmPassword}
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      )}
                     </div>
                   </div>
                   <div className={s.confirmButton}>

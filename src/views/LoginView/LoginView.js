@@ -58,10 +58,6 @@ const Login = () => {
     });
   };
 
-  const resetAuthState = useCallback(() => {
-    dispatch(resetAuth());
-  }, [dispatch]);
-
   useEffect(() => {
     if (errorMessage) {
       notify(errorMessage, toast.error);
@@ -70,13 +66,17 @@ const Login = () => {
 
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {
-      resetAuthState();
+      dispatch(resetAuth());
       dispatch(logIn(values));
       setSubmitting(false);
       resetForm();
     },
-    [dispatch, resetAuthState]
+    [dispatch]
   );
+
+  const resetAuthState = useCallback(() => {
+    dispatch(resetAuth());
+  }, [dispatch]);
 
   const togglePassword = useCallback(() => {
     setShowPassword((prev) => !prev);
