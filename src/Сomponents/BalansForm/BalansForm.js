@@ -9,6 +9,8 @@ export default function BalansForm() {
   const [stateMachine, setStateMachine] = useState("pending");
   const uan = "UAH";
   let disabled = false;
+  let notHoverBtnConfirm = "";
+  let notHoverInputOfBalans = "";
 
   /*
    * Отвечает за обновление состояния
@@ -38,6 +40,9 @@ export default function BalansForm() {
     setStateMachine("disabled");
   }
   if (stateMachine === "disabled") disabled = true;
+  // console.log(notHoverBtnConfirm);notHoverBtnConfirm = s.offBtn notHoverInputOfBalans
+  if (stateMachine === "disabled") notHoverBtnConfirm = s.offBtn;
+  if (stateMachine === "disabled") notHoverInputOfBalans = s.offInput;
 
   return (
     <div className={s.field}>
@@ -47,28 +52,28 @@ export default function BalansForm() {
           <input
             type="text"
             disabled={disabled}
-            className={s.inputField}
+            className={s.inputField + " " + notHoverInputOfBalans}
             minLength={1}
-            placeholder="00:00"
+            placeholder="00.00"
             value={balans}
             onChange={handleChange}
           />
         </label>
         <p className={s.uan}>{uan}</p>
-        <ConfirmBtn className={s.btn} btnOff={disabled} />
+        <ConfirmBtn
+          className={s.btn + " " + notHoverBtnConfirm}
+          btnOff={disabled}
+        />
       </form>
       <Link
         className={s.link}
         to={{
           pathname: "/reportview",
-          //   search: "?category=adventure",
-          //   hash: "#treasure-island",
           state: { from: "/homeview" },
         }}
       >
         <div className={s.linkfield}>
           <span className={s.linkText}>Перейти к отчетам</span>
-          {/* <img src={imageChart} alt="link to charts" className={s.charts} /> */}
           <svg
             className={s.charts}
             width="24"
