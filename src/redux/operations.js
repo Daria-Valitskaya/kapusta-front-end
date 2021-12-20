@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   addContactError,
   addContactRequest,
@@ -9,14 +9,14 @@ import {
   fetchContactError,
   fetchContactRequest,
   fetchContactSuccess,
-} from './actions';
-import { store } from './store';
+} from "./actions";
+import { store } from "./store";
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = "https://kapusta-team-project-back.herokuapp.com/api";
 
 export const addContact =
   ({ name, number }) =>
-  dispatch => {
+  (dispatch) => {
     const contact = {
       name,
       number,
@@ -25,32 +25,32 @@ export const addContact =
     const contacts = store.getState().contacts.items;
 
     //duplicated name check:
-    if (contacts?.filter(item => item.name === name).length > 0) {
+    if (contacts?.filter((item) => item.name === name).length > 0) {
       return dispatch(addContactError(`${name} is already in contacts`));
     }
 
     dispatch(addContactRequest());
 
     axios
-      .post('/contacts', contact)
+      .post("/contacts", contact)
       .then(({ data }) => dispatch(addContactSuccess(data)))
-      .catch(error => dispatch(addContactError(error)));
+      .catch((error) => dispatch(addContactError(error)));
   };
 
-export const deleteContact = id => dispatch => {
+export const deleteContact = (id) => (dispatch) => {
   dispatch(deleteContactRequest());
 
   axios
     .delete(`/contacts/${id}`)
     .then(() => dispatch(deleteContactSuccess(id)))
-    .catch(error => dispatch(deleteContactError(error)));
+    .catch((error) => dispatch(deleteContactError(error)));
 };
 
-export const fetchContact = () => dispatch => {
+export const fetchContact = () => (dispatch) => {
   dispatch(fetchContactRequest());
 
   axios
-    .get('/contacts')
+    .get("/contacts")
     .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+    .catch((error) => dispatch(fetchContactError(error)));
 };

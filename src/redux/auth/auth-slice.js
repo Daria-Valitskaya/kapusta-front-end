@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authOperations } from ".";
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, balance: null },
   token: null,
   isRegistered: false, // email sent
   isVerified: false, // for email re-sending
@@ -45,6 +45,7 @@ const authSlice = createSlice({
       builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user.name = action.payload.data.name;
         state.user.email = action.payload.data.email;
+        state.user.balance = action.payload.data.balance;
         state.token = action.payload.data.token;
         state.isRegistered = true;
         state.isVerified = true;
@@ -63,7 +64,7 @@ const authSlice = createSlice({
       });
 
       builder.addCase(authOperations.logOut.fulfilled, (state, action) => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, balance: null };
         state.token = null;
         state.isRegistered = false;
         state.isVerified = false;
@@ -82,6 +83,9 @@ const authSlice = createSlice({
       builder.addCase(
         authOperations.fetchCurrentUser.fulfilled,
         (state, action) => {
+          state.user.name = action.payload.name;
+          state.user.email = action.payload.email;
+          state.user.balance = action.payload.balance;
           state.isRegistered = true;
           state.isVerified = true;
           state.isLoggedIn = true;
@@ -93,12 +97,11 @@ const authSlice = createSlice({
       builder.addCase(
         authOperations.fetchCurrentUser.rejected,
         (state, action) => {
-          state.user = { name: null, email: null };
+          state.user = { name: null, email: null, balance: null };
           state.token = null;
           state.isRegistered = false;
           state.isVerified = false;
           state.isLoggedIn = false;
-          state.errorMessage = "isFetchingCurrent error";
           state.isFetchingCurrent = false;
         }
       );
