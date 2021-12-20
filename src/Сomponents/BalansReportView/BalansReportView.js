@@ -26,7 +26,8 @@ export default function BalansReportView() {
       </div>
       <div className={s.balansFieldText}>
         <p className={s.titleBalans}>Баланс:</p>
-        <p className={s.balansTextNumber}>55000.00</p>
+        <p className={s.balansTextNumber}>55000.00 UAH</p>
+        <p className={s.balansTextConfirm}>ПОДТВЕРДИТЬ</p>
       </div>
     </div>
   );
