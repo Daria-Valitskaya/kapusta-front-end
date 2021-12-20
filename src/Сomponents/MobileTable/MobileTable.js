@@ -137,32 +137,6 @@ const dataIncome = [
     }
 ];
 
-// const MobileTable = ({array}) => {
-//     return (
-//         <ul className={s.container}>
-//             {dataIncome && dataIncome.map(item => (
-//                 <li key={item._id} className={s.item}>
-//                     <div className={s.itemWrapper}>
-//                         <EllipsisText text={item.description} className={s.description} length={10} />
-//                         <span className={s.date}>{item.date}</span>
-//                     </div>
-//                     <span className={s.category}>{item.category}</span>
-//                     {item.transactionType === "income" 
-//                         ? <span className={s.incomeTrsn}>- {item.sum.toFixed(2)}</span>
-//                         : <span className={s.expenseTrsn}>{item.sum.toFixed(2)}</span>
-//                     }
-//                     <button className={s.deleteBtn}>
-//                         <img 
-//                             src={deleteImg} 
-//                             alt="delete bucket" 
-//                             className={s.deleteImg}
-//                         />
-//                     </button>
-//                 </li>
-//             ))}
-//         </ul>
-//     )
-// };
 const MobileTable = ({array}) => {
     return (
         <table className={s.table}>
