@@ -1,11 +1,10 @@
 import React from "react";
 import EllipsisText from "react-ellipsis-text";
+import { v4 } from 'uuid';
 import deleteImg from "../../images/other/delete.svg";
 import s from "./Table.module.css";
 
-// axios.defaults.baseURL = "http://localhost:3001/api";
-
-const dataIncome = [
+const array = [
   {
     _id: "61bbb3fdff32b0f7bb9db453",
     date: "12.12.2021",
@@ -140,19 +139,21 @@ const dataIncome = [
   },
 ];
 
-// const incomeApi = async (token) => {
-//     try {
-//       const { data } = await axios.get(`/transaction/income/2021/`, token);
-//      console.log(data);
-//     } catch (error) {
-//       return console.log(error);
-//     }
-// };
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmI5MjgzMDRiOGJiNDg2ZDBiMGUyYiIsImlhdCI6MTYzOTc2ODk5NX0.85_P-ZMaWneekfqe-5TRp5xcdfXKHWbgxA4TkDvziSo";
-// incomeApi('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmI5MjgzMDRiOGJiNDg2ZDBiMGUyYiIsImlhdCI6MTYzOTc2ODk5NX0.85_P-ZMaWneekfqe-5TRp5xcdfXKHWbgxA4TkDvziSo')
 
-function Table({ array }) {
+function Table() {
+  if(array.length < 9) {
+    const draft = {
+      date: "",
+      description: "",
+      category: "",
+      sum: '',
+      transactionType: "",
+      emptyItem: true
+    }
+    const position = array.length;
+    array.length = 9;
+    array.fill(draft, position)
+  }
   return (
     <div>
       <table className={s.table}>
@@ -166,26 +167,28 @@ function Table({ array }) {
           </tr>
         </thead>
         <tbody className={s.tbody}>
-          {dataIncome.map((item) => (
-            <tr key={item._id} className={s.tr}>
+          {array && array.map((item) => (
+            <tr key={!item._id ? item.id = v4() : item._id} className={s.tr}>
               <td>{item.date}</td>
               <td>
                 <EllipsisText text={item.description} length={30} />
               </td>
               <td>{item.category}</td>
               {item.transactionType === "income" ? (
-                <td className={s.incomeTrsn}>+ {item.sum.toFixed(2)}</td>
+                <td className={s.incomeTrsn}>{item.sum && `+ ${item.sum.toFixed(2)}`}</td>
               ) : (
-                <td className={s.expenseTrsn}>- {item.sum.toFixed(2)}</td>
+                <td className={s.expenseTrsn}>{item.sum && `- ${item.sum.toFixed(2)}`}</td>
               )}
               <td>
-                <button className={s.deleteBtn}>
-                  <img
-                    src={deleteImg}
-                    alt="delete bucket"
-                    className={s.deleteImg}
-                  />
-                </button>
+                {!item.emptyItem &&
+                  <button className={s.deleteBtn}>
+                    <img
+                      src={deleteImg}
+                      alt="delete bucket"
+                      className={s.deleteImg}
+                    />
+                  </button>
+                }
               </td>
             </tr>
           ))}
