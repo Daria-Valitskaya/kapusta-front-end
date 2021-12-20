@@ -57,7 +57,7 @@ margin: 0;
     margin: 0;
 
 }
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
     .field{
         justify-content: space-around;
         width: 668px;
@@ -80,7 +80,7 @@ margin: 0;
     margin-right: 15px;    
     }
 }
-@media screen and (min-device-width: 1280px) {
+@media screen and (min-width: 1280px) {
     .field{
         width: 1060px;
         padding-left: 319px;

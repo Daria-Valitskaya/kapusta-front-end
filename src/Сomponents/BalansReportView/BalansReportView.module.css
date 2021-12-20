@@ -1,0 +1,162 @@
+p{
+    margin: 0;
+}
+
+.backToHomeField{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 49px;
+}
+.linkfield{
+    position: absolute;
+    top: -25px;
+    left: 19px;
+}
+
+.keyboard_backspace{
+    fill:#FF751D;
+}
+.linkText{
+    display: none;
+}
+/* ====================================================== */
+.fieldSlider{
+    width: 155px;
+    text-align: center;
+}
+.sliderTitle{
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.balansFieldText{
+    text-align: center;
+}
+.titleBalans{
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em; 
+    margin-top: 30px;
+}
+.balansTextNumber{
+    width: 183px;
+    height: 44px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    letter-spacing: 0.02em; 
+
+    border: 2px solid white;
+    border-radius: 22px;
+
+    padding: 15px 5px;
+    margin-top: 6px;
+}
+.balansTextConfirm{
+    display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+    .backToHomeField{
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: end;
+        height: 44px;
+        margin-top: 49px;
+        padding-right: 34px;
+    }
+    .linkfield{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 8px;
+        left: 50px;
+    }
+    .linkText{
+        display: block;
+        text-decoration: none;
+        color: rgba(82, 85, 95, 0.7);
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        margin-left: 15px;
+
+    }
+    .linkText:focus,
+    .linkText:hover{
+    color: #FF751D;
+    }
+    .balansFieldText{
+        display: flex;
+        align-items: baseline;
+        text-align: center;
+    }
+    .titleBalans{
+        color: rgba(82, 85, 95, 0.7);
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 500;
+        letter-spacing: 0.02em; 
+        margin-top: 0;
+        margin-right: 21px;
+    }
+    .balansTextNumber{
+        width: 125px;
+        color: black;    
+        border: 2px solid white;
+        border-radius: 16px;
+    
+        padding: 12px 5px;
+        margin-top: 0px;
+        margin-right: 80px;
+    }
+}
+  @media screen and (min-width: 1280px) {
+    .backToHomeField{
+        margin-top: 40px;
+        padding-right: 95px;
+    }
+    .linkfield{
+        top: 8px;
+        left: 110px;
+    }
+    .balansTextNumber{
+        width: 125px;
+        color: black;    
+        border: 2px solid white;
+        border-radius: 16px;
+    
+        padding: 12px 5px;
+        margin-top: 0px;
+        margin-right: 21px;
+    }
+    .balansTextConfirm{
+        display: block;
+        width: 125px;
+        height: 44px;
+        color: rgba(82, 85, 95, 0.7);  
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 400;  
+        letter-spacing: 0.02em; 
+
+        border: 2px solid white;
+        border-radius: 16px;
+    
+        padding: 12px 5px;
+        margin-right: 213px;
+    }
+    
+    
+}
+

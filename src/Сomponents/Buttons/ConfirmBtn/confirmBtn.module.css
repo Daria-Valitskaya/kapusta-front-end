@@ -4,7 +4,7 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
-    color:#52555F;;
+    color:#52555F;
     align-items: center;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -24,7 +24,7 @@
 }
 
 @media only screen
-  and (min-device-width: 768px) {
+  and (min-width: 768px) {
     .btn{
         border-radius: 16px;
         padding: 12px, 6px;
