@@ -1,6 +1,6 @@
 .container {
   width: 320px;
-  height: 855px;
+  min-height: 855px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -28,7 +28,7 @@
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
-    height: 1024px;
+    min-height: 1024px;
   }
 
   .background {
@@ -51,7 +51,7 @@
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;
-    height: 850px;
+    min-height: 850px;
   }
 
   .background {

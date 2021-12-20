@@ -9,15 +9,19 @@ import PrivateRoute from "./Сomponents/PrivatRoute/PrivatRoute";
 import PublicRoute from "./Сomponents/PublicRoute/PublicRoute";
 import Registration from "./Сomponents/Registration/Registration.js";
 
+import InputPanel from "./Сomponents/InputPanel/InputPanel";
+
 function App() {
   return (
     <div>
       <Container>
         <Suspense fallback={<h1>LOADING...</h1>}>
           <Header />
+
+          <InputPanel />
           <Switch>
             {/* <PublicRoute component={WellcomePage} exact path="/" /> */}
-            <PublicRoute
+            {/* <PublicRoute
               component={Login}
               exact
               path="/"
@@ -36,7 +40,7 @@ function App() {
               exact
               path="/homeview"
               redirectTo="/"
-            />
+            /> */}
 
             {/* <Route>
               <NotFoundView />
