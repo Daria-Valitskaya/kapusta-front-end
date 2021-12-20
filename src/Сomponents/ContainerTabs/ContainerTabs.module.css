@@ -1,9 +1,10 @@
 .tabsContainer {
   margin-top: 40px;
-  margin-left: 40px;
   margin-right: auto;
   margin-left: auto;
   width: 665px;
+  margin-bottom: 40px;
+  position: relative;
 }
 
 .tabList {
@@ -48,15 +49,19 @@
   }
 }
 
-/* @media screen and (min-width: 768px) {
-  .tabPanel {
-    padding: 33px 20px 61px;
-  }
-} */
-
 @media screen and (min-width: 1280px) {
-  .tabPanel {
+  .tabsContainer {
     width: 1060px;
+    margin-bottom: 0;
+  }
+
+  .tabPanel {
     padding: 33px 20px 61px;
+    width: 1060px;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
   }
 }
