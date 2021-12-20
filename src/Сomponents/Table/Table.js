@@ -1,6 +1,8 @@
 import React from "react";
 import EllipsisText from "react-ellipsis-text";
 import { v4 } from 'uuid';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 import deleteImg from "../../images/other/delete.svg";
 import s from "./Table.module.css";
 
@@ -155,7 +157,7 @@ function Table() {
     array.fill(draft, position)
   }
   return (
-    <div>
+    <SimpleBar className={s.simpleBar}>
       <table className={s.table}>
         <thead className={s.thead}>
           <tr>
@@ -194,7 +196,7 @@ function Table() {
           ))}
         </tbody>
       </table>
-    </div>
+    </SimpleBar>
   );
 }
 

@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+import { transactionsSelectors } from '../../redux/transactions';
 import s from './Summary.module.css';
 
 const arrayData = [
@@ -51,18 +55,22 @@ const arrayData = [
     }
 ]
 
-const Summary = () => {
+const Summary = ({array}) => {
+    const summaryYear = useSelector(transactionsSelectors.getTransactionByYear);
+    console.log(summaryYear);
     return (
         <div className={s.wrapper}>
             <h4 className={s.caption}>Сводка</h4>
-            <ul className={s.list}>
-                {arrayData.map(item => (
-                    <li key={item.month} className={s.listItem}>
-                        <span>{item.month}</span>
-                        <span>{item.sum.toFixed(2)}</span>
-                    </li>)
-                )}
-            </ul>
+            <SimpleBar style={{height: '240px'}}>
+                <ul className={s.list}>
+                    {arrayData.map(item => (
+                        <li key={item.month} className={s.listItem}>
+                            <span>{item.month}</span>
+                            <span>{item.sum.toFixed(2)}</span>
+                        </li>)
+                    )}
+                </ul>
+            </SimpleBar>
         </div>
     )
 };

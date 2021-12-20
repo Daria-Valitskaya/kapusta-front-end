@@ -8,6 +8,7 @@ import Table from '../Table';
 
 const ContainerTabs = () => {
 return (
+  <>
   <Tabs className={s.tabsContainer}>
     <TabList className={s.tabList}>
       <Tab className={s.tab} selectedClassName={s.selectedTab}>Расход</Tab>
@@ -17,16 +18,23 @@ return (
     <TabPanel>
       <div className={s.tabPanel}>
         <CalendarComponent />
-        <Table />
-        <Summary />
+        <div className={s.wrapper}>
+          <Table />
+          <Summary />
+        </div>
       </div>
     </TabPanel>
     <TabPanel>
       <div className={s.tabPanel}>
-        
+        <CalendarComponent />
+        <div className={s.wrapper}>
+          <Table />
+          <Summary />
+        </div>
       </div>
     </TabPanel>
   </Tabs>
+  </>
 )};
 
 export default ContainerTabs;
