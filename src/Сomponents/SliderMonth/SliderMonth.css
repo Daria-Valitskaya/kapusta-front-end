@@ -1,0 +1,32 @@
+
+
+.swiper-button-next{
+    color: #FF751D;
+    right: 5px;
+}
+div.swiper-button-next{
+    padding-top: 2px;
+}
+
+div.swiper-button-prev{
+    padding-top: 2px;
+}
+.swiper-button-prev {
+    color: #FF751D;
+    left: 5px;
+    font-weight:900;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after{
+    font-size: 10px;
+    font-weight:900;
+}
+
+.monthText{
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height:16px;
+    letter-spacing: 0.02em;
+}

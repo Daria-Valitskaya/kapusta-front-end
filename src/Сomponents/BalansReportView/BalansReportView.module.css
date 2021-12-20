@@ -1,0 +1,65 @@
+p{
+    margin: 0;
+}
+
+.backToHomeField{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 1060px;
+    height: 44px; */
+    margin-top: 49px;
+}
+.linkfield{
+    position: absolute;
+    top: -25px;
+    left: 19px;
+}
+.keyboard_backspace{
+    fill:#FF751D;
+}
+.linkText{
+    display: none;
+}
+
+.fieldSlider{
+    width: 155px;
+    text-align: center;
+}
+.sliderTitle{
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.balansFieldText{
+    text-align: center;
+}
+.titleBalans{
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em; 
+    margin-top: 30px;
+}
+.balansTextNumber{
+    width: 183px;
+    height: 44px;
+    color: black;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em; 
+
+    border: 2px solid white;
+    border-radius: 22px;
+
+    padding: 15px 5px;
+    margin-top: 6px;
+}
+
+
+
