@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors, authOperations } from '../../../redux/auth';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../../redux/auth';
 import { StandartBtn } from "../../Buttons";
 import s from "./sureModal.module.css";
 

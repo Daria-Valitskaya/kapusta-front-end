@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3001/api";
+axios.defaults.baseURL = "https://kapusta-team-project-back.herokuapp.com/api";
 
 const token = {
   set(token) {
@@ -61,24 +61,24 @@ export const logOut = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-// export const fetchCurrentUser = createAsyncThunk(
-//   "auth/refresh",
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
+export const fetchCurrentUser = createAsyncThunk(
+  "auth/current",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue(``);
-//     }
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue(``);
+    }
 
-//     token.set(persistedToken);
-//     try {
-//       const { data } = await axios.get("/auth/current");
-//       return data;
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   }
-// );
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get("/auth/current");
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+);
 
 // TODO: need to move all requests to APIservice file
