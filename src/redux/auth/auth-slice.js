@@ -82,6 +82,7 @@ const authSlice = createSlice({
       builder.addCase(
         authOperations.fetchCurrentUser.fulfilled,
         (state, action) => {
+          state.user.name = action.payload.data.name;
           state.isRegistered = true;
           state.isVerified = true;
           state.isLoggedIn = true;
@@ -98,7 +99,6 @@ const authSlice = createSlice({
           state.isRegistered = false;
           state.isVerified = false;
           state.isLoggedIn = false;
-          state.errorMessage = "isFetchingCurrent error";
           state.isFetchingCurrent = false;
         }
       );

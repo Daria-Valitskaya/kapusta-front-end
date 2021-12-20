@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3001/api";
+axios.defaults.baseURL = "https://kapusta-team-project-back.herokuapp.com/api";
 
 const token = {
   set(token) {
