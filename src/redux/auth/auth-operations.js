@@ -35,14 +35,13 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/login", credentials);
-      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {
       const { status } = error.response;
       let message;
       if (status === 400) {
-        message = "Please check email";
+        message = "Please check email for verification";
       }
       if (status === 401) {
         message = "Incorrect email or password";
@@ -81,4 +80,18 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+export const balanceInit = createAsyncThunk(
+  "auth/balance",
+  async (balance, thunkAPI) => {
+    try {
+      console.log(balance);
+      const { data } = await axios.post("/auth/balance", balance);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
 // TODO: need to move all requests to APIservice file
+//

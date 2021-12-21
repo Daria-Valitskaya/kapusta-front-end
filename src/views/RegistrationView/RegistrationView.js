@@ -47,13 +47,14 @@ const Registration = () => {
   };
 
   useEffect(() => {
-    if (errorMessage) {
+    if (!isRegistered) {
       notify(errorMessage, toast.error);
     }
     if (isRegistered) {
       notify("Verification email sent", toast.info);
     }
-  }, [errorMessage, isRegistered]);
+    return () => dispatch(resetAuth());
+  }, [dispatch, errorMessage, isRegistered]);
 
   const validate = useCallback((values) => {
     const errors = {};

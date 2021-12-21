@@ -1,16 +1,28 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { authOperations, authSelectors } from "../../redux/auth";
 import ConfirmBtn from "../Buttons/ConfirmBtn/ConfirmBtn.js";
-import s from "./balansForm.module.css";
 import BlackModal from "../ModalWindows/BlackModal/BlackModal.js";
+import s from "./balansForm.module.css";
 
 export default function BalansForm() {
   const [balans, setBalans] = useState("");
   const [stateMachine, setStateMachine] = useState("pending");
+
+  const stateBalance = useSelector(authSelectors.getBalance);
+  const dispatch = useDispatch();
+
   const uan = "UAH";
   let disabled = false;
   let notHoverBtnConfirm = "";
   let notHoverInputOfBalans = "";
+
+  // это не доделано или кривая идея в принципе (чтобы если баланс больше 0 - сразу рендерить его и не предлагать ввод)
+  // if (stateBalance > 0) {
+  //   setBalans(stateBalance);
+  //   setStateMachine("disabled");
+  // }
 
   /*
    * Отвечает за обновление состояния
@@ -37,12 +49,21 @@ export default function BalansForm() {
     }
     console.log(`Отправляем баланс: ${inputValue}`);
     setBalans(inputValue);
+    //отправляем баланс на бэк:
+    dispatch(authOperations.balanceInit({ balance: inputValue }));
     setStateMachine("disabled");
   }
-  if (stateMachine === "disabled") disabled = true;
+
+  if (stateMachine === "disabled") {
+    disabled = true;
+  }
   // console.log(notHoverBtnConfirm);notHoverBtnConfirm = s.offBtn notHoverInputOfBalans
-  if (stateMachine === "disabled") notHoverBtnConfirm = s.offBtn;
-  if (stateMachine === "disabled") notHoverInputOfBalans = s.offInput;
+  if (stateMachine === "disabled") {
+    notHoverBtnConfirm = s.offBtn;
+  }
+  if (stateMachine === "disabled") {
+    notHoverInputOfBalans = s.offInput;
+  }
 
   return (
     <div className={s.field}>
