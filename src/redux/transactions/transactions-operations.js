@@ -6,13 +6,17 @@ export const getSummary = createAsyncThunk(
   async ({ transactionType, date }, { rejectWithValue }) => {
     try {
       const { data } = await transactionsShelfAPI.fetchSummary(transactionType, date)
-      console.log(data)
       return {
         transactionType,
         data
       }
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
@@ -30,7 +34,12 @@ export const getSummaryByCategory = createAsyncThunk(
       
       return dataWithYear;
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
@@ -48,7 +57,12 @@ export const getTransForPeriod = createAsyncThunk(
         data
       }
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
@@ -66,7 +80,12 @@ export const income = createAsyncThunk(
       })
       return result;
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
@@ -84,7 +103,12 @@ export const expenses = createAsyncThunk(
       })
       return result;
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
@@ -96,7 +120,12 @@ export const deleteTransaction = createAsyncThunk(
       await transactionsShelfAPI.deleteTransaction(transactionId)
       return {transactionId, transactionType};
     } catch (error) {
-      return rejectWithValue(error)
+      const { status } = error.response;
+      let message;
+      if (status === 404) {
+        message = "Not found";
+      }
+      return rejectWithValue({ ...error.response.data, message })
     }
   }
 )
