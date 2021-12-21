@@ -1,4 +1,5 @@
 const getUserName = (state) => state.auth.user.name;
+const getBalance = (state) => state.auth.user.balance;
 const getIsFetchingCurrent = (state) => state.auth.isFetchingCurrent;
 const getIsRegistered = (state) => state.auth.isRegistered;
 const getIsVerified = (state) => state.auth.isVerified;
@@ -12,6 +13,7 @@ const authSelectors = {
   getIsVerified,
   getIsLoggedIn,
   getErrorMessage,
+  getBalance,
 };
 
 export default authSelectors;

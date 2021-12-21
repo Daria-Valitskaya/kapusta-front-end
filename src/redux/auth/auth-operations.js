@@ -35,7 +35,6 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/login", credentials);
-      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -81,4 +80,18 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+export const balanceInit = createAsyncThunk(
+  "auth/balance",
+  async (balance, thunkAPI) => {
+    try {
+      console.log(balance);
+      const { data } = await axios.post("/auth/balance", balance);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
 // TODO: need to move all requests to APIservice file
+//

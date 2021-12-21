@@ -17,7 +17,6 @@ const authSlice = createSlice({
   reducers: {
     resetAuth(state) {
       state.isRegistered = false;
-      state.isVerified = false;
       state.errorMessage = null;
     },
   },
@@ -47,7 +46,7 @@ const authSlice = createSlice({
         state.user.email = action.payload.data.email;
         state.user.balance = action.payload.data.balance;
         state.token = action.payload.data.token;
-        state.isRegistered = false;
+        state.isRegistered = true;
         state.isVerified = action.payload.data.verify;
         state.isLoggedIn = true;
         state.errorMessage = null;
@@ -56,7 +55,6 @@ const authSlice = createSlice({
 
       builder.addCase(authOperations.logIn.rejected, (state, action) => {
         console.log("login rejeted");
-        state.isRegistered = false;
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = action.payload.message;
@@ -105,6 +103,15 @@ const authSlice = createSlice({
           state.isFetchingCurrent = false;
         }
       );
+
+      builder.addCase(authOperations.balanceInit.fulfilled, (state, action) => {
+        console.log("balance success");
+        state.user.balance = action.payload.data.balance;
+      });
+
+      builder.addCase(authOperations.balanceInit.rejected, (state, action) => {
+        console.log("balance reject");
+      });
     },
 });
 export const { resetAuth } = authSlice.actions;
