@@ -1,182 +1,177 @@
-.field{
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    width: auto;
-    height: 134px;
-    margin-top: 30px;
-    padding-right: 37px;
-    padding-left: 35px;
+.field {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: auto;
+  height: 134px;
+  padding-right: 37px;
+  padding-left: 35px;
 }
 @media screen and (min-width: 768px) {
-    .field{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: auto;
-        height: 83px;
-        margin-top: 20px;
-        padding-right: 92px;
-        padding-left: 116px;
-    }
+  .field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    height: 44px;
+    padding-right: 92px;
+    padding-left: 116px;
   }
-  @media screen and (min-width: 1280px) {
-    .field{
-        padding-right: 200px;
-        padding-left: 400px;
-    }
+}
+@media screen and (min-width: 1280px) {
+  .field {
+    padding-right: 200px;
+    padding-left: 400px;
+  }
 }
 
-.link{
-    position: relative;
-    text-decoration: none;
-    color: #52555F;
-    fill: #52555F;
+.link {
+  position: relative;
+  text-decoration: none;
+  color: #52555f;
+  fill: #52555f;
 
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.04em;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 }
-.charts{
-    position: absolute;
-    top: -7px;;
-    right: -35px;
-    align-self:stretch;
+.charts {
+  position: absolute;
+  top: -7px;
+  right: -35px;
+  align-self: stretch;
 }
 
 .link:focus,
 .link:hover,
 .charts:focus,
-.charts:hover{
-    color: rgba(255, 117, 29, 1);
-    fill: rgba(255, 117, 29, 1);
+.charts:hover {
+  color: rgba(255, 117, 29, 1);
+  fill: rgba(255, 117, 29, 1);
 }
-.form{
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+}
+@media screen and (min-width: 768px) {
+  .form {
     position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 60px;
+    display: inline-block;
+    margin-top: 0px;
+  }
+}
+
+.labelText {
+  position: absolute;
+  top: -20px;
+  color: #52555f;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 @media screen and (min-width: 768px) {
-    .form{
-        position: relative;
-        display:inline-block;
-        margin-top: 0px;
-    }
+  .labelText {
+    position: static;
+    margin-right: 21px;
   }
+}
+.inputField {
+  background-color: transparent;
+  outline-color: transparent;
+  color: rgba(0, 0, 0, 1);
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0.02em;
 
-.labelText{
-    position: absolute;
-    top:-20px;
-    color: #52555F;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.02em;
-    left: 0;
-    right: 0;
-    text-align: center;
+  width: 125px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  cursor: pointer;
+  padding-right: 41px;
 }
 @media screen and (min-width: 768px) {
-    .labelText{
-        position: static;
-        margin-right: 21px;
-    }
-  }
-.inputField{
-    background-color: transparent;
-    outline-color: transparent;
-    color: rgba(0, 0, 0, 1);
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 14px;
-    text-align: right;
-    letter-spacing: 0.02em;
-
-    width: 125px;
-    height: 44px;
-    border: 2px solid rgba(255, 255, 255, 1);
+  .inputField {
+    border-radius: 16px;
     box-sizing: border-box;
-    border-top-left-radius: 22px;
-    border-bottom-left-radius: 22px;
-    cursor: pointer;
     padding-right: 41px;
-}
-@media screen and (min-width: 768px) {
-    .inputField{
-        border-radius: 16px;
-        box-sizing: border-box;
-        padding-right: 41px;
-    }
-    .btn{
-        margin-left: 15px;
-    }
   }
+  .btn {
+    margin-left: 15px;
+  }
+}
 .inputField:focus,
-.inputField:hover{
-    border-color: rgba(255, 117, 29, 1);
+.inputField:hover {
+  border-color: rgba(255, 117, 29, 1);
 }
 
-.uan{
-    position: absolute;
-    top: 4px;
-    right: 140px;
+.uan {
+  position: absolute;
+  top: 4px;
+  right: 140px;
 
-    background-color: transparent;
-    color: rgba(0, 0, 0, 1);
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 14px;
-    text-align: right;
-    letter-spacing: 0.02em;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0.02em;
 }
 @media screen and (min-width: 768px) {
-    .uan{
+  .uan {
     top: 4px;
     right: 150px;
-    }
-    
   }
-  .modalPosition{
+}
+.modalPosition {
+  position: absolute;
+  top: 220px;
+  left: 114px;
+}
+@media screen and (min-width: 768px) {
+  .modalPosition {
     position: absolute;
-    top: 220px;
-    left: 114px
-}
-  @media screen and (min-width: 768px) {
-    .modalPosition{
-        position: absolute;
-        top: 140px;
-        left: 183px
-    }
-    
+    top: 140px;
+    left: 183px;
   }
-  @media screen and (min-width: 1280px) {
-    .modalPosition{
-        position: absolute;
-        top: 140px;
-        left: 468px
-    }
 }
-  .modalPositionNone{
-      display: none;
+@media screen and (min-width: 1280px) {
+  .modalPosition {
+    position: absolute;
+    top: 140px;
+    left: 468px;
   }
-  
-    .offBtn:focus,
-    .offBtn:hover{
-        color:#52555F;
-        background-color: transparent;
-        border-color: rgba(255, 255, 255, 1);
-        cursor: default;
-    }
-    .offInput:focus,
-    .offInput:hover{
-        color: rgba(0, 0, 0, 1);
-        background-color: transparent;
-        border-color: rgba(255, 255, 255, 1);
-        cursor: default;
-    }
-  
-  
-  /* @media screen and (min-width: 768px) {
+}
+.modalPositionNone {
+  display: none;
+}
+
+.offBtn:focus,
+.offBtn:hover {
+  color: #52555f;
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 1);
+  cursor: default;
+}
+.offInput:focus,
+.offInput:hover {
+  color: rgba(0, 0, 0, 1);
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 1);
+  cursor: default;
+}
+
+/* @media screen and (min-width: 768px) {
     .modalContent {
         position: absolute;
         top:140px;
@@ -184,10 +179,7 @@
       }
   } */
 
-
-
-
-  /* @media screen and (min-width: 1280px) {
+/* @media screen and (min-width: 1280px) {
     .field{
         display: flex;
         justify-content: space-between;

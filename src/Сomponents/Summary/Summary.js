@@ -56,12 +56,10 @@ const arrayData = [
 ]
 
 const Summary = ({array}) => {
-    const summaryYear = useSelector(transactionsSelectors.getAllTransactions);
-    console.log(summaryYear);
     return (
         <div className={s.wrapper}>
             <h4 className={s.caption}>Сводка</h4>
-            <SimpleBar style={{height: '240px'}}>
+            <SimpleBar style={{height: '240px', borderBottomRightRadius: '20px', overflow: "hidden"}}>
                 <ul className={s.list}>
                     {arrayData.map(item => (
                         <li key={item.month} className={s.listItem}>
