@@ -56,7 +56,7 @@ const arrayData = [
 ]
 
 const Summary = ({array}) => {
-    const summaryYear = useSelector(transactionsSelectors.getTransactionByYear);
+    const summaryYear = useSelector(transactionsSelectors.getAllTransactions);
     console.log(summaryYear);
     return (
         <div className={s.wrapper}>

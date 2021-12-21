@@ -20,7 +20,14 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const transactionPersistConfig = {
+  key: 'transactions',
+  storage,
+  blacklist: [],
+}
+
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+const persistedTransactionsReducer = persistReducer(transactionPersistConfig, transactionsReducer);
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,7 +40,7 @@ const middleware = [
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    transactions: transactionsReducer
+    transactions: persistedTransactionsReducer
     // contacts: contactsReducer, // (boilerplate)
   },
   middleware: middleware,

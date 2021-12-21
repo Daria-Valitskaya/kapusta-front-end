@@ -3,13 +3,12 @@ import { transactionsShelfAPI } from '../../apiService'
 
 export const getSummary = createAsyncThunk(
   'transactions/getSummary',
-  async ({ type, date }, { rejectWithValue }) => {
+  async ({ transactionType, date }, { rejectWithValue }) => {
     try {
-      const { data } = await transactionsShelfAPI.fetchSummary(type, date)
-      const year = date.substr(6, 9)
+      const { data } = await transactionsShelfAPI.fetchSummary(transactionType, date)
+      console.log(data)
       return {
-        year,
-        type,
+        transactionType,
         data
       }
     } catch (error) {
@@ -20,18 +19,16 @@ export const getSummary = createAsyncThunk(
 
 export const getSummaryByCategory = createAsyncThunk(
   'transactions/categories/getSummaryByCategory',
-  async ({ type, date }, { rejectWithValue }) => {
+  async ({ transactionType, date }, { rejectWithValue }) => {
     try {
       const { data } = await transactionsShelfAPI.fetchSummaryByCategory(
-        type,
+        transactionType,
         date
       )
-      const year = date.substr(6, 9)
-      return {
-        year,
-        type,
-        data
-      }
+      const year = date.substr((date.length - 4), (date.length - 1))
+      const dataWithYear = data.map(({ category, sum }) => ({ year, category, sum }))
+      
+      return dataWithYear;
     } catch (error) {
       return rejectWithValue(error)
     }
@@ -40,15 +37,14 @@ export const getSummaryByCategory = createAsyncThunk(
 
 export const getTransForPeriod = createAsyncThunk(
   'transactions/categories/getTransForPeriod',
-  async ({ type, period }, { rejectWithValue }) => {
+  async ({ transactionType, period }, { rejectWithValue }) => {
     try {
       const { data } = await transactionsShelfAPI.fetchTransForPeriod(
-        type,
+        transactionType,
         period
       )
       return {
         period,
-        type,
         data
       }
     } catch (error) {
@@ -58,20 +54,17 @@ export const getTransForPeriod = createAsyncThunk(
 )
 
 export const income = createAsyncThunk(
-  'transactions/income',
-  async ({ date, description, category, sum }, { rejectWithValue }) => {
+  'transaction/income',
+  async ({ transactionType, date, description, category, sum }, { rejectWithValue }) => {
     try {
-      const { data } =  await transactionsShelfAPI.patchIncome({
+      const result = await transactionsShelfAPI.patchIncome({
+        transactionType,
         date,
         description,
         category,
         sum
       })
-      const year = data.date.substr(6, 9)
-      return {
-        year,
-        data
-      }
+      return result;
     } catch (error) {
       return rejectWithValue(error)
     }
@@ -79,20 +72,17 @@ export const income = createAsyncThunk(
 )
 
 export const expenses = createAsyncThunk(
-  'transactions/expenses',
-  async ({ date, description, category, sum }, { rejectWithValue }) => {
+  'transaction/expenses',
+  async ({ transactionType, date, description, category, sum }, { rejectWithValue }) => {
     try {
-      const { data } = await transactionsShelfAPI.patchExpenses({
+      const result = await transactionsShelfAPI.patchExpenses({
+        transactionType,
         date,
         description,
         category,
         sum
       })
-      const year = data.date.substr(6, 9)
-      return {
-        year,
-        data
-      }
+      return result;
     } catch (error) {
       return rejectWithValue(error)
     }
@@ -100,16 +90,11 @@ export const expenses = createAsyncThunk(
 )
 
 export const deleteTransaction = createAsyncThunk(
-  'transactions/deleteTransaction',
-  async ({date, transactionId, type}, { rejectWithValue }) => {
+  'transaction/deleteTransaction',
+  async ({transactionId, transactionType}, { rejectWithValue }) => {
     try {
       await transactionsShelfAPI.deleteTransaction(transactionId)
-      const year = date.substr(6, 9)
-      return {
-        year,
-        transactionId,
-        type
-      }
+      return {transactionId, transactionType};
     } catch (error) {
       return rejectWithValue(error)
     }
