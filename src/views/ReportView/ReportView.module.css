@@ -1,0 +1,95 @@
+.list_wraper {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 34px;
+  }
+  
+  .list {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+    align-items: center;
+  }
+  
+  .list_topContainer {
+    width: 282px;
+    
+    
+      width: 666px;
+      height: 114px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+}
+  
+    
+     
+
+
+  
+  .list_topContainerBalance {
+    
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+   
+    
+  }
+  
+  .item {
+    margin: 0;
+  }
+  
+  .title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  
+    color: #000000;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .chart_wraper {
+    width: 310px;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .list_wraper {
+      width: 666px;
+      padding-top: 20px;
+      background: #ffffff;
+      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      border-radius: 30px;
+    }
+    .chart_wraper {
+      width: 666px;
+      min-height: 0;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 30px;
+      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      margin-bottom: 75px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .list_wraper {
+      width: 1060px;
+      margin: 10px auto 30px;
+    }
+    .chart_wraper {
+      width: 1060px;
+      margin: 0 auto 30px;
+    }
+  }
