@@ -1,10 +1,8 @@
 .tabsContainer {
-  margin-top: 40px;
+  margin-top: 58px;
   margin-right: auto;
   margin-left: auto;
   width: 665px;
-  margin-bottom: 40px;
-  position: relative;
 }
 
 .tabList {
@@ -43,9 +41,33 @@
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
 }
 
+.setDataWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.buttonWrapper {
+  width: 265px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 767px) {
   .tabsContainer {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .setDataWrapper {
+    justify-content: center;
+  }
+
+  .buttonWrapper {
+    margin-top: 32px;
   }
 }
 
@@ -53,11 +75,20 @@
   .tabsContainer {
     width: 1060px;
     margin-bottom: 0;
+    margin-top: 9px;
   }
 
   .tabPanel {
     padding: 33px 20px 61px;
     width: 1060px;
+  }
+
+  .setDataWrapper {
+    margin-bottom: 59px;
+  }
+
+  .buttonWrapper {
+    margin-left: 27px;
   }
 
   .wrapper {

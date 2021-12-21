@@ -1,13 +1,31 @@
+import { useState, useEffect } from 'react';
 import BalansForm from "../../Сomponents/BalansForm/BalansForm";
 import ContainerTabs from "../../Сomponents/ContainerTabs";
-import InputPanel from "../../Сomponents/InputPanel/InputPanel";
 import MobileTabs from "../../Сomponents/MobileTabs";
+import CalendarBar from "../../Сomponents/CalendarBar";
+import s from './HomeViews.module.css';
 
 export default function HomeViews() {
+  // const [width, setWidth] = useState(0);
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', updateWindowDimensions);
+  //   return () => {
+  //     window.removeEventListener('resize', updateWindowDimensions);
+  //   }
+  // })
+
+  // const updateWindowDimensions = () => {
+  //   setWidth(window.innerWidth);
+  // }
+
   return (
-    <div style={{ paddingBottom: "57px" }}>
+    <div className={s.wrapper}>
       <BalansForm />
-      <InputPanel />
+      {/* {width <= 767 &&
+        <CalendarBar />
+      } */}
+      
       <MobileTabs />
       <ContainerTabs />
     </div>

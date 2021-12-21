@@ -57,7 +57,7 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .wrapper {
     position: absolute;
-    top: 666px;
-    left: 32px;
+    top: 900px;
+    left: 80px;
   }
 }
