@@ -24,10 +24,8 @@ const INITIAL_VALUES = {
 const Login = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  // const isVerified = useSelector(authSelectors.getIsVerified);
   const errorMessage = useSelector(authSelectors.getErrorMessage);
-  // const isRegistered = useSelector(authSelectors.getIsRegistered);
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const validate = useCallback((values) => {
     const errors = {};
@@ -59,10 +57,11 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (errorMessage) {
+    if (!isLoggedIn && errorMessage) {
       notify(errorMessage, toast.error);
     }
-  }, [errorMessage]);
+    return () => dispatch(resetAuth());
+  }, [dispatch, errorMessage, isLoggedIn]);
 
   const handleSubmit = useCallback(
     (values, { setSubmitting, resetForm }) => {

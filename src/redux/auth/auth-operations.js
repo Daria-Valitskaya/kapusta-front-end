@@ -42,7 +42,7 @@ export const logIn = createAsyncThunk(
       const { status } = error.response;
       let message;
       if (status === 400) {
-        message = "Please check email";
+        message = "Please check email for verification";
       }
       if (status === 401) {
         message = "Incorrect email or password";
