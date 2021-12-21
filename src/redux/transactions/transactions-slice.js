@@ -2,9 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { transactionsOperations } from ".";
 
 const initialState = {
-  transactionByYear: {},
-  transactionsByCategories: {},
-  transactionsForPeriod: {},
+  allTransactions: {
+    income: [],
+    expenses: [],
+  },
+  transactionsByCategories: [],
+  transactionsForPeriod: [],
   isLoading: false,
   error: null,
 };
@@ -16,19 +19,15 @@ const transactionsSlice = createSlice({
 
     (builder) => {
       // GET SUMMARY
-      builder.addCase(transactionsOperations.getSummary.fulfilled, ({transactionByYear, isLoading}, { payload }) => {
+      builder.addCase(transactionsOperations.getSummary.fulfilled, ({allTransactions, isLoading}, { payload }) => {
         console.log("transactions received successfully");
-        transactionByYear = {
-          [payload.year]: {
-            [payload.type]: [...payload.data],
-          }
-        };
+        allTransactions[payload.transactionType] = payload.data;
         isLoading = false;
       });
 
       builder.addCase(transactionsOperations.getSummary.rejected, ({isLoading, error}, { payload }) => {
         console.log("something went wrong, transactions are not received");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
@@ -41,17 +40,14 @@ const transactionsSlice = createSlice({
       // GET SUMMARY BY CATEGORY
       builder.addCase(transactionsOperations.getSummaryByCategory.fulfilled, ({transactionsByCategories, isLoading}, { payload }) => {
         console.log("transactions received successfully");
-        transactionsByCategories = {
-          [payload.year]: {
-            [payload.type]: [...payload.data],
-          }
-        };
+        console.log(payload)
+        transactionsByCategories = [...payload];
         isLoading = false;
       });
 
       builder.addCase(transactionsOperations.getSummaryByCategory.rejected, ({isLoading, error}, {payload}) => {
         console.log("something went wrong, transactions are not received");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
@@ -64,17 +60,13 @@ const transactionsSlice = createSlice({
       // GET TRANSACTION FOR PERIOD
       builder.addCase(transactionsOperations.getTransForPeriod.fulfilled, ({transactionsForPeriod, isLoading}, { payload }) => {
         console.log("transactions received successfully");
-        transactionsForPeriod = {
-          [payload.period]: {
-            [payload.type]: [...payload.data],
-          }
-        };
+        transactionsForPeriod[payload.period] = [...payload.data];
         isLoading = false;
       });
 
       builder.addCase(transactionsOperations.getTransForPeriod.rejected, ({isLoading, error}, {payload}) => {
         console.log("something went wrong, transactions are not received");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
@@ -85,15 +77,15 @@ const transactionsSlice = createSlice({
       });
 
       // ADD INCOME TRANSACTION
-      builder.addCase(transactionsOperations.income.fulfilled, ({transactionByYear, isLoading}, { payload }) => {
+      builder.addCase(transactionsOperations.income.fulfilled, ({allTransactions, isLoading}, { payload }) => {
         console.log("income transaction have been added");
-        transactionByYear[payload.year].income.push(payload.data);
+        allTransactions.income = [...allTransactions.income, payload];
         isLoading = false;
       });
 
       builder.addCase(transactionsOperations.income.rejected, ({isLoading, error}, {payload}) => {
         console.log("something went wrong, transaction are not added");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
@@ -104,15 +96,15 @@ const transactionsSlice = createSlice({
       });
 
       // ADD EXPENSES TRANSACTION
-      builder.addCase(transactionsOperations.expenses.fulfilled, ({transactionByYear, isLoading}, { payload }) => {
+      builder.addCase(transactionsOperations.expenses.fulfilled, ({allTransactions, isLoading}, { payload }) => {
         console.log("expenses transaction have been added");
-        transactionByYear[payload.year].expenses.push(payload.data);
+        allTransactions.expenses = [...allTransactions.expenses, payload];
         isLoading = false;
       });
 
       builder.addCase(transactionsOperations.expenses.rejected, ({isLoading, error}, {payload}) => {
         console.log("something went wrong, transaction are not added");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
@@ -123,17 +115,15 @@ const transactionsSlice = createSlice({
       });
 
       // DELETE TRANSACTION
-      builder.addCase(transactionsOperations.deleteTransaction.fulfilled, ({transactionByYear, isLoading}, { payload }) => {
+      builder.addCase(transactionsOperations.deleteTransaction.fulfilled, ({allTransactions, isLoading}, { payload }) => {
         console.log("transaction have been deleted");
-        transactionByYear[payload.year] = {
-          [payload.type]: transactionByYear[payload.year][payload.type].filter(transaction => transaction.id !== payload.transactionId),
-        }
+        allTransactions[payload.transactionType] = allTransactions[payload.transactionType].filter(transaction => transaction._id !== payload.transactionId);
           isLoading = false;
       });
 
       builder.addCase(transactionsOperations.deleteTransaction.rejected, ({isLoading, error}, {payload}) => {
         console.log("something went wrong, transaction are not deleted");
-        error = payload.message;
+        error = payload;
         isLoading = false;
       });
 
