@@ -24,6 +24,13 @@ const Table = ({array, onDeleteBtn, transactionType}) => {
       array.fill(draft, position)
     }
   }
+
+  const hendleCleanArray = (id) => {
+    onDeleteBtn(transactionType, id);
+    // array.filter(item => item._id !== id);
+    console.log(array);
+  }
+
   return (
     <SimpleBar className={s.simpleBar}>
       <table className={s.table}>
@@ -52,7 +59,7 @@ const Table = ({array, onDeleteBtn, transactionType}) => {
                 {!item.emptyItem &&
                   <button 
                     className={s.deleteBtn}
-                    onClick={() => onDeleteBtn(transactionType, item._id)}
+                    onClick={() => hendleCleanArray(item._id)}
                   >
                     <img
                       src={deleteImg}

@@ -24,6 +24,7 @@ const ContainerTabs = () => {
   const month = value.getMonth() + 1;
   const year = value.getFullYear();
   const fullDate = `${String(date).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`;
+  const period = `${String(month).padStart(2, '0')}.${year}`;
 
   const summaryExpense = useSelector(transactionsSelectors.getAllExpenses);
   const summaryIncome = useSelector(transactionsSelectors.getAllIncome);
@@ -38,12 +39,15 @@ const ContainerTabs = () => {
     (item) => item.transactionType === "income"
   );
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
+    useEffect(() => {
+      dispatch(transactionsOperations.getTransForPeriod({transactionType: 'expense', period}))
+      dispatch(transactionsOperations.getSummary({transactionType:'expense', date: fullDate})) 
+    }, [summaryExpense.length, dispatch, fullDate, period])
+
+    useEffect(() => {
+      dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period}))
+      dispatch(transactionsOperations.getSummary({transactionType:'income', date: fullDate})) 
+    }, [summaryIncome.length, dispatch, period, fullDate])
 
   const sendData = {
     date: fullDate,
@@ -53,7 +57,14 @@ const ContainerTabs = () => {
   }
 
   const onDeleteBtn = (type, id) => {
+    console.log(type);
     dispatch(transactionsOperations.deleteTransaction({transactionId: id, transactionType: type}))
+    if(type === 'income') {
+      incomeTransactions.filter(item => item._id !== id)
+    }
+    if(type === 'expense') {
+      expenseTransactions.filter(item => item._id !== id)
+    }
   }
 
   const onClick = (transType) => {
