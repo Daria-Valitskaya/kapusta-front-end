@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { authSelectors } from "../../redux/auth";
 import { logIn } from "../../redux/auth/auth-operations";
 import { resetAuth } from "../../redux/auth/auth-slice";
