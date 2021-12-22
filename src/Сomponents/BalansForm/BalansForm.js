@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { authOperations, authSelectors } from "../../redux/auth";
@@ -18,12 +18,13 @@ export default function BalansForm() {
   let notHoverBtnConfirm = "";
   let notHoverInputOfBalans = "";
 
-  // это не доделано или кривая идея в принципе (чтобы если баланс больше 0 - сразу рендерить его и не предлагать ввод)
-  // if (stateBalance > 0) {
-  //   setBalans(stateBalance);
-  //   setStateMachine("disabled");
-  // }
-
+  // при положительном балансе выводит его и блокирует форму:
+  useEffect(() => {
+    if (stateBalance > 0) {
+      setBalans(stateBalance);
+      setStateMachine("disabled");
+    }
+  }, [stateBalance]);
   /*
    * Отвечает за обновление состояния
    */
@@ -57,7 +58,6 @@ export default function BalansForm() {
   if (stateMachine === "disabled") {
     disabled = true;
   }
-  // console.log(notHoverBtnConfirm);notHoverBtnConfirm = s.offBtn notHoverInputOfBalans
   if (stateMachine === "disabled") {
     notHoverBtnConfirm = s.offBtn;
   }
@@ -69,18 +69,21 @@ export default function BalansForm() {
     <div className={s.field}>
       <form className={s.form} onSubmit={handleSubmit}>
         <span className={s.labelText}> Баланс:</span>
-        <label>
-          <input
-            type="text"
-            disabled={disabled}
-            className={s.inputField + " " + notHoverInputOfBalans}
-            minLength={1}
-            placeholder="00.00"
-            value={balans}
-            onChange={handleChange}
-          />
+        <label className={s.label}>
+          <div className={s.inputWrapper}>
+            <input
+              type="text"
+              disabled={disabled}
+              className={s.inputField + " " + notHoverInputOfBalans}
+              minLength={1}
+              placeholder="00.00"
+              value={balans}
+              onChange={handleChange}
+            />
+            <span className={s.uan}>{uan}</span>
+            {/* {uan} */}
+          </div>
         </label>
-        <p className={s.uan}>{uan}</p>
         <ConfirmBtn
           className={s.btn + " " + notHoverBtnConfirm}
           btnOff={disabled}

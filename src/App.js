@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import "./App.module.css";
 import { authOperations, authSelectors } from "./redux/auth";
 import Container from "./Сomponents/Container/Container";
@@ -29,7 +28,7 @@ function App() {
     !isFetchingCurrentUser && (
       <div>
         <Container>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
           <Suspense fallback={<h1>LOADING...</h1>}>
             <Header />
             <Switch>
