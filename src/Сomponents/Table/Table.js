@@ -8,10 +8,7 @@ import { transactionsOperations } from '../../redux/transactions';
 import deleteImg from "../../images/other/delete.svg";
 import s from "./Table.module.css";
 
-const array = []
-
 const Table = ({array, onDeleteBtn, transactionType}) => {
-  // dispatch(transactionsOperations.deleteTransaction());
   if(array) {
     if(array.length < 9) {
       const draft = {
