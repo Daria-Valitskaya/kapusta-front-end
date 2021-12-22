@@ -8,9 +8,7 @@ import { transactionsOperations } from '../../redux/transactions';
 import deleteImg from "../../images/other/delete.svg";
 import s from "./Table.module.css";
 
-function Table({array, transactionType}) {
-  // const dispatch = useDispatch();
-
+const Table = ({array, onDeleteBtn, transactionType}) => {
   if(array) {
     if(array.length < 9) {
       const draft = {
@@ -26,6 +24,13 @@ function Table({array, transactionType}) {
       array.fill(draft, position)
     }
   }
+
+  const hendleCleanArray = (id) => {
+    onDeleteBtn(transactionType, id);
+    // array.filter(item => item._id !== id);
+    console.log(array);
+  }
+
   return (
     <SimpleBar className={s.simpleBar}>
       <table className={s.table}>
@@ -54,11 +59,7 @@ function Table({array, transactionType}) {
                 {!item.emptyItem &&
                   <button 
                     className={s.deleteBtn}
-                    // onClick={() => 
-                    //   dispatch(transactionsOperations.deleteTransaction(
-                    //     {transactionId: item._id, transactionType: transactionType}
-                    //   ))
-                    // }
+                    onClick={() => hendleCleanArray(item._id)}
                   >
                     <img
                       src={deleteImg}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -24,13 +24,14 @@ const ContainerTabs = () => {
   const month = value.getMonth() + 1;
   const year = value.getFullYear();
   const fullDate = `${String(date).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`;
+  const period = `${String(month).padStart(2, '0')}.${year}`;
 
   const summaryExpense = useSelector(transactionsSelectors.getAllExpenses);
   const summaryIncome = useSelector(transactionsSelectors.getAllIncome);
   const transactionsByPeriod = useSelector(
     transactionsSelectors.getTransactionsForPeriod
   );
-  const resultTransactions = Object.values(transactionsByPeriod).flat();
+  const resultTransactions = (Object.values(transactionsByPeriod)).flat();
   const expenseTransactions = resultTransactions.filter(
     (item) => item.transactionType === "expense"
   );
@@ -38,20 +39,41 @@ const ContainerTabs = () => {
     (item) => item.transactionType === "income"
   );
 
+    useEffect(() => {
+      dispatch(transactionsOperations.getTransForPeriod({transactionType: 'expense', period}))
+      dispatch(transactionsOperations.getSummary({transactionType:'expense', date: fullDate})) 
+    }, [summaryExpense.length, dispatch, fullDate, period])
+
+    useEffect(() => {
+      dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period}))
+      dispatch(transactionsOperations.getSummary({transactionType:'income', date: fullDate})) 
+    }, [summaryIncome.length, dispatch, period, fullDate])
+
   const sendData = {
     date: fullDate,
     description: description,
     category: category,
-    sum: sum,
+    sum: Number(sum),
+  }
+
+  const onDeleteBtn = (type, id) => {
+    console.log(type);
+    dispatch(transactionsOperations.deleteTransaction({transactionId: id, transactionType: type}))
+    if(type === 'income') {
+      incomeTransactions.filter(item => item._id !== id)
+    }
+    if(type === 'expense') {
+      expenseTransactions.filter(item => item._id !== id)
+    }
   }
 
   const onClick = (transType) => {
-    console.log({transactioType: transType, ...sendData});
+    console.log({transactionType: transType, ...sendData});
     if(transType === 'income') {
-      dispatch(transactionsOperations.income({transactioType: transType, ...sendData}))
+      dispatch(transactionsOperations.income({transactionType: transType, ...sendData}))
     }
     if(transType === 'expense') {
-      dispatch(transactionsOperations.expenses({transactioType: transType, ...sendData}))
+      dispatch(transactionsOperations.expenses({transactionType: transType, ...sendData}))
     }
   }
 
@@ -59,10 +81,24 @@ const ContainerTabs = () => {
     <>
       <Tabs className={s.tabsContainer}>
         <TabList className={s.tabList}>
-          <Tab className={s.tab} selectedClassName={s.selectedTab}>
+          <Tab 
+            className={s.tab} 
+            selectedClassName={s.selectedTab}
+            onClick={() => {
+              dispatch(transactionsOperations.getTransForPeriod({transactionType: 'expense', period: '12.2021'}))
+              dispatch(transactionsOperations.getSummary({transactionType:'expense', date: '12.07.2021'})) 
+            }}
+          >
             Расход
           </Tab>
-          <Tab className={s.tab} selectedClassName={s.selectedTab}>
+          <Tab 
+            className={s.tab} 
+            selectedClassName={s.selectedTab}
+            onClick={() => {
+              dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period: '12.2021'}))
+              dispatch(transactionsOperations.getSummary({transactionType:'income', date: '12.07.2021'})) 
+            }}
+          >
             Доход
           </Tab>
         </TabList>
@@ -88,7 +124,7 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table array={expenseTransactions} transactionType={'expense'}/>
+              <Table array={expenseTransactions} transactionType={'expense'} onDeleteBtn={onDeleteBtn}/>
               <Summary array={summaryExpense}/>
             </div>
           </div>
@@ -114,7 +150,7 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table array={incomeTransactions} transactionType={'income'}/>
+              <Table array={incomeTransactions} transactionType={'income'} onDeleteBtn={onDeleteBtn}/>
               <Summary array={summaryIncome} />
             </div>
           </div>

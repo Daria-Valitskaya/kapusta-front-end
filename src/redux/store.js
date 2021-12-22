@@ -20,6 +20,13 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+// const transactionPersistConfig = {
+//   key: 'transactions',
+//   storage,
+//   blacklist: [],
+// }
+
+
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const middleware = [
