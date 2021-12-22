@@ -1,10 +1,6 @@
 import React, { useEffect, lazy } from "react";
 
-import {
-  Link,
-  useRouteMatch,
-  useLocation,
-} from "react-router-dom";
+import { Link, useRouteMatch, useLocation } from "react-router-dom";
 import sprite from "../../images/other/sprite_categories.svg";
 import IncomeExpenses from "../../Сomponents/IncomeExpenses/IncomeExpenses";
 import BalansReportView from "../../Сomponents/BalansReportView/BalansReportView";
@@ -13,12 +9,9 @@ import { setCurrentLocation } from "../../redux/screenWidth/screenWidth.action";
 import css from "./ReportView.module.css";
 import { useDispatch } from "react-redux";
 
-
 import ReportExpense from "../../Сomponents/reportExpense/ReportExpense";
 
-
 const ReportView = () => {
-
   const match = useRouteMatch();
   const location = useLocation();
 
@@ -31,15 +24,14 @@ const ReportView = () => {
   const activeLocation = location.pathname;
 
   return (
-    <div>
+    <div className={css.background}>
       <div>
-      <BalansReportView />
-      <IncomeExpenses />
-      <MobileTabs />
-    </div>
+        <BalansReportView />
+        <IncomeExpenses />
+        <MobileTabs />
+      </div>
 
-      
-    <div className={css.list_wraper}>
+      <div className={css.list_wraper}>
         <ul className={css.list}>
           <li className={css.item}>
             <Link to={`${match.url}`}>
@@ -63,14 +55,12 @@ const ReportView = () => {
             </Link>
           </li>
         </ul>
-        
-        <ReportExpense/>
-          
-       
+
+        <ReportExpense />
       </div>
-      <div className={css.chart_wraper}>
-       
-      </div>
+
+      <div className={css.chart_wraper}></div>
+      {/* <div className={css.bottomBackground}></div> */}
     </div>
   );
 };

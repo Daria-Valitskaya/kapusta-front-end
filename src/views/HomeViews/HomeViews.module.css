@@ -6,11 +6,31 @@
   .wrapper {
     padding-top: 40px;
     padding-bottom: 375px;
+
+    background-image: url("../../images/background/Group-2.png");
+    background-repeat: no-repeat;
+    background-position: top 1033px left 497px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .wrapper {
     padding-bottom: 83px;
+
+    background-image: url("../../images/background/Group-1280.png");
+    background-repeat: no-repeat;
+    background-position: top 656px left 0px;
+  }
+}
+
+.background {
+  border-radius: 0 0 0 120px;
+  background-color: #f5f6fb;
+  height: 286px;
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    height: 526px;
   }
 }
