@@ -26,6 +26,7 @@ const authPersistConfig = {
 //   blacklist: [],
 // }
 
+
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const middleware = [
@@ -39,7 +40,7 @@ const middleware = [
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    transactions: transactionsReducer 
+    transactions: transactionsReducer,
     // contacts: contactsReducer, // (boilerplate)
   },
   middleware: middleware,
