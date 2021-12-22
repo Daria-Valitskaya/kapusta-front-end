@@ -1,21 +1,27 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { useSelector } from "react-redux";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { useSelector } from 'react-redux';
-import { transactionsOperations, transactionsSelectors } from '../../redux/transactions';
-import Summary from "../Summary/Summary";
+import { transactionsSelectors } from "../../redux/transactions";
+import { StandartBtn } from "../Buttons";
 import CalendarComponent from "../CalendarBar";
 import InputPanel from "../InputPanel";
-import { StandartBtn } from "../Buttons";
+import Summary from "../Summary/Summary";
 import Table from "../Table";
 import s from "./ContainerTabs.module.css";
 
 const ContainerTabs = () => {
   const summaryExpense = useSelector(transactionsSelectors.getAllExpenses);
   const summaryIncome = useSelector(transactionsSelectors.getAllIncome);
-  const transactionsByPeriod = useSelector(transactionsSelectors.getTransactionsForPeriod);
-  const resultTransactions = (Object.values(transactionsByPeriod)).flat();
-  const expenseTransactions = resultTransactions.filter(item => item.transactionType === "expense");
-  const incomeTransactions = resultTransactions.filter(item => item.transactionType === "income");
+  const transactionsByPeriod = useSelector(
+    transactionsSelectors.getTransactionsForPeriod
+  );
+  const resultTransactions = Object.values(transactionsByPeriod).flat();
+  const expenseTransactions = resultTransactions.filter(
+    (item) => item.transactionType === "expense"
+  );
+  const incomeTransactions = resultTransactions.filter(
+    (item) => item.transactionType === "income"
+  );
 
   return (
     <>
@@ -40,8 +46,8 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table array={expenseTransactions}/>
-              <Summary array={summaryExpense}/>
+              <Table array={expenseTransactions} />
+              {/* <Summary array={summaryExpense}/> */}
             </div>
           </div>
         </TabPanel>
@@ -56,8 +62,8 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table  array={incomeTransactions}/>
-              <Summary array={summaryIncome}/>
+              <Table array={incomeTransactions} />
+              <Summary array={summaryIncome} />
             </div>
           </div>
         </TabPanel>
