@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
-
-import categoriesExpense from "../../data/categoryConsumption.json";
 import SelectCategory from "../SelectCategory/SelectCategory";
 
 import s from "./InputPanel.module.css";
-import sum from "../../images/other/calculator.svg";
+import sumImg from "../../images/other/calculator.svg";
 
-export default function InputPanel() {
+export default function InputPanel({ 
+  description,
+  setDescription,
+  setCategory,
+  sum,
+  setSum,
+  categories }) {
+
   return (
     <form className={s.formPanel} id="formPanel">
       <input
@@ -14,20 +18,26 @@ export default function InputPanel() {
         type="text"
         name="description"
         placeholder="Описание товара"
+        value={description}
+        onChange={(e) => setDescription(e.currentTarget.value)}
       />
 
-      <SelectCategory categoriesExpense={categoriesExpense} />
+      <SelectCategory 
+        categories={categories} 
+        onChange={(e) => setCategory(e.currentTarget.value)}
+      />
 
       <div className={s.wrapperSum}>
         <input
           className={s.sum}
           // type="number"
-          // value=""
           name="sum"
           placeholder="0.00"
+          value={sum}
+          onChange={(e) => setSum(e.currentTarget.value)}
         />
         <button type="button" className={s.sumButton}>
-          <img src={sum} alt="sum" />
+          <img src={sumImg} alt="sum" />
         </button>
       </div>
     </form>

@@ -78,6 +78,7 @@ export const income = createAsyncThunk(
         category,
         sum
       })
+      console.log(result);
       return result;
     } catch (error) {
       const { status } = error.response;
