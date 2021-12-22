@@ -201,12 +201,12 @@ p {
   background-color: #ff751d;
 }
 
-/* @media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) {
   .container {
     width: 480px;
     padding: 0 15px;
     margin: 0 auto;
-    padding-bottom: 180px;
+    /* padding-bottom: 180px; */
   }
 
   .title {
@@ -227,7 +227,7 @@ p {
   .dollarSymbol {
     font-size: 45px;
   }
-} */
+}
 
 @media screen and (min-width: 768px) {
   .container {
@@ -277,7 +277,6 @@ p {
   .title {
     padding-left: 0;
     position: relative;
-    /* margin-bottom: 136px; */
   }
 
   .mainTitle {
@@ -307,8 +306,24 @@ p {
   height: 89px;
   margin-left: 35px;
   background-image: url("../../images/background/Vector-2-320.png");
-  background-position: top 710px, left 35px;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 480px) {
+  .background {
+    height: 286px;
+    background-image: url("../../images/background/Vector-320.png");
+    background-position: top 104px left 428px;
+    background-repeat: no-repeat;
+  }
+
+  .bottomBackground {
+    width: 83px;
+    height: 89px;
+    margin-left: 55px;
+    background-image: url("../../images/background/Vector-2-320.png");
+    background-repeat: no-repeat;
+  }
 }
 
 @media screen and (min-width: 768px) {
