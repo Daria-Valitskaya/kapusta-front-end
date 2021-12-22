@@ -1,12 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import EllipsisText from "react-ellipsis-text";
 import { v4 } from 'uuid';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import { transactionsOperations } from '../../redux/transactions';
 import deleteImg from "../../images/other/delete.svg";
 import s from "./Table.module.css";
 
-function Table({array}) {
+function Table({array, transactionType}) {
+  // const dispatch = useDispatch();
+
   if(array) {
     if(array.length < 9) {
       const draft = {
@@ -48,7 +52,14 @@ function Table({array}) {
               )}
               <td>
                 {!item.emptyItem &&
-                  <button className={s.deleteBtn}>
+                  <button 
+                    className={s.deleteBtn}
+                    // onClick={() => 
+                    //   dispatch(transactionsOperations.deleteTransaction(
+                    //     {transactionId: item._id, transactionType: transactionType}
+                    //   ))
+                    // }
+                  >
                     <img
                       src={deleteImg}
                       alt="delete bucket"

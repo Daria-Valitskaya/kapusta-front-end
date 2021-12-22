@@ -10,7 +10,6 @@ incomeApi('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmI5MjgzMDRiOGJiNDg2
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // console.log(isLoggedIn);
   return (
     <header className={s.header}>
       <Navigation />

@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.module.css";
 import { authOperations, authSelectors } from "./redux/auth";
 import Container from "./Сomponents/Container/Container";

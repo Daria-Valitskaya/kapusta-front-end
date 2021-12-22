@@ -4,13 +4,13 @@ import css from "./CategoriesList.module.css";
 
 const contacts = [
       
-      { id: "id-4", description: "qwe", category: "Техника", categorySum: "100", transactionType
+      { id: "id-4", description: "qwe", category: "Техника", categorySum: "2000", transactionType
       :"expense" },
-      { id: "id-5", description: "qwe", category: "Образование", categorySum: "100", transactionType
+      { id: "id-5", description: "qwe", category: "Образование", categorySum: "2000", transactionType
       :"expense" },
-      { id: "id-6", description: "qwe", category: "Транспорт", categorySum: "100", transactionType
+      { id: "id-6", description: "qwe", category: "Транспорт", categorySum: "1000", transactionType
       :"expense" },
-      { id: "id-7", description: "qwe", category: "Продукты", categorySum: "100", transactionType
+      { id: "id-7", description: "qwe", category: "Продукты", categorySum: "1900", transactionType
       :"expense" },
 ],
     

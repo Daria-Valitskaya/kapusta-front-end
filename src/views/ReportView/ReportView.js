@@ -11,6 +11,9 @@ import { useDispatch } from "react-redux";
 
 import ReportExpense from "../../Сomponents/reportExpense/ReportExpense";
 
+import Charts from "../../Сomponents/Charts/Charts";
+
+
 const ReportView = () => {
   const match = useRouteMatch();
   const location = useLocation();
@@ -56,7 +59,13 @@ const ReportView = () => {
           </li>
         </ul>
 
-        <ReportExpense />
+        
+        <ReportExpense/>
+        <Charts/>
+       
+      </div>
+      <div className={css.chart_wraper}>
+       
       </div>
 
       <div className={css.chart_wraper}></div>
