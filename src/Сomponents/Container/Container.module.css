@@ -4,87 +4,17 @@
   margin-left: auto;
   margin-right: auto;
 }
-.background {
-  border-radius: 0 0 0 120px;
-  background-color: #f5f6fb;
-  height: 342px;
-  position: relative;
-  background-image: url("../../images/background/Vector-320.png");
-  background-position: top 160px left 271px;
-  background-repeat: no-repeat;
-}
-
-.background::after {
-  position: absolute;
-  content: "";
-  width: 83px;
-  height: 89px;
-  top: 767px;
-  left: 35px;
-  background-image: url("../../images/background/Vector-2-320.png");
-  background-repeat: no-repeat;
-}
-
-@media screen and (min-width: 480px) {
-  .container {
-    width: 480px;
-    height: 930px;
-  }
-
-  .background {
-    height: 582px;
-    background-image: url("../../images/background/Group-768.png");
-    background-repeat: repeat-x;
-    background-position: top 84px left 0px;
-  }
-
-  .background::after {
-    width: 183px;
-    height: 142px;
-    top: 826px;
-    left: 103px;
-    background-image: url("../../images/background/Group-2.png");
-    background-repeat: repeat;
-  }
-}
 
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
-    min-height: 1024px;
-  }
-
-  .background {
-    height: 582px;
-    background-image: url("../../images/background/Group-768.png");
-    background-repeat: repeat-x;
-    background-position: top 84px left 0px;
-  }
-
-  .background::after {
-    width: 183px;
-    height: 142px;
-    top: 826px;
-    left: 103px;
-    background-image: url("../../images/background/Group-2.png");
-    background-repeat: no-repeat;
+    min-height: 1021px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;
-    min-height: 850px;
-  }
-
-  .background {
-    background-image: url("../../images/background/Group-1280.png");
-  }
-
-  .background::after {
-    top: 674px;
-    left: 230px;
-    background-image: url("../../images/background/Group-2.png");
-    background-repeat: no-repeat;
+    min-height: 847px;
   }
 }

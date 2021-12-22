@@ -1,53 +1,54 @@
-h1,p {
-    margin: 0;
+h1,
+p {
+  margin: 0;
 }
 
 .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
 }
 
 .title {
-    margin-top: 86px;
-    margin-bottom: 50px;
-    padding-left: 40px;
+  margin-top: 86px;
+  margin-bottom: 80px;
+  padding-left: 40px;
 }
 
 .mainTitle {
-    font-weight: 900;
-    font-size: 48px;
-    line-height: 0.85;
-    letter-spacing: 0.045em;
-    color: #000000;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 0.85;
+  letter-spacing: 0.045em;
+  color: #000000;
 }
 
 .subTitle {
-    margin: 6px 20px;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #52555F;
+  margin: 6px 20px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #52555f;
 }
 
 .dollarSymbol {
-    font-weight: 900;
-    font-size: 36px;
+  font-weight: 900;
+  font-size: 36px;
 }
 
 .loginWindow {
-    box-sizing: border-box;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 300px;
   max-width: 436px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 30px;
   margin: 20px auto;
@@ -55,44 +56,44 @@ h1,p {
 }
 
 .description {
-    max-width: 265px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.04em;
+  max-width: 265px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 
-    color: #52555F;
+  color: #52555f;
 }
 
 .googleButton {
-    display: flex;
-    justify-content: space-between;
-    outline: none;
-    border: none;
-    min-width: 125px;
-    min-height: 44px;
-    border-radius: 16px;
-    margin: 5px auto;
-    padding: 12px 24px;
-    background-color: #F6F7FB;
-    color: #000000;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.02em;
-    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  border: none;
+  min-width: 125px;
+  min-height: 44px;
+  border-radius: 16px;
+  margin: 5px auto;
+  padding: 12px 24px;
+  background-color: #f6f7fb;
+  color: #000000;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  cursor: pointer;
 }
 
 .googleButton:hover,
 .googleButton:focus,
 .googleButton:active {
-    background-color: #e2e5f8;
+  background-color: #e2e5f8;
 }
 
 .form {
@@ -102,38 +103,38 @@ h1,p {
 }
 
 .label {
-    color: #000000 !important;
+  color: #000000 !important;
 }
 
 .emailField {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .input {
-    margin-left: auto;
-    margin-right: auto;
-    outline: #F6F7FB;
+  margin-left: auto;
+  margin-right: auto;
+  outline: #f6f7fb;
 }
 
 .input > div {
-    outline: #F6F7FB;
-    background: #F6F7FB;
-    border-radius: 30px;
+  outline: #f6f7fb;
+  background: #f6f7fb;
+  border-radius: 30px;
 }
 .input > div::after,
 .input > div::before {
-    content: none;
+  content: none;
 }
 
 .input input {
-    outline: #F6F7FB;
-    background: #F6F7FB;
-    border-radius: 30px;
-    padding: 17px 20px;
+  outline: #f6f7fb;
+  background: #f6f7fb;
+  border-radius: 30px;
+  padding: 17px 20px;
 }
 
 .input p {
-    background: #FFFFFF;
+  background: #ffffff;
 }
 
 .passwordField {
@@ -157,136 +158,186 @@ h1,p {
 }
 
 .confirmButton button {
-    min-width: 125px;
-    min-height: 44px;
-    border-radius: 16px;
-    padding: 12px 15px;
-    color: #FFFFFF;
-    background-color: #FF751D;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.02em;
-    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  min-width: 125px;
+  min-height: 44px;
+  border-radius: 16px;
+  padding: 12px 15px;
+  color: #ffffff;
+  background-color: #ff751d;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
 .confirmButton a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .confirmButton button:last-child {
-    background-color: #F5F6FB;
-    color: #52555F;
+  background-color: #f5f6fb;
+  color: #52555f;
 }
 
 .confirmButton button:last-child:hover,
 .confirmButton button:last-child:focus,
-.confirmButton button:last-child:active{
-    background-color: #e2e5f8;
+.confirmButton button:last-child:active {
+  background-color: #e2e5f8;
 }
 
 .confirmButton button:disabled {
-    background-color: #f5b994;
+  background-color: #f5b994;
 }
 
 .confirmButton button:hover,
-.confirmButton button:focus, 
+.confirmButton button:focus,
 .confirmButton button:active {
-    cursor: pointer;
-    background-color: #FF751D;
+  cursor: pointer;
+  background-color: #ff751d;
 }
 
-
-@media screen and (min-width: 480px) {
-    .container {
-      width: 480px;
-      padding: 0 15px;
-      margin: 0 auto;
-      padding-bottom: 180px;
-    }
-
-    .title {
-        padding-left: 90px;
-    }
-
-    .mainTitle {
-        font-size: 60px;
-    }
-
-    .subTitle {
-        margin: 8px 30px;
-        font-size: 14px;
-        line-height: 15px;
-        letter-spacing: 0.16em;
-    }
-
-    .dollarSymbol {
-        font-size: 45px;
-    }
+/* @media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+    padding: 0 15px;
+    margin: 0 auto;
+    padding-bottom: 180px;
   }
 
-  @media screen and (min-width: 768px) {
-    .container {
-      width: 768px;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-bottom: 140px;
-    }
-
-    .title {
-        margin-top: 90px;
-        padding-left: 170px;
-    }
-
-    .mainTitle {
-        font-size: 75px;
-    }
-
-    .subTitle {
-        margin: 8px 40px;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0.18em;
-    }
-
-    .dollarSymbol {
-        font-size: 57px;
-    }
-
-    .loginWindow {
-        padding: 50px 85px;
-    }
+  .title {
+    padding-left: 90px;
   }
-  @media screen and (min-width: 1280px) {
-    .container {
-        width: 1280px;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 196px;
-        padding-bottom: 140px;
-        padding-left: 230px;
-        padding-right: 110px;
-    }
 
-    .title {
-        padding-left: 0;
-        margin: 0;
-    }
-
-    .mainTitle {
-        font-size: 102px;
-    }
-
-    .subTitle {
-        margin: 12px 80px;
-    }
-
-    .dollarSymbol {
-        font-size: 76px;
-    }
+  .mainTitle {
+    font-size: 60px;
   }
+
+  .subTitle {
+    margin: 8px 30px;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0.16em;
+  }
+
+  .dollarSymbol {
+    font-size: 45px;
+  }
+} */
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .title {
+    margin-top: 90px;
+    margin-bottom: 50px;
+    padding-left: 170px;
+  }
+
+  .mainTitle {
+    font-size: 75px;
+  }
+
+  .subTitle {
+    margin: 8px 40px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+  }
+
+  .dollarSymbol {
+    font-size: 57px;
+  }
+
+  .loginWindow {
+    padding: 50px 85px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 117px;
+    padding-left: 230px;
+    padding-right: 110px;
+  }
+
+  .title {
+    padding-left: 0;
+    position: relative;
+    /* margin-bottom: 136px; */
+  }
+
+  .mainTitle {
+    font-size: 102px;
+  }
+
+  .subTitle {
+    margin: 12px 80px;
+  }
+
+  .dollarSymbol {
+    font-size: 76px;
+  }
+}
+
+.background {
+  border-radius: 0 0 0 120px;
+  background-color: #f5f6fb;
+  height: 286px;
+  background-image: url("../../images/background/Vector-320.png");
+  background-position: top 104px left 271px;
+  background-repeat: no-repeat;
+}
+
+.bottomBackground {
+  width: 83px;
+  height: 89px;
+  margin-left: 35px;
+  background-image: url("../../images/background/Vector-2-320.png");
+  background-position: top 710px, left 35px;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    height: 526px;
+    background-image: url("../../images/background/Group-768.png");
+    background-repeat: repeat-x;
+    background-position: top 26px left 0px;
+  }
+
+  .bottomBackground {
+    width: 183px;
+    height: 142px;
+    margin-left: 103px;
+    background-image: url("../../images/background/Group-2.png");
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .background {
+    background-image: url("../../images/background/Group-1280.png");
+  }
+
+  .bottomBackground {
+    position: absolute;
+    margin-left: 230px;
+    top: 663px;
+    background-image: url("../../images/background/Group-2.png");
+    background-repeat: no-repeat;
+  }
+}
