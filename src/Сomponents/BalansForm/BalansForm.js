@@ -21,7 +21,6 @@ export default function BalansForm() {
   // при положительном балансе выводит его и блокирует форму:
   useEffect(() => {
     if (stateBalance > 0) {
-      console.log(stateBalance);
       setBalans(stateBalance);
       setStateMachine("disabled");
     }

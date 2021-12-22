@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import s from "./BalansReportView.module.css";
-import keyboard_backspace from "../../images/other/keyboard_backspace.svg";
+import { authSelectors } from "../../redux/auth";
 import SliderMonth from "../SliderMonth/SliderMonth";
+import s from "./BalansReportView.module.css";
 
 export default function BalansReportView() {
+  const stateBalance = useSelector(authSelectors.getBalance);
+  useEffect(() => {});
+
   return (
     <div className={s.backToHomeField}>
       <Link to="/homeview">
@@ -26,7 +31,7 @@ export default function BalansReportView() {
       </div>
       <div className={s.balansFieldText}>
         <p className={s.titleBalans}>Баланс:</p>
-        <p className={s.balansTextNumber}>55000.00 UAH</p>
+        <p className={s.balansTextNumber}>{stateBalance} UAH</p>
         <p className={s.balansTextConfirm}>ПОДТВЕРДИТЬ</p>
       </div>
     </div>
