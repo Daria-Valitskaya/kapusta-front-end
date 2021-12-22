@@ -142,7 +142,7 @@ const MobileTable = ({array}) => {
         <table className={s.table}>
             <tbody className={s.tbody}>
             
-                {dataIncome && dataIncome.map(item => (
+                {array && array.map(item => (
                     <tr key={item._id} className={s.tr}>
                         <td className={s.itemWrapper}>
                             {item.description 
