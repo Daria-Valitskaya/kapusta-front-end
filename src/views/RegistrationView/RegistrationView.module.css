@@ -1,4 +1,5 @@
-h1,p {
+h1,
+p {
   margin: 0;
 }
 
@@ -8,12 +9,12 @@ h1,p {
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 80px;
+  padding-bottom: 0px;
 }
 
 .title {
   margin-top: 86px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   padding-left: 40px;
 }
 
@@ -32,7 +33,7 @@ h1,p {
   line-height: 15px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #52555F;
+  color: #52555f;
 }
 
 .dollarSymbol {
@@ -43,17 +44,17 @@ h1,p {
 .registrationWindow {
   position: relative;
   box-sizing: border-box;
-display: flex;
-flex-direction: column;
-align-items: center;
-min-width: 300px;
-max-width: 436px;
-background: #FFFFFF;
-box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-border-radius: 30px;
-margin: 20px auto;
-padding: 40px 17px;
-z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  max-width: 436px;
+  background: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  margin: 20px auto;
+  padding: 40px 17px;
+  z-index: 2;
 }
 
 .description {
@@ -64,7 +65,7 @@ z-index: 2;
   line-height: 14px;
   letter-spacing: 0.04em;
 
-  color: #52555F;
+  color: #52555f;
 }
 
 .googleButton {
@@ -77,7 +78,7 @@ z-index: 2;
   border-radius: 16px;
   margin: 6px auto;
   padding: 12px 24px;
-  background-color: #F6F7FB;
+  background-color: #f6f7fb;
   color: #000000;
   font-style: normal;
   font-weight: bold;
@@ -98,9 +99,9 @@ z-index: 2;
 }
 
 .form {
-display: block;
-width: 100%;
-max-width: 265px;
+  display: block;
+  width: 100%;
+  max-width: 265px;
 }
 
 .label {
@@ -110,12 +111,12 @@ max-width: 265px;
 .input {
   margin-left: auto;
   margin-right: auto;
-  outline: #F6F7FB;
+  outline: #f6f7fb;
 }
 
 .input > div {
-  outline: #F6F7FB;
-  background: #F6F7FB;
+  outline: #f6f7fb;
+  background: #f6f7fb;
   border-radius: 30px;
 }
 .input > div::after,
@@ -124,34 +125,34 @@ max-width: 265px;
 }
 
 .input input {
-  outline: #F6F7FB;
-  background: #F6F7FB;
+  outline: #f6f7fb;
+  background: #f6f7fb;
   border-radius: 30px;
   padding: 17px 20px;
 }
 
 .input p {
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .passwordField {
-position: relative;
+  position: relative;
 }
 
 .passwordIconButton {
-position: absolute;
-top: 0;
-right: 0;
-transform: translateY(40%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(40%);
 }
 
 .confirmButton {
-max-width: 265px;
-margin-top: 40px;
-margin-left: auto;
-margin-right: auto;
-display: flex;
-justify-content: space-between;
+  max-width: 265px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .confirmButton button {
@@ -159,8 +160,8 @@ justify-content: space-between;
   min-height: 44px;
   border-radius: 16px;
   padding: 12px 15px;
-  color: #FFFFFF;
-  background-color: #FF751D;
+  color: #ffffff;
+  background-color: #ff751d;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -177,13 +178,13 @@ justify-content: space-between;
 }
 
 .confirmButton button:last-child {
-  background-color: #F5F6FB;
-  color: #52555F;
+  background-color: #f5f6fb;
+  color: #52555f;
 }
 
 .confirmButton button:last-child:hover,
 .confirmButton button:last-child:focus,
-.confirmButton button:last-child:active{
+.confirmButton button:last-child:active {
   background-color: #e2e5f8;
 }
 
@@ -192,10 +193,10 @@ justify-content: space-between;
 }
 
 .confirmButton button:hover,
-.confirmButton button:focus, 
+.confirmButton button:focus,
 .confirmButton button:active {
   cursor: pointer;
-  background-color: #FF751D;
+  background-color: #ff751d;
 }
 
 @media screen and (min-width: 480px) {
@@ -203,26 +204,25 @@ justify-content: space-between;
     width: 480px;
     padding: 0 15px;
     margin: 0 auto;
-    padding-bottom: 180px;
   }
 
   .title {
-      padding-left: 90px;
+    padding-left: 90px;
   }
 
   .mainTitle {
-      font-size: 60px;
+    font-size: 60px;
   }
 
   .subTitle {
-      margin: 8px 30px;
-      font-size: 14px;
-      line-height: 15px;
-      letter-spacing: 0.16em;
+    margin: 8px 30px;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0.16em;
   }
 
   .dollarSymbol {
-      font-size: 45px;
+    font-size: 45px;
   }
 }
 
@@ -231,59 +231,128 @@ justify-content: space-between;
     width: 768px;
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 140px;
   }
 
   .title {
-      margin-top: 90px;
-      padding-left: 170px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    padding-left: 170px;
   }
 
   .mainTitle {
-      font-size: 75px;
+    font-size: 75px;
   }
 
   .subTitle {
-      margin: 8px 40px;
-      font-size: 16px;
-      line-height: 19px;
-      letter-spacing: 0.18em;
+    margin: 8px 40px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
   }
 
   .dollarSymbol {
-      font-size: 57px;
+    font-size: 57px;
   }
 
   .registrationWindow {
     padding: 50px 85px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
-      width: 1280px;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 117px;
-      padding-bottom: 140px;
-      padding-left: 230px;
-      padding-right: 110px;
+    width: 1280px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 90px;
+    padding-left: 230px;
+    padding-right: 110px;
   }
 
   .title {
-      padding-left: 0;
-      margin: 0;
+    padding-left: 0;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-bottom: 64px;
   }
 
   .mainTitle {
-      font-size: 102px;
+    font-size: 102px;
   }
 
   .subTitle {
-      margin: 12px 80px;
+    margin: 12px 80px;
   }
 
   .dollarSymbol {
-      font-size: 76px;
+    font-size: 76px;
+  }
+}
+
+.background {
+  border-radius: 0 0 0 120px;
+  background-color: #f5f6fb;
+  height: 286px;
+  background-image: url("../../images/background/Vector-320.png");
+  background-position: top 104px left 271px;
+  background-repeat: no-repeat;
+}
+
+.bottomBackground {
+  width: 83px;
+  height: 89px;
+  margin-left: 35px;
+  background-image: url("../../images/background/Vector-2-320.png");
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 480px) {
+  .background {
+    height: 286px;
+    background-image: url("../../images/background/Vector-320.png");
+    background-position: top 104px left 430px;
+    background-repeat: no-repeat;
+  }
+
+  .bottomBackground {
+    width: 83px;
+    height: 89px;
+    margin-left: 55px;
+    background-image: url("../../images/background/Vector-2-320.png");
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    height: 526px;
+    background-image: url("../../images/background/Group-768.png");
+    background-repeat: repeat-x;
+    background-position: top 26px left 0px;
+  }
+
+  .bottomBackground {
+    width: 183px;
+    height: 142px;
+    margin-left: 103px;
+    background-image: url("../../images/background/Group-2.png");
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .background {
+    background-image: url("../../images/background/Group-1280.png");
+  }
+
+  .bottomBackground {
+    position: absolute;
+    margin-left: 230px;
+    top: 663px;
+    background-image: url("../../images/background/Group-2.png");
+    background-repeat: no-repeat;
   }
 }
