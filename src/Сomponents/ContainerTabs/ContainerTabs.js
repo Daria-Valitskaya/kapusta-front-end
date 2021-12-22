@@ -1,7 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useSelector } from 'react-redux';
-import { transactionsSelectors } from '../../redux/transactions';
+import { transactionsOperations, transactionsSelectors } from '../../redux/transactions';
 import Summary from "../Summary/Summary";
 import CalendarComponent from "../CalendarBar";
 import InputPanel from "../InputPanel";
@@ -10,10 +10,12 @@ import Table from "../Table";
 import s from "./ContainerTabs.module.css";
 
 const ContainerTabs = () => {
-  const income = useSelector(transactionsSelectors.getAllIncome);
-  const expense = useSelector(transactionsSelectors.getAllExpenses);
-  console.log(income);
-  console.log(expense);
+  const summaryExpense = useSelector(transactionsSelectors.getAllExpenses);
+  const summaryIncome = useSelector(transactionsSelectors.getAllIncome);
+  const transactionsByPeriod = useSelector(transactionsSelectors.getTransactionsForPeriod);
+  const resultTransactions = (Object.values(transactionsByPeriod)).flat();
+  const expenseTransactions = resultTransactions.filter(item => item.transactionType === "expense");
+  const incomeTransactions = resultTransactions.filter(item => item.transactionType === "income");
 
   return (
     <>
@@ -38,8 +40,8 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table />
-              <Summary />
+              <Table array={expenseTransactions}/>
+              <Summary array={summaryExpense}/>
             </div>
           </div>
         </TabPanel>
@@ -54,8 +56,8 @@ const ContainerTabs = () => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <Table />
-              <Summary />
+              <Table  array={incomeTransactions}/>
+              <Summary array={summaryIncome}/>
             </div>
           </div>
         </TabPanel>

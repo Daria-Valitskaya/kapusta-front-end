@@ -1,5 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { transactionsSelectors, transactionsOperations } from '../../redux/transactions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { transactionsOperations } from '../../redux/transactions';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -17,21 +18,18 @@ const CalendarBar = () => {
   const date = value.getDate();
   const month = value.getMonth() + 1;
   const year = value.getFullYear();
+  const fullDate = `${String(date).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`;
+  const period = `${String(month).padStart(2, '0')}.${year}`;
+
+  useEffect(() => {
+    dispatch(transactionsOperations.getSummary({transactionType: 'expense', date: fullDate}));
+    dispatch(transactionsOperations.getSummary({transactionType:'income', date: fullDate}));
+    dispatch(transactionsOperations.getTransForPeriod({transactionType: 'expense', period}));
+    dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period}));
+  }, [dispatch, fullDate, period])
 
   const toggleCalendar = () => {
       setShowCalendar(prevState => !prevState)
-  }
-
-  const pad = (value) => {
-    return String(value).padStart(2, '0');
-  };
-
-  // const fullDate = `${pad(date)}.${pad(month)}.${year}`;
-
-  const closeAndDispatch = () => {
-    // dispatch(transactionsOperations.getSummary('expense', '01.12.2021'));
-    // dispatch(transactionsOperations.getSummary('income', '01.12.2021'));
-    toggleCalendar();
   }
 
   return (
@@ -46,12 +44,12 @@ const CalendarBar = () => {
           className={s.calendarImg}
         />
         <span className={s.calendarText}>
-          {pad(date)}.{pad(month)}.{year}
+          {fullDate}
         </span>
       </button> 
       
         {showCalendar && 
-          <Modal onClose={closeAndDispatch}>
+          <Modal onClose={toggleCalendar}>
             <Calendar
               className={s.calendar}
               onChange={onChange}
