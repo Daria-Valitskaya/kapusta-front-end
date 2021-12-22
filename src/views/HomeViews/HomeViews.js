@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { transactionsOperations } from '../../redux/transactions';
@@ -21,9 +20,9 @@ export default function HomeViews() {
 
   useEffect(() => {
     dispatch(transactionsOperations.getSummary({transactionType: 'expense', date: fullDate}));
-    dispatch(transactionsOperations.getSummary({transactionType:'income', date: fullDate}));
+    // dispatch(transactionsOperations.getSummary({transactionType:'income', date: fullDate}));
     dispatch(transactionsOperations.getTransForPeriod({transactionType: 'expense', period}));
-    dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period}));
+    // dispatch(transactionsOperations.getTransForPeriod({transactionType: 'income', period}));
   }, [dispatch, fullDate, period])
   // const [width, setWidth] = useState(0);
 

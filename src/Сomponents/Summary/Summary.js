@@ -3,6 +3,7 @@ import "simplebar/dist/simplebar.min.css";
 import s from "./Summary.module.css";
 
 const Summary = ({ array }) => {
+  console.log(array);
   let summaryData = [];
   if(array){
     summaryData = [...array].sort((a, b) => a.month - b.month);
