@@ -7,22 +7,24 @@ import BlackModal from "../ModalWindows/BlackModal/BlackModal.js";
 import s from "./balansForm.module.css";
 
 export default function BalansForm() {
-  const [balance, setBalance] = useState("");
-  const isBalanceEmpty = balance === "";
+  const [balans, setBalans] = useState("");
+  const [stateMachine, setStateMachine] = useState("pending");
 
   const stateBalance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
 
   const uan = "UAH";
-  const notHoverBtnConfirm = isBalanceEmpty ? "" : s.offBtn;
-  const notHoverInputOfBalance = isBalanceEmpty ? "" : s.offInput;
+  let disabled = false;
+  let notHoverBtnConfirm = "";
+  let notHoverInputOfBalans = "";
 
   // при положительном балансе выводит его и блокирует форму:
   useEffect(() => {
-    if (stateBalance > 0 && stateBalance !== balance) {
-      setBalance(stateBalance);
+    if (stateBalance > 0) {
+      setBalans(stateBalance);
+      setStateMachine("disabled");
     }
-  }, [balance, stateBalance]);
+  }, [stateBalance]);
   /*
    * Отвечает за обновление состояния
    */
@@ -33,7 +35,7 @@ export default function BalansForm() {
     if (isNumeric(e.target.value)) {
       return;
     }
-    setBalance(e.target.value);
+    setBalans(e.target.value);
   };
 
   /*
@@ -42,14 +44,25 @@ export default function BalansForm() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    const inputValue = parseFloat(balance).toFixed(2);
+    const inputValue = parseFloat(balans).toFixed(2);
     if (isNaN(inputValue)) {
       return;
     }
     console.log(`Отправляем баланс: ${inputValue}`);
-    setBalance(inputValue);
+    setBalans(inputValue);
     //отправляем баланс на бэк:
     dispatch(authOperations.balanceInit({ balance: inputValue }));
+    setStateMachine("disabled");
+  }
+
+  if (stateMachine === "disabled") {
+    disabled = true;
+  }
+  if (stateMachine === "disabled") {
+    notHoverBtnConfirm = s.offBtn;
+  }
+  if (stateMachine === "disabled") {
+    notHoverInputOfBalans = s.offInput;
   }
 
   return (
@@ -60,11 +73,11 @@ export default function BalansForm() {
           <div className={s.inputWrapper}>
             <input
               type="text"
-              disabled={!isBalanceEmpty}
-              className={s.inputField + " " + notHoverInputOfBalance}
+              disabled={disabled}
+              className={s.inputField + " " + notHoverInputOfBalans}
               minLength={1}
               placeholder="00.00"
-              value={balance}
+              value={balans}
               onChange={handleChange}
             />
             <span className={s.uan}>{uan}</span>
@@ -73,7 +86,7 @@ export default function BalansForm() {
         </label>
         <ConfirmBtn
           className={s.btn + " " + notHoverBtnConfirm}
-          btnOff={!isBalanceEmpty}
+          btnOff={disabled}
         />
       </form>
       <Link
@@ -95,7 +108,11 @@ export default function BalansForm() {
           </svg>
         </div>
       </Link>
-      <div className={isBalanceEmpty ? s.modalPosition : s.modalPositionNone}>
+      <div
+        className={
+          stateMachine === "pending" ? s.modalPosition : s.modalPositionNone
+        }
+      >
         <BlackModal />
       </div>
     </div>
