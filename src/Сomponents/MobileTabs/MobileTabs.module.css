@@ -13,6 +13,7 @@
 .tabList {
   max-width: 480px;
   display: flex;
+  margin-bottom: 40px;
 }
 
 .tab {
