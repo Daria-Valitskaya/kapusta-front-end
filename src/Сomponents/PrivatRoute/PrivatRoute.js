@@ -7,8 +7,6 @@ const PrivateRoute = ({ redirectTo, children, ...routeProps }) => {
   // Комент на время тестов, чтоб не писпть постоянно логин
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  // Удалить перед продакшн
-  // const isLoggedIn = true;
   return (
     <Route {...routeProps}>
       {isLoggedIn ? children : <Redirect to={redirectTo} />}

@@ -141,10 +141,15 @@ const Registration = () => {
                 <p className={s.description}>
                   Вы можете зарегистрироваться с помощью Google Account:
                 </p>
-                <button className={s.googleButton} type="button">
-                  <FcGoogle size="20px" />
-                  Google
-                </button>
+                <a
+                  href="https://kapusta-team-project-back.herokuapp.com/api/auth/google"
+                  alt="GoogleAuth"
+                >
+                  <button className={s.googleButton} type="button">
+                    <FcGoogle size="20px" />
+                    Google
+                  </button>
+                </a>
                 <p className={s.description}>
                   Или зарегистрироваться с помощью e-mail и пароля:
                 </p>

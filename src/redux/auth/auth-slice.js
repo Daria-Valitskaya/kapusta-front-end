@@ -15,6 +15,13 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    updateBalance(state, action) {
+      const sum =
+        action.payload.transactionType === "expense"
+          ? -action.payload.sum
+          : action.payload.sum;
+      state.user.balance += Number(sum);
+    },
     resetAuth(state) {
       state.isRegistered = false;
       state.errorMessage = null;
@@ -24,7 +31,7 @@ const authSlice = createSlice({
     // this is working:
     (builder) => {
       builder.addCase(authOperations.register.fulfilled, (state, action) => {
-        console.log("register success");
+        // console.log("register success");
         state.isRegistered = true;
         state.isVerified = false;
         state.isLoggedIn = false;
@@ -33,7 +40,7 @@ const authSlice = createSlice({
       });
 
       builder.addCase(authOperations.register.rejected, (state, action) => {
-        console.log("register rejeted");
+        // console.log("register rejeted");
         state.isRegistered = false;
         state.isVerified = false;
         state.isLoggedIn = false;
@@ -54,7 +61,7 @@ const authSlice = createSlice({
       });
 
       builder.addCase(authOperations.logIn.rejected, (state, action) => {
-        console.log("login rejeted");
+        // console.log("login rejeted");
         state.isVerified = false;
         state.isLoggedIn = false;
         state.errorMessage = action.payload.message;
@@ -105,14 +112,14 @@ const authSlice = createSlice({
       );
 
       builder.addCase(authOperations.balanceInit.fulfilled, (state, action) => {
-        console.log("balance success");
+        // console.log("balance success");
         state.user.balance = action.payload.data.balance;
       });
 
       builder.addCase(authOperations.balanceInit.rejected, (state, action) => {
-        console.log("balance reject");
+        // console.log("balance reject");
       });
     },
 });
-export const { resetAuth } = authSlice.actions;
+export const { resetAuth, updateBalance } = authSlice.actions;
 export default authSlice.reducer;

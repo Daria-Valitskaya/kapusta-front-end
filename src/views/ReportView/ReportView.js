@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from "react";
+import React, { useEffect } from "react";
 
 import { Link, useRouteMatch, useLocation } from "react-router-dom";
 import sprite from "../../images/other/sprite_categories.svg";
@@ -61,13 +61,13 @@ const ReportView = () => {
             </ul>
 
             <ReportExpense />
-
             <Charts />
           </div>
           {/* <div className={css.chart_wraper}></div>
-      <div className={css.chart_wraper}></div> */}
-        </div>
-      </div>
+
+      <div className={css.chart_wraper}></div>
+      {/* <div className={css.bottomBackground}></div> */}
+
     </div>
   );
 };
