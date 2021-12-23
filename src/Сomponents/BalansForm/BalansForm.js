@@ -20,7 +20,7 @@ export default function BalansForm() {
   // при положительном балансе выводит его и блокирует форму:
   useEffect(() => {
     if (stateBalance > 0 && stateBalance !== balance) {
-      setBalance(parseFloat(stateBalance).toFixed(2));
+      setBalance(stateBalance);
     }
   }, [balance, stateBalance]);
   /*
