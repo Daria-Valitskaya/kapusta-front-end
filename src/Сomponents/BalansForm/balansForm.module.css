@@ -171,12 +171,13 @@
   .modalPosition {
     top: 49px;
     left: 179px;
-  }}
-  @media screen and (min-width: 1280px) {
-    .modalPosition {
-      left: 463px;
-    }}
-  
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modalPosition {
+    left: 463px;
+  }
+}
 
 .modalPositionNone {
   display: none;
