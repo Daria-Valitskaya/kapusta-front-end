@@ -34,8 +34,7 @@ const ReportView = () => {
             <IncomeExpenses />
             <MobileTabs />
           </div>
-          <div></div>
-          <div className={css.list_wraper}>
+          {/* <div className={css.list_wraper}>
             <ul className={css.list}>
               <li className={css.item}>
                 <Link to={`${match.url}`}>
@@ -59,7 +58,7 @@ const ReportView = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className={css.list_wraper}>
             <ul className={css.list}>
               <li className={css.item}>
