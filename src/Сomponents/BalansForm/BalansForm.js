@@ -7,24 +7,22 @@ import BlackModal from "../ModalWindows/BlackModal/BlackModal.js";
 import s from "./balansForm.module.css";
 
 export default function BalansForm() {
-  const [balans, setBalans] = useState("");
-  const [stateMachine, setStateMachine] = useState("pending");
+  const [balance, setBalance] = useState("");
+  const isBalanceEmpty = balance === "";
 
   const stateBalance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
 
   const uan = "UAH";
-  let disabled = false;
-  let notHoverBtnConfirm = "";
-  let notHoverInputOfBalans = "";
+  const notHoverBtnConfirm = isBalanceEmpty ? "" : s.offBtn;
+  const notHoverInputOfBalance = isBalanceEmpty ? "" : s.offInput;
 
   // при положительном балансе выводит его и блокирует форму:
   useEffect(() => {
-    if (stateBalance > 0) {
-      setBalans(stateBalance);
-      setStateMachine("disabled");
+    if (stateBalance > 0 && stateBalance !== balance) {
+      setBalance(stateBalance);
     }
-  }, [stateBalance]);
+  }, [balance, stateBalance]);
   /*
    * Отвечает за обновление состояния
    */
@@ -35,7 +33,7 @@ export default function BalansForm() {
     if (isNumeric(e.target.value)) {
       return;
     }
-    setBalans(e.target.value);
+    setBalance(e.target.value);
   };
 
   /*
@@ -44,31 +42,21 @@ export default function BalansForm() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    const inputValue = parseFloat(balans).toFixed(2);
+    const inputValue = parseFloat(balance).toFixed(2);
     if (isNaN(inputValue)) {
       return;
     }
     console.log(`Отправляем баланс: ${inputValue}`);
-    setBalans(inputValue);
+    setBalance(inputValue);
     //отправляем баланс на бэк:
     dispatch(authOperations.balanceInit({ balance: inputValue }));
-    setStateMachine("disabled");
-  }
-
-  if (stateMachine === "disabled") {
-    disabled = true;
-  }
-  if (stateMachine === "disabled") {
-    notHoverBtnConfirm = s.offBtn;
-  }
-  if (stateMachine === "disabled") {
-    notHoverInputOfBalans = s.offInput;
   }
 
   return (
     <div className={s.field}>
       <form className={s.form} onSubmit={handleSubmit}>
         <span className={s.labelText}> Баланс:</span>
+
         <div className={s.labelWrapper}>
           <label className={s.label}>
             <div className={s.inputWrapper}>
