@@ -69,25 +69,35 @@ export default function BalansForm() {
     <div className={s.field}>
       <form className={s.form} onSubmit={handleSubmit}>
         <span className={s.labelText}> Баланс:</span>
-        <label className={s.label}>
-          <div className={s.inputWrapper}>
-            <input
-              type="text"
-              disabled={disabled}
-              className={s.inputField + " " + notHoverInputOfBalans}
-              minLength={1}
-              placeholder="00.00"
-              value={balans}
-              onChange={handleChange}
-            />
-            <span className={s.uan}>{uan}</span>
-            {/* {uan} */}
-          </div>
-        </label>
-        <ConfirmBtn
-          className={s.btn + " " + notHoverBtnConfirm}
-          btnOff={disabled}
-        />
+        <div className={s.labelWrapper}>
+          <label className={s.label}>
+            <div className={s.inputWrapper}>
+              <input
+                type="text"
+                disabled={disabled}
+                className={s.inputField + " " + notHoverInputOfBalans}
+                minLength={1}
+                placeholder="00.00"
+                value={balans}
+                onChange={handleChange}
+              />
+              <span className={s.uan}>{uan}</span>
+              <div
+                className={
+                  stateMachine === "pending"
+                    ? s.modalPosition
+                    : s.modalPositionNone
+                }
+              >
+                <BlackModal />
+              </div>
+            </div>
+          </label>
+          <ConfirmBtn
+            className={s.btn + " " + notHoverBtnConfirm}
+            btnOff={disabled}
+          />
+        </div>
       </form>
       <Link
         className={s.link}
@@ -108,13 +118,6 @@ export default function BalansForm() {
           </svg>
         </div>
       </Link>
-      <div
-        className={
-          stateMachine === "pending" ? s.modalPosition : s.modalPositionNone
-        }
-      >
-        <BlackModal />
-      </div>
     </div>
   );
 }
