@@ -60,7 +60,7 @@ export const getTransForPeriod = createAsyncThunk(
         period
       );
       return {
-        period,
+        transactionType,
         data,
       };
     } catch (error) {
@@ -69,46 +69,23 @@ export const getTransForPeriod = createAsyncThunk(
       if (status === 404) {
         message = "Not found";
       }
-      return rejectWithValue({ ...error.response.data, message });
-    }
-  }
-);
-
-export const income = createAsyncThunk(
-  "transaction/income",
-  async (
-    { transactionType, date, description, category, sum },
-    { rejectWithValue }
-  ) => {
-    try {
-      const result = await transactionsShelfAPI.patchIncome({
+      return rejectWithValue({
+        ...error.response.data,
+        message,
         transactionType,
-        date,
-        description,
-        category,
-        sum,
       });
-      console.log(result);
-      return result;
-    } catch (error) {
-      const { status } = error.response;
-      let message;
-      if (status === 404) {
-        message = "Not found";
-      }
-      return rejectWithValue({ ...error.response.data, message });
     }
   }
 );
 
-export const expenses = createAsyncThunk(
-  "transaction/expenses",
+export const addTransaction = createAsyncThunk(
+  "transaction/addTransaction",
   async (
     { transactionType, date, description, category, sum },
-    { rejectWithValue }
+    { rejectWithValue, dispatch }
   ) => {
     try {
-      const result = await transactionsShelfAPI.patchExpenses({
+      const result = await transactionsShelfAPI.addTransaction({
         transactionType,
         date,
         description,

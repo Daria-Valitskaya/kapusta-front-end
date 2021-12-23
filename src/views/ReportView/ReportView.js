@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from "react";
+import React, { useEffect } from "react";
 
 import { Link, useRouteMatch, useLocation } from "react-router-dom";
 import sprite from "../../images/other/sprite_categories.svg";
@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import ReportExpense from "../../Сomponents/reportExpense/ReportExpense";
 
 import Charts from "../../Сomponents/Charts/Charts";
-
 
 const ReportView = () => {
   const match = useRouteMatch();
@@ -59,14 +58,10 @@ const ReportView = () => {
           </li>
         </ul>
 
-        
-        <ReportExpense/>
-        <Charts/>
-       
+        <ReportExpense />
+        <Charts />
       </div>
-      <div className={css.chart_wraper}>
-       
-      </div>
+      <div className={css.chart_wraper}></div>
 
       <div className={css.chart_wraper}></div>
       {/* <div className={css.bottomBackground}></div> */}

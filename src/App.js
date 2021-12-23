@@ -16,8 +16,6 @@ const RegistrationView = lazy(() => import("./views/RegistrationView"));
 const HomeViews = lazy(() => import("./views/HomeViews/HomeViews"));
 const ReportView = lazy(() => import("./views/ReportView/ReportView"));
 
-// import InputPanel from "./Сomponents/InputPanel/InputPanel";
-
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
