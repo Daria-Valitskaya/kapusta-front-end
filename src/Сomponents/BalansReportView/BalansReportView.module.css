@@ -1,162 +1,193 @@
-p{
-    margin: 0;
+p {
+  margin: 0;
 }
 
-.backToHomeField{
+.backToHomeField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  height: 145px;
+}
+.linkfield {
+  position: absolute;
+  top: -25px;
+  left: 19px;
+}
+
+.keyboard_backspace {
+  fill: #ff751d;
+}
+.linkText {
+  display: none;
+}
+
+/* ====================================================== */
+.fieldSlider {
+  width: 155px;
+  height: 39px;
+  margin-bottom: 36px;
+  text-align: center;
+}
+.sliderTitle {
+  color: rgba(82, 85, 95, 0.7);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.balansFieldText {
+  text-align: center;
+  width: 183px;
+  height: 70px;
+}
+.titleBalans {
+  color: rgba(82, 85, 95, 0.7);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+.balansTextNumber {
+  width: 183px;
+  height: 44px;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+
+  border: 2px solid white;
+  border-radius: 22px;
+
+  padding: 15px 5px;
+  margin-top: 6px;
+}
+.balansTextConfirm {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .backToHomeField {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    margin-right: 0;
     align-items: center;
-    margin-top: 49px;
-}
-.linkfield{
+    width: 664px;
+    height: 44px;
+    padding-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .linkfield {
     position: absolute;
-    top: -25px;
-    left: 19px;
-}
-
-.keyboard_backspace{
-    fill:#FF751D;
-}
-.linkText{
-    display: none;
-}
-/* ====================================================== */
-.fieldSlider{
-    width: 155px;
-    text-align: center;
-}
-.sliderTitle{
+    display: flex;
+    align-items: center;
+    top: 10px;
+    left: 8px;
+    width: 174px;
+    height: 24px;
+  }
+  .linkText {
+    display: flex;
+    text-decoration: none;
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.04em;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.balansFieldText{
+    margin-left: 15px;
+  }
+  .linkText:focus,
+  .linkText:hover {
+    color: #ff751d;
+  }
+  .balansFieldText {
+    display: flex;
+    align-items: center;
     text-align: center;
-}
-.titleBalans{
+    justify-content: center;
+    width: 229px;
+    height: 44px;
+  }
+  .titleBalans {
     color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
     line-height: 14px;
-    letter-spacing: 0.02em; 
-    margin-top: 30px;
-}
-.balansTextNumber{
-    width: 183px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-right: 20px;
+  }
+  .balansTextNumber {
+    width: 125px;
     height: 44px;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 16px;
+    margin-top: 0;
+  }
+
+  .fieldSlider {
+    width: 155px;
+    height: 39px;
+    margin-bottom: 0;
+    text-align: center;
+    margin-left: 50px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .backToHomeField {
+    width: 1060px;
+    height: 50px;
+  }
+  .linkfield {
+    display: inline-flex;
+    top: 12px;
+  }
+
+  .fieldSlider {
+    width: 155px;
+    height: 39px;
+    margin-bottom: 0;
+    text-align: center;
+    margin-left: 205px;
+  }
+
+  .balansFieldText {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 369px;
+    height: 44px;
+  }
+  .balansTextNumber {
+    width: 125px;
     color: black;
+    border: 2px solid white;
+    border-radius: 16px;
+
+    padding: 12px 5px;
+    margin-top: 0px;
+    margin-right: 21px;
+  }
+  .balansTextConfirm {
+    display: block;
+    width: 125px;
+    height: 44px;
+    color: rgba(82, 85, 95, 0.7);
     font-size: 12px;
-    font-weight: bold;
     line-height: 14px;
-    letter-spacing: 0.02em; 
+    font-weight: 400;
+    letter-spacing: 0.02em;
 
     border: 2px solid white;
-    border-radius: 22px;
+    border-radius: 16px;
 
-    padding: 15px 5px;
-    margin-top: 6px;
+    padding: 12px 5px;
+  }
 }
-.balansTextConfirm{
-    display: none;
-}
-
-
-@media screen and (min-width: 768px) {
-    .backToHomeField{
-        position: relative;
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: end;
-        height: 44px;
-        margin-top: 49px;
-        padding-right: 34px;
-    }
-    .linkfield{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        top: 8px;
-        left: 50px;
-    }
-    .linkText{
-        display: block;
-        text-decoration: none;
-        color: rgba(82, 85, 95, 0.7);
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 0.04em;
-        margin-left: 15px;
-
-    }
-    .linkText:focus,
-    .linkText:hover{
-    color: #FF751D;
-    }
-    .balansFieldText{
-        display: flex;
-        align-items: baseline;
-        text-align: center;
-    }
-    .titleBalans{
-        color: rgba(82, 85, 95, 0.7);
-        font-size: 12px;
-        line-height: 14px;
-        font-weight: 500;
-        letter-spacing: 0.02em; 
-        margin-top: 0;
-        margin-right: 21px;
-    }
-    .balansTextNumber{
-        width: 125px;
-        color: black;    
-        border: 2px solid white;
-        border-radius: 16px;
-    
-        padding: 12px 5px;
-        margin-top: 0px;
-        margin-right: 80px;
-    }
-}
-  @media screen and (min-width: 1280px) {
-    .backToHomeField{
-        margin-top: 40px;
-        padding-right: 95px;
-    }
-    .linkfield{
-        top: 8px;
-        left: 110px;
-    }
-    .balansTextNumber{
-        width: 125px;
-        color: black;    
-        border: 2px solid white;
-        border-radius: 16px;
-    
-        padding: 12px 5px;
-        margin-top: 0px;
-        margin-right: 21px;
-    }
-    .balansTextConfirm{
-        display: block;
-        width: 125px;
-        height: 44px;
-        color: rgba(82, 85, 95, 0.7);  
-        font-size: 12px;
-        line-height: 14px;
-        font-weight: 400;  
-        letter-spacing: 0.02em; 
-
-        border: 2px solid white;
-        border-radius: 16px;
-    
-        padding: 12px 5px;
-        margin-right: 213px;
-    }
-    
-    
-}
-
