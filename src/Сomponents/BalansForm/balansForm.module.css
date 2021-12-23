@@ -55,14 +55,23 @@
 }
 .form {
   display: flex;
+  flex-wrap: wrap;
+  /* width: 248px; */
+  justify-content: center;
   align-items: center;
   margin-top: 60px;
 }
 
+.labelWrapper {
+  display: flex;
+  width: 248px;
+}
+
 .inputWrapper {
+  position: relative;
   display: flex;
   height: 44px;
-  width: 149px;
+  width: 125px;
   align-items: baseline;
   justify-content: right;
   border: 2px solid rgba(255, 255, 255, 1);
@@ -75,15 +84,16 @@
 
 @media screen and (min-width: 768px) {
   .form {
-    display: flex;
     margin-top: 0px;
   }
   .inputWrapper {
+    width: 125px;
     border-radius: 16px;
   }
 }
 
 .labelText {
+  margin-bottom: 6px;
   color: #52555f;
   font-size: 12px;
   line-height: 14px;
@@ -95,6 +105,7 @@
 @media screen and (min-width: 768px) {
   .labelText {
     margin-right: 21px;
+    margin-bottom: 0;
   }
 }
 .inputField {
@@ -147,24 +158,11 @@
 }
 .modalPosition {
   position: absolute;
-  top: 234px;
-  left: 114px;
+  top: 45px;
+  left: 0;
+  z-index: 999999999999999999;
 }
-@media screen and (min-width: 768px) {
-  .modalPosition {
-    position: absolute;
-    top: 153px;
-    left: 183px;
-    z-index: 999999999999999999;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .modalPosition {
-    position: absolute;
-    top: 153px;
-    left: 468px;
-  }
-}
+
 .modalPositionNone {
   display: none;
 }
