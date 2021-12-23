@@ -50,11 +50,16 @@ const ReportView = () => {
             )}
           </li>
           <li className={css.item}>
-            <Link to={`${match.url}/incomes`}>
+            <Link to={`${match.url}`}>
               <svg width="10" height="15">
                 <use xlinkHref={`${sprite}#icon-arrow-right`} />
               </svg>
             </Link>
+            {/* <Link to={`${match.url}/incomes`}>
+              <svg width="10" height="15">
+                <use xlinkHref={`${sprite}#icon-arrow-right`} />
+              </svg>
+            </Link> */}
           </li>
         </ul>
 
