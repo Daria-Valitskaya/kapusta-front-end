@@ -44,7 +44,9 @@ const authSlice = createSlice({
         state.isRegistered = false;
         state.isVerified = false;
         state.isLoggedIn = false;
+        // console.log(action.payload);
         state.errorMessage = action.payload.message;
+
         state.isFetchingCurrent = false;
       });
 

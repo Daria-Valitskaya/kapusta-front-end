@@ -16,16 +16,21 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/signup", credentials);
-      token.set(data.data.token);
+      // token.set(data.data.token);
       return data;
+      // console.log(data);
     } catch (error) {
-      const { status } = error.response;
+      // const { status } = error.response;
+      console.log(error);
       let message;
-      if (status === 409) {
-        message = "User with such email already exists";
-      }
+      // if (status === 409) {
+      //   message = "User with such email already exists";
+      // }
+      return thunkAPI.rejectWithValue({
+        message: "User with such email already exists",
+      });
 
-      return thunkAPI.rejectWithValue({ ...error.response.data, message });
+      // return thunkAPI.rejectWithValue({ ...error.response.data, message });
     }
   }
 );
