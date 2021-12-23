@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authOperations } from ".";
 
+// const increaseBalance = createAction("auth/increaseBalance");
+// const reduceBalance = createAction("auth/reduceBalance");
+
 const initialState = {
   user: { name: null, email: null, balance: null },
   token: null,
@@ -18,6 +21,14 @@ const authSlice = createSlice({
     resetAuth(state) {
       state.isRegistered = false;
       state.errorMessage = null;
+    },
+
+    increaseBalance(state, action) {
+      state.user.balance += action.payload;
+    },
+
+    reduceBalance(state, action) {
+      state.user.balance -= action.payload;
     },
   },
   extraReducers:
@@ -114,5 +125,5 @@ const authSlice = createSlice({
       });
     },
 });
-export const { resetAuth } = authSlice.actions;
+export const { resetAuth, increaseBalance, reduceBalance } = authSlice.actions;
 export default authSlice.reducer;
