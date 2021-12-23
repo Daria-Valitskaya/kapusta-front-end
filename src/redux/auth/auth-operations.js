@@ -16,7 +16,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/signup", credentials);
-      token.set(data.token);
+      token.set(data.data.token);
       return data;
     } catch (error) {
       const { status } = error.response;
@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/login", credentials);
-      token.set(data.token);
+      token.set(data.data.token);
       return data;
     } catch (error) {
       const { status } = error.response;
@@ -56,7 +56,7 @@ export const logOut = createAsyncThunk("auth/logout", async () => {
     await axios.get("/auth/logout");
     token.unset();
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 });
 
@@ -75,7 +75,8 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get("/auth/current");
       return data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -84,9 +85,9 @@ export const balanceInit = createAsyncThunk(
   "auth/balance",
   async (balance, thunkAPI) => {
     try {
-      console.log(balance);
+      // console.log(balance);
       const { data } = await axios.post("/auth/balance", balance);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
